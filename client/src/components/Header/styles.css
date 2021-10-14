@@ -1,0 +1,71 @@
+:root {
+  /* Colors */
+  --background-main: rgb(237, 237, 237);
+  --background-header: rgb(12, 12, 97);
+
+  --text-logo: "Righteous", cursive;
+  --text-logo-orange: rgb(232, 82, 23);
+  --text-main: var(--background-header);
+}
+
+/********************/
+/* Header Component */
+/********************/
+
+header {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--background-header);
+  margin: 0;
+}
+
+#logo {
+  width: 50%;
+  padding: 0 0 0 20px;
+  font-size: 60px;
+  color: var(--text-logo-orange);
+  text-align: center;
+}
+
+#navButtons {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navButton {
+  font-size: 30px;
+  padding: 10px;
+  margin: 0 20px 0 10px;
+  color: var(--background-main);
+  font-family: var(--text-logo);
+  cursor: pointer;
+}
+
+.navButton:hover {
+  color: var(--text-logo-orange);
+}
+
+/*************************************************************/
+
+/*****************/
+/* Media Queries */
+/*****************/
+
+@media screen and (max-width: 585px) {
+  #logo {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  #logo {
+    font-size: 32.5px;
+  }
+  
+  .navButton {
+    font-size: 20px;
+  }
+}

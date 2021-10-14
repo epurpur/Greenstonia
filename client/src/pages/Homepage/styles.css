@@ -1,0 +1,70 @@
+:root {
+  /* Colors */
+  --background-main: rgb(237, 237, 237);
+  --background-header: rgb(12, 12, 97);
+
+  --text-logo: "Righteous", cursive;
+  --text-logo-orange: rgb(232, 82, 23);
+  --text-main: var(--background-header);
+}
+
+/*************/
+/* Home Page */
+/*************/
+
+#homePageTop h1 {
+  text-align: center;
+  font-size: 70px;
+}
+
+#faster {
+  color: var(--text-logo-orange);
+}
+
+#register {
+  display: flex;
+  justify-content: center;
+  font-size: 45px;
+}
+
+#returning {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.homepageItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 20px;
+}
+
+.links {
+  background-color: var(--background-header);
+  padding: 10px;
+  color: var(--background-main);
+  border-radius: 10px;
+  margin: 30px;
+}
+
+.links:hover {
+  color: var(--text-logo-orange);
+}
+
+/*************************************************************/
+
+/*****************/
+/* Media Queries */
+/*****************/
+
+@media screen and (max-width: 585px) {
+  #homePageTop h1 {
+    font-size: 55px;
+  }
+  
+  #register {
+    font-size: 37.5px
+  }
+}

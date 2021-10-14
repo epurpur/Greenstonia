@@ -1,0 +1,94 @@
+:root {
+    /* Colors */
+    --background-main: rgb(237, 237, 237);
+    --background-header: rgb(12, 12, 97);
+    
+    --text-logo: 'Righteous', cursive;
+    --text-logo-orange: rgb(232, 82, 23);
+    --text-main: var(--background-header);
+}
+
+/*****************************/
+/* Single Job Page Component */
+/*****************************/
+
+#singleJob {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    margin: 0 0 10px 0;
+}
+
+#linkHolder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin: 0 0 20px 0;
+    width: 70%;
+}
+
+#backBtn {
+    margin: 10px;
+}
+
+/*****************************/
+/* Single Job Card component */
+/*****************************/
+
+#singleJobCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    background-color: var(--background-header);
+    border-radius: 10px;
+    color: var(--background-main);
+    margin: 10px;
+    padding: 10px;
+}
+
+#singleJobCard:nth-child(1) {
+    align-items: center;
+}
+
+.singleJobInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.singleJobInfo p {
+    padding: 10px;
+}
+
+#applyBtn {
+    border: 3px solid var(--text-logo-orange);
+}
+
+#applicants {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    border: 5px solid var(--text-logo-orange);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+
+/*************************************************************/
+
+/*****************/
+/* Media Queries */
+/*****************/
+
+@media screen and (max-width: 585px) {
+    #singleJob {
+        font-size: 17.5px;
+    }
+  }
