@@ -26,6 +26,9 @@ const boulderSchema = new Schema({
 //       ref: 'Route',
 //     },
 //     ],  
+// photo: {
+
+// }
 });
 
 const Boulder = model('Boulder', boulderSchema);
