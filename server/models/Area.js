@@ -4,10 +4,7 @@ const dateFormat = require('../utils/dateFormat');
 const areaSchema = new Schema({
   areaName: {
     type: String,
-    required: 'Each area must have a name',
-    minlength: 1,
-    maxlength: 280,
-    trim: true,
+    required: true,
   },
   areaDescription: {
     type: String,
