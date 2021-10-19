@@ -16,6 +16,12 @@ const typeDefs = gql`
       boulderDescription: String
     }
 
+    type Route {
+      _id: ID
+      routeName: String
+      routeDescription: String
+    }
+
     # type Auth {
     #     token: ID!
     #     user: User
@@ -24,6 +30,7 @@ const typeDefs = gql`
     type Query {
       areas: [Area]
       boulders: [Boulder]
+      routes: [Route]
     }
 
     type Mutation{

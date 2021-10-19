@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const Route = new Schema({
+const routeSchema = new Schema({
   routeName: {
     type: String,
     required: true,
@@ -8,21 +8,7 @@ const Route = new Schema({
   routeDescription: {
     type: String,
     required: true,
-  },
-  firstAscent: {
-      type: String,
-  },
-  routeGrade: {
-    type: String,
-    required: true
-  },
-  routeQuality: {
-    type: Number,
-    required: true,
-  },
-//   photo:{
-
-//   }
+  }, 
 });
 
 const Route = model('Route', routeSchema);
