@@ -4,10 +4,16 @@ const typeDefs = gql`
 
     type Area {
         _id: ID
-        areaName:String
-        areaDescription:String
-        parkingDescription:String
-        approachDescription:String
+        areaName: String
+        areaDescription: String
+        parkingDescription: String
+        approachDescription: String
+    }
+
+    type Boulder {
+      _id: ID
+      boulderName: String
+      boulderDescription: String
     }
 
     # type Auth {
@@ -17,10 +23,12 @@ const typeDefs = gql`
 
     type Query {
       areas: [Area]
+      boulders: [Boulder]
     }
 
     type Mutation{
       addArea(areaName: String!, areaDescription: String!, parkingDescription: String!, approachDescription: String!): Area
+      addBoulder(boulderName: String!, boulderDescription: String!): Boulder
     } 
 `;
 
