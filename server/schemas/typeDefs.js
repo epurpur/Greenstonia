@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
 
-    type User {
+    type Area {
         _id: ID
         areaName:String
         areaDescription:String
@@ -10,10 +10,10 @@ const typeDefs = gql`
         approachDescription:String
     }
 
-    type Auth {
-        token: ID!
-        user: User
-      }
+    # type Auth {
+    #     token: ID!
+    #     user: User
+    #   }
 
     type Query {
       areas: [Area]
