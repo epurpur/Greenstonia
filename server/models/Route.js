@@ -8,7 +8,18 @@ const routeSchema = new Schema({
   routeDescription: {
     type: String,
     required: true,
-  }, 
+  },
+  firstAscent: {
+    type: String,
+  },
+  routeGrade: {
+    type: String,
+    required: true,
+  },
+  routeQuality: {
+    type: Number,
+    required: true,
+  }
 });
 
 const Route = model('Route', routeSchema);

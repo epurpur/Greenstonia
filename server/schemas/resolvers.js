@@ -21,6 +21,9 @@ const resolvers = {
         addBoulder: async (parent, {boulderName, boulderDescription}) => {
             const boulder = await Boulder.create({boulderName, boulderDescription})
         },
+        addRoute: async (parent, {routeName, routeDescription, firstAscent, routeGrade, routeQuality}) => {
+          const route = await Route.create({routeName, routeDescription, firstAscent, routeGrade, routeQuality})
+        },
       },
     }
 
