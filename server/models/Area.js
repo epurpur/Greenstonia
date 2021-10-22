@@ -17,6 +17,12 @@ const areaSchema = new Schema({
     type: String,
     required: true,
   },
+  boulders: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Boulder'
+    }
+  ]
 //   location: {
 //     type: {
 //         type: String,

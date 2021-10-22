@@ -5,13 +5,14 @@ const { Area, Boulder, Route } = require('../models');
 const resolvers = {
     Query: {
         areas: async () => {
-            return Area.find().populate('areas');
+            return Area.find().populate('boulders');
+            return await Area.find({});
           },
         boulders: async () => {
-            return Boulder.find().populate('boulders');
+            return await Boulder.find().populate('routes');
           },
         routes: async () => {
-            return Route.find().populate('routes');
+            return await Route.find({});
           }
         },
     Mutation:{
