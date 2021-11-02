@@ -5,8 +5,7 @@ const { Area, Boulder, Route } = require('../models');
 const resolvers = {
     Query: {
         areas: async () => {
-            return Area.find().populate('boulders');
-            return await Area.find({});
+            return await Area.find().populate('boulders');
           },
         boulders: async () => {
             return await Boulder.find().populate('routes');

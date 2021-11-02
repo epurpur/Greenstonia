@@ -9,7 +9,7 @@ const boulderSchema = new Schema({
     type: String,
     required: true,
   },
-  area:{
+  area: {
       type: Schema.Types.ObjectId,
       ref: 'Area'
     }

@@ -1,0 +1,14 @@
+[
+    {
+        "areaName": "Area A",
+        "areaDescription": "Area Description",
+        "parkingDescription": "Parking Description",
+        "approachDescription": "Approach Description"
+    },
+    {
+        "areaName": "Area B",
+        "areaDescription": "AreaB Description",
+        "parkingDescription": "ParkingB Description",
+        "approachDescription": "ApproachB Description"
+    }
+]

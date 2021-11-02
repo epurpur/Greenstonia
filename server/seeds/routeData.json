@@ -1,0 +1,23 @@
+[
+    {
+        "routeName": "route x",
+        "routeDescription": "climb through the crimps",
+        "firstAscent": "Erich Purpur",
+        "routeGrade": "v1",
+        "routeQuality": 3
+      },
+      {
+        "routeName": "route y",
+        "routeDescription": "climb through the pockets",
+        "firstAscent": "Erich Purpur",
+        "routeGrade": "v2",
+        "routeQuality": 4
+      },
+      {
+        "routeName": "route z",
+        "routeDescription": "climb through the slopers",
+        "firstAscent": "Erich Purpur",
+        "routeGrade": "v3",
+        "routeQuality": 5
+      }
+]

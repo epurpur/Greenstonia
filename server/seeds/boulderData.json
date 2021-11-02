@@ -1,0 +1,10 @@
+[
+    {
+        "boulderName": "Classic Boulder1",
+        "boulderDescription": "The classic boulder in the main area. Cool grips"
+    },
+    {
+        "boulderName": "Classic Boulder2",
+        "boulderDescription": "The classic boulder in the second area"
+    }
+]
