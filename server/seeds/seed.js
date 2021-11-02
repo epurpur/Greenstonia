@@ -1,29 +1,31 @@
 const db = require('../config/connection');
-const { User, Job } = require('../models');
+const { Area, Boulder, Route } = require('../models');
 
-// import data from .json files
-const userData = require('./userData.json')
+const areaData = require('./areaData.json');
+const boulderData = require('./boulderData.json');
+const routeData = require('./routeData.json');
 
 db.once('open', async () => {
-    // clean any existing database records
-    await User.deleteMany({});
-
+    // clean database
+    await Area.deleteMany({});
+    await Boulder.deleteMany({});
+    await Route.deleteMany({});
+  
     // bulk create each model
-    const users = await User.insertMany(userData);
+    const areas = await Area.insertMany(areaData);
+    const boulders = await Boulder.insertMany(boulderData);
+    const routes = await Route.insertMany(routeData);
+  
+    for (newBoulder of boulders) {
+        // randomly add each boulder to an area
+        console.log('randomly assigning boulders to areas');
+        const tempArea = areas[Math.floor(Math.random() * areas.length)];
+        tempArea.boulders.push(newBoulder._id);
+        await tempArea.save();
+    }
 
-    console.log('user seed data inserted ')
+    console.log('all done!');
     process.exit(0);
+  
 });
 
-
-const jobData = require('./jobData.json')
-
-
-db.once('open', async () => {
-    await Job.deleteMany({});
-
-    const jobs = await Job.insertMany(jobData);
-
-    console.log('Seed data inserted!')
-    process.exit(0);
-});
