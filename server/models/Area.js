@@ -33,13 +33,7 @@ const areaSchema = new Schema({
 //         type: [Number],
 //         required: true,
 //     }
-//   },
-//   boulders: [
-//     {
-//       type: Schema.Types.ObjectId,
-//       ref: 'Boulder',
-//     },
-//     ],  
+//   },  
 });
 
 const Area = model('Area', areaSchema);

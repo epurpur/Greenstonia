@@ -3,19 +3,19 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
 
     type Area {
-        _id: ID
-        areaName: String
-        areaDescription: String
-        parkingDescription: String
-        approachDescription: String
-        boulders: Boulder
+      _id: ID!
+      areaName: String!
+      areaDescription: String!
+      parkingDescription: String!
+      approachDescription: String!
+      boulders: [Boulder]
     }
 
     type Boulder {
-      _id: ID
-      boulderName: String
-      boulderDescription: String
-      area: Area
+      _id: ID!
+      boulderName: String!
+      boulderDescription: String!
+      area: Area!
     }
 
     type Route {
@@ -33,15 +33,13 @@ const typeDefs = gql`
     #   }
 
     type Query {
-      areas: [Area]
-      boulders: [Boulder]
-      routes: [Route]
+      areas: [Area!]
+      boulders: [Boulder!]
     }
 
     type Mutation{
       addArea(areaName: String!, areaDescription: String!, parkingDescription: String!, approachDescription: String!): Area
-      addBoulder(boulderName: String!, boulderDescription: String!, area: ID): Boulder
-      addRoute(routeName: String!, routeDescription: String!, firstAscent: String, routeGrade: String!, routeQuality: Int!): Route
+      addBoulder(boulderName: String!, boulderDescription: String!, area: String!): Boulder
     } 
 `;
 
