@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Area, Boulder, Route, } = require('../models');
-// const { signToken } = require('../utils/auth');
+const { Area, Boulder, Route, User } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
@@ -13,9 +13,9 @@ const resolvers = {
         routes: async () => {
             return await Route.find();
           },
-        // users: async () => {
-        //     return User.find();
-        //   },
+        users: async () => {
+            return User.find();
+          },
         },
     Mutation:{
         addArea: async (parent, { areaName, areaDescription, parkingDescription, approachDescription }) => {
@@ -40,7 +40,12 @@ const resolvers = {
             )
 
             return route;
-        }
+        },
+        addUser: async (parent, { username, password }) => {
+          const user = await User.create({ username, password });
+          const token = signToken(user);
+          return { token, user };
+        },      
       },
     }
 
