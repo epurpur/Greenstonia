@@ -15,7 +15,7 @@ const typeDefs = gql`
       _id: ID!
       boulderName: String!
       boulderDescription: String!
-      area: Area!
+      areaID: Area!
     }
 
     type Route {
@@ -39,7 +39,7 @@ const typeDefs = gql`
 
     type Mutation{
       addArea(areaName: String!, areaDescription: String!, parkingDescription: String!, approachDescription: String!): Area
-      addBoulder(boulderName: String!, boulderDescription: String!, area: String!): Boulder
+      addBoulder(boulderName: String!, boulderDescription: String!, areaID: String!): Boulder
     } 
 `;
 

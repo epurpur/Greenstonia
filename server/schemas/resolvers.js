@@ -15,8 +15,15 @@ const resolvers = {
         addArea: async (parent, {areaName, areaDescription, parkingDescription, approachDescription}) => {
             return await Area.create({areaName, areaDescription, parkingDescription, approachDescription});
         },
-        addBoulder: async (parent, {boulderName, boulderDescription, area}) => {
-            return await Boulder.create({boulderName, boulderDescription, area})
+        addBoulder: async (parent, {boulderName, boulderDescription, areaID}) => {
+            const boulder = await Boulder.create({boulderName, boulderDescription, areaID});
+
+            await Area.findOneAndUpdate(
+              { _id: areaID },
+              { $addToSet: { boulders: boulder._id }}
+            );
+
+            return boulder;
         },
       },
     }
