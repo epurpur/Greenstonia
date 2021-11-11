@@ -12,7 +12,13 @@ const boulderSchema = new Schema({
   area: {
       type: Schema.Types.ObjectId,
       ref: 'Area'
+    },
+  routes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Route'
     }
+  ]
 
 //   location: {
 //     type: {

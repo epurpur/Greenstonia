@@ -10,6 +10,9 @@ const resolvers = {
         boulders: async () => {
             return await Boulder.find();
           },
+        routes: async () => {
+            return await Route.find();
+          },
         },
     Mutation:{
         addArea: async (parent, {areaName, areaDescription, parkingDescription, approachDescription}) => {

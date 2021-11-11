@@ -37,6 +37,7 @@ const typeDefs = gql`
     type Query {
       areas: [Area!]
       boulders: [Boulder!]
+      routes: [Route!]
     }
 
     type Mutation{
