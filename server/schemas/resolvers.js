@@ -42,9 +42,9 @@ const resolvers = {
             return route;
         },
         addUser: async (parent, { username, password }) => {
-          const user = await User.create({ username, password });
-          const token = signToken(user);
-          return { token, user };
+            const user = await User.create({ username, password });
+            const token = signToken(user);
+            return { token, user };
         },      
       },
     }
