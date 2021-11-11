@@ -8,18 +8,18 @@ const resolvers = {
             return await Area.find().populate('boulders');
           },
         boulders: async () => {
-            return await Boulder.find();
+            return await Boulder.find().populate('routes');
           },
         routes: async () => {
             return await Route.find();
           },
         },
     Mutation:{
-        addArea: async (parent, {areaName, areaDescription, parkingDescription, approachDescription}) => {
-            return await Area.create({areaName, areaDescription, parkingDescription, approachDescription});
+        addArea: async (parent, { areaName, areaDescription, parkingDescription, approachDescription }) => {
+            return await Area.create({ areaName, areaDescription, parkingDescription, approachDescription });
         },
-        addBoulder: async (parent, {boulderName, boulderDescription, areaID}) => {
-            const boulder = await Boulder.create({boulderName, boulderDescription, areaID});
+        addBoulder: async (parent, { boulderName, boulderDescription, areaID }) => {
+            const boulder = await Boulder.create({ boulderName, boulderDescription, areaID });
 
             await Area.findOneAndUpdate(
               { _id: areaID },
@@ -28,6 +28,16 @@ const resolvers = {
 
             return boulder;
         },
+        addRoute: async (parent, {routeName, routeDescription, firstAscent, routeGrade, routeQuality, boulderID}) => {
+            const route = await Route.create({ routeName, routeDescription, firstAscent, routeGrade, routeQuality, boulderID });
+
+            await Boulder.findOneAndUpdate(
+              { _id: boulderID },
+              { $addToSet: { routes: route._id }}
+            )
+
+            return route;
+        }
       },
     }
 
