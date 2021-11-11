@@ -16,15 +16,17 @@ const typeDefs = gql`
       boulderName: String!
       boulderDescription: String!
       areaID: Area!
+      routes: [Route]
     }
 
     type Route {
-      _id: ID
-      routeName: String
-      routeDescription: String
+      _id: ID!
+      routeName: String!
+      routeDescription: String!
       firstAscent: String
-      routeGrade: String
+      routeGrade: String!
       routeQuality: Int
+      boulderID: Boulder!
     }
 
     # type Auth {

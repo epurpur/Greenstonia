@@ -19,6 +19,10 @@ const routeSchema = new Schema({
   routeQuality: {
     type: Number,
     required: true,
+  },
+  boulder: {
+    type: Schema.Types.ObjectId,
+    ref: 'Boulder'
   }
 });
 
