@@ -48,6 +48,7 @@ const typeDefs = gql`
     }
 
     type Mutation{
+      login(username: String!, password: String!): Auth
       addArea(areaName: String!, areaDescription: String!, parkingDescription: String!, approachDescription: String!): Area
       addBoulder(boulderName: String!, boulderDescription: String!, areaID: String!): Boulder
       addRoute(routeName: String!, routeDescription: String!, firstAscent: String, routeGrade: String!, routeQuality: Int, boulderID: String!): Route

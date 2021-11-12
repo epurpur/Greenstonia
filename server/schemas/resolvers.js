@@ -18,6 +18,25 @@ const resolvers = {
           },
         },
     Mutation:{
+        login: async (parent, { username, password }) => {
+            // only one username and password exists
+            // username: admin
+            // password: greenstonia
+            const user = await User.findOne({ username });
+    
+            if (!user) {
+                throw new AuthenticationError('No user found with this username');
+            }
+            const correctPw = await user.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect Password for this username');
+            }
+    
+            const token = signToken(user);
+    
+            return { token, user };
+        },
         addArea: async (parent, { areaName, areaDescription, parkingDescription, approachDescription }) => {
             return await Area.create({ areaName, areaDescription, parkingDescription, approachDescription });
         },
