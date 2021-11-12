@@ -1,30 +1,38 @@
-
-:root {
-  /* Colors */
-  --background-main: rgb(237, 237, 237);
-  --background-header: rgb(12, 12, 97);
-  
-  --text-logo: 'Righteous', cursive;
-  --text-logo-orange: rgb(232, 82, 23);
-  --text-main: var(--background-header);
-}
-
-/*****************/
-/* Global Styles */
-/*****************/
-
 .App {
-  background-color: var(--background-button);
-  color: var(--text-main);
-  font-family: var(--text-logo);
+  text-align: center;
 }
 
-.text-emphasis {
-  color: var(--background-main);
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-.text-emphasis-orange {
-  color: var(--text-logo-orange);
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
 
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
