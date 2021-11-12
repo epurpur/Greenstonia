@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 
 /* Images */
-import LandingImg from '../../Images/LandingImg.png';
+import LandingImg from '../../images/LandingImg.png';
 
 const LandingPage = () => {
   

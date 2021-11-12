@@ -1,12 +1,20 @@
 import React from "react";
 
+/* Components */
+import Header from "../../components/Header";
+
 /* CSS styles */
 import "./styles.css";
 
 const HomePage = () => {
   
     return (
-        <p>Home Page</p>
+        <>
+        <Header />
+        <section>
+        Home Page
+        </section>
+        </>
     );
   };
   
