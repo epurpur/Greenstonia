@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 /* CSS styles */
 import "./styles.css";
@@ -6,7 +6,11 @@ import "./styles.css";
 const LandingPage = () => {
   
     return (
-        <p>Landing Page</p>
+        <section>
+            <h1>Welcome to...</h1>
+            <p>Greenstonia</p>
+            <p>A guide to the bouldering on Central Virginia's Blue Ridge Parkway</p>
+        </section>
     );
   };
   

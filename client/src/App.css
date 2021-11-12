@@ -1,1 +1,13 @@
+:root {
+    /* Colors */
+    --background: rgb(142, 186, 139);
 
+}
+
+/*****************/
+/* Global Styles */
+/*****************/
+
+.App{
+    background-color: var(--background);
+}

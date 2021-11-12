@@ -7,6 +7,7 @@ import './App.css';
 
 /* Pages */
 import LandingPage from "./pages/LandingPage";
+import HomePage from "./pages/HomePage";
 
 /* Apollo Setup */
 const client = new ApolloClient({
@@ -19,7 +20,15 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="App">
-          <LandingPage />
+          {/* Establishing routes to all endpoints */}
+          <Switch>
+            <Route exact path="/">
+              <LandingPage />
+            </Route>  
+            <Route exact path="/Home">
+              <HomePage />
+            </Route>
+          </Switch>
         </div>
 
       </Router>
