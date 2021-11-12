@@ -22,12 +22,14 @@ function App() {
         <div className="App">
           {/* Establishing routes to all endpoints */}
           <Switch>
+
             <Route exact path="/">
               <LandingPage />
             </Route>  
             <Route exact path="/Home">
               <HomePage />
             </Route>
+            
           </Switch>
         </div>
 
