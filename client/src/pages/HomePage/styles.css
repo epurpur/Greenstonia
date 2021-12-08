@@ -10,12 +10,6 @@ section {padding: 10px;}
     height: 300px;
 }
 
-#map {
-    padding: 10px;
-    width: 70%;
-    border: 1px solid black;
-    border-radius: 10px;
-}
 #routeList {
     padding: 10px;
     width: 30%;

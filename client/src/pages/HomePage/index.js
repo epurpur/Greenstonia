@@ -5,6 +5,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Alerts from "../../components/Alerts";
 import SearchBar from "../../components/SearchBar";
+import MapComponent from "../../components/MapComponent";
 
 /* CSS styles */
 import "./styles.css";
@@ -20,7 +21,7 @@ const HomePage = () => {
                 <Alerts />
                 <SearchBar />
                 <div id='routeFinders'>
-                    <div id='map'>Search by map</div>
+                    <MapComponent />
                     <div id='routeList'>Search by name</div>
                 </div>
                 <div id='weather'>Weather</div>
