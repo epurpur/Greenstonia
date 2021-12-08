@@ -29,11 +29,20 @@ img {
 
 h1 {font-size: 75px}
 
-p {font-size: 30px}
+p {
+    font-size: 30px;
+
+}
 
 button {
     background-color: var(--text-main);
     font-family: var(--font-main);
     font-size: 30px;
     border-radius: 10px;
+}
+
+button:hover{
+    opacity: 0.5;
+    cursor: pointer;
+    transition: 0.5s;
 }
