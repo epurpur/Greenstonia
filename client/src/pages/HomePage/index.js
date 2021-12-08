@@ -6,6 +6,7 @@ import Footer from "../../components/Footer";
 import Alerts from "../../components/Alerts";
 import SearchBar from "../../components/SearchBar";
 import MapComponent from "../../components/MapComponent";
+import RouteList from "../../components/RouteList";
 
 /* CSS styles */
 import "./styles.css";
@@ -20,10 +21,8 @@ const HomePage = () => {
                 {/* Don't forget to change CSS for them too */}
                 <Alerts />
                 <SearchBar />
-                <div id='routeFinders'>
-                    <MapComponent />
-                    <div id='routeList'>Search by name</div>
-                </div>
+                <MapComponent />
+                <RouteList />
                 <div id='weather'>Weather</div>
             </section>
             <Footer />

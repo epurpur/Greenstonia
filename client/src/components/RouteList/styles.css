@@ -1,10 +1,7 @@
-section {padding: 10px;}
-
-#weather {
+#routeList {
+    height: 300px;
     margin: 10px;
     padding: 10px;
     border: 1px solid black;
     border-radius: 10px;
-    height: 300px;
 }
-
