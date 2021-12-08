@@ -15,7 +15,7 @@ const LandingPage = () => {
             <section id='landingText'>
                 <h1>Greenstonia</h1>
                 <p>A guide to the bouldering of Central Virginia's Blue Ridge Parkway</p>
-                <Link to="/Home">
+                <Link to="/home">
                     <button>Enter</button>
                 </Link>
             </section>

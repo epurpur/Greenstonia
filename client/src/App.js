@@ -9,6 +9,10 @@ import './App.css';
 /* Pages */
 import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
+import WeatherPage from "./pages/WeatherPage";
+import AreasPage from "./pages/AreasPage";
+import HistoryPage from "./pages/HistoryPage";
+import ContactPage from "./pages/ContactPage";
 
 /* Components */
 
@@ -29,8 +33,20 @@ function App() {
             <Route exact path="/">
               <LandingPage />
             </Route>  
-            <Route exact path="/Home">
+            <Route exact path="/home">
               <HomePage />
+            </Route>
+            <Route exact path="/weather">
+              <WeatherPage />
+            </Route>
+            <Route exact path="/areas">
+              <AreasPage />
+            </Route>
+            <Route exact path="/history">
+              <HistoryPage />
+            </Route>
+            <Route exact path="/contact">
+              <ContactPage />
             </Route>
 
           </Switch>
