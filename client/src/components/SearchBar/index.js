@@ -3,12 +3,13 @@ import React from 'react';
 /* CSS styles */
 import "./styles.css";
 
-const Alerts = () => {
+
+const SearchBar = () => {
     return (
         <>
-            <div id='alerts'>Alerts</div>
+            <div id='searchBar'>Search </div>
         </>
     )
 };
 
-export default Alerts;
+export default SearchBar;
