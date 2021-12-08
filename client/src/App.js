@@ -10,6 +10,9 @@ import './App.css';
 import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
 
+/* Components */
+import Footer from "./components/Footer";
+
 /* Apollo Setup */
 const client = new ApolloClient({
   uri: "/graphql",
@@ -30,8 +33,12 @@ function App() {
             <Route exact path="/Home">
               <HomePage />
             </Route>
+
+            
             
           </Switch>
+          
+          <Footer />
         </div>
 
       </Router>
