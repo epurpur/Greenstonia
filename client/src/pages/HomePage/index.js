@@ -7,6 +7,7 @@ import Alerts from "../../components/Alerts";
 import SearchBar from "../../components/SearchBar";
 import MapComponent from "../../components/MapComponent";
 import RouteList from "../../components/RouteList";
+import WeatherComponent from "../../components/WeatherComponent";
 
 /* CSS styles */
 import "./styles.css";
@@ -23,7 +24,7 @@ const HomePage = () => {
                 <SearchBar />
                 <MapComponent />
                 <RouteList />
-                <div id='weather'>Weather</div>
+                <WeatherComponent />
             </section>
             <Footer />
         </>
