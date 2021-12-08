@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
-
 /* CSS Styles */
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 /* Pages */
@@ -11,7 +11,6 @@ import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
 
 /* Components */
-import Footer from "./components/Footer";
 
 /* Apollo Setup */
 const client = new ApolloClient({
@@ -34,11 +33,7 @@ function App() {
               <HomePage />
             </Route>
 
-            
-            
           </Switch>
-          
-          <Footer />
         </div>
 
       </Router>

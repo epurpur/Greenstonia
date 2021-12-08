@@ -1,0 +1,14 @@
+:root {
+    /* Colors & Sizes */
+    --text-main: rgb(181, 227, 155);
+    --font-main: 'Permanent Marker', cursive;
+}
+
+#logo {
+    color: var(--text-main);
+    font-family: var(--font-main);
+}
+
+#test {
+    color: var(--text-main);
+}
