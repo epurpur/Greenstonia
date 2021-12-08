@@ -1,0 +1,47 @@
+#alerts {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: red;
+}
+
+#search {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#routeFinders {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 300px;
+}
+
+#map {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+#routeList {
+    padding: 10px;
+    width: 30%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#weather {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 300px;
+}
+
