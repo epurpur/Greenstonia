@@ -3,7 +3,7 @@ import React from "react";
 /* Components */
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-
+import Alerts from "../../components/Alerts";
 
 /* CSS styles */
 import "./styles.css";
@@ -16,7 +16,7 @@ const HomePage = () => {
             <section>
                 {/* These items will all become individual components */}
                 {/* Don't forget to change CSS for them too */}
-                <div id='alerts'>Alerts</div>
+                <Alerts />
                 <div id='search'>Search </div>
                 <div id='routeFinders'>
                     <div id='map'>Search by map</div>

@@ -3,12 +3,12 @@ import React from 'react'
 /* CSS styles */
 import "./styles.css";
 
-const footer = () => {
+const Alerts = () => {
     return (
         <>
-            Footer
+            <div id='alerts'>Alerts</div>
         </>
     )
 }
 
-export default footer
+export default Alerts

@@ -1,13 +1,6 @@
 section{padding: 10px;}
 
-#alerts {
-    margin: 10px;
-    padding: 10px;
-    text-align: center;
-    border: 1px solid black;
-    border-radius: 10px;
-    color: red;
-}
+
 
 #search {
     margin: 10px;
