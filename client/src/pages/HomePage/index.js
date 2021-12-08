@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 /* Components */
 import Header from "../../components/Header";
@@ -18,8 +19,6 @@ const HomePage = () => {
         <>
             <Header />
             <section>
-                {/* These items will all become individual components */}
-                {/* Don't forget to change CSS for them too */}
                 <Alerts />
                 <SearchBar />
                 <MapComponent />
