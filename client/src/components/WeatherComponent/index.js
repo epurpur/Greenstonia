@@ -1,9 +1,11 @@
 import React from 'react';
 
+/* Components */
+
 const WeatherComponent = () => {
     return (
         <>
-                <div id='weather'>Weather</div>
+            <div id='weather'>Weather</div>
         </>
     )
 };
