@@ -10,7 +10,7 @@ import LandingImg from '../../images/LandingImg.png';
 const LandingPage = () => {
   
     return (
-        <section>
+        <section id='landingPage'>
             <img src={LandingImg} alt="Scenic view of the mountains"></img>
             <section id='landingText'>
                 <h1>Greenstonia</h1>

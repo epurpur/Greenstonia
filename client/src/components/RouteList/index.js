@@ -6,7 +6,19 @@ import "./styles.css";
 const RouteList = () => {
     return (
         <>
-            <div id='routeList'>Search by name</div>
+            <section id='routeList'>
+                <div id='routeListTitle'>Search by Name</div>
+                <div id='areaCards'>
+                    {/* This will be replaced with an API call for all areas */}
+                    <p>Rock Point Overlook</p>
+                    <p>The Forest</p>
+                    <p>Drive By (Mile 5)</p>
+                    <p>12.2</p>
+                    <p>Snail Boulder</p>
+                </div>
+            </section>
+            
+
         </>
     )
 };

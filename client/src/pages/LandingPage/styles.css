@@ -7,6 +7,10 @@
     --font-main: 'Permanent Marker', cursive;
 }
 
+#landingPage {
+    background-color: white;
+}
+
 img {
     position: absolute;
     z-index: -1;

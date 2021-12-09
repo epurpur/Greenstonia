@@ -9,7 +9,7 @@ import "./styles.css";
 const MapComponent = () => {
     return (
         <>
-            <div id='mapTitleText'>Search for Areas on Map</div>
+            <div id='mapTitleText'>Search by Map</div>
             <MapContainer center={[37.95, -78.98]} zoom={10.5} scrollWheelZoom={false}>
                 {/* Google Maps basemap as TileLayer */}
                 <TileLayer url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"/>
