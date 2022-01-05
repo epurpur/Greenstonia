@@ -13,6 +13,7 @@ import WeatherPage from "./pages/WeatherPage";
 import HistoryPage from "./pages/HistoryPage";
 import ContactPage from "./pages/ContactPage";
 import BoulderPage from "./pages/BoulderPage";
+import RoutesPage from "./pages/RoutesPage";
 
 /* Components */
 
@@ -48,6 +49,10 @@ function App() {
             <Route exact path="/boulder">
             {/* This will eventually be changed to something like "/boulder/:boulderName" */}
               <BoulderPage />
+            </Route>
+            <Route exact path="/routes">
+            {/* This will eventually be changed to something like "/routes/:routeName" */}
+              <RoutesPage />
             </Route>
 
           </Switch>

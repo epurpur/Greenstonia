@@ -17,13 +17,13 @@ const BouldersMap = () => {
                   <Marker position={[37.95, -78.88]}>
                     <Popup>
                         <h2>Incredibles Boulder</h2>
-                        <Link to="/boulder">Click to view routes</Link>
+                        <Link to="/routes">Click to view routes</Link>
                     </Popup>
                   </Marker>
                   <Marker position={[37.95, -78.98]}>
                     <Popup>
                         <h2>Mustang Boulder</h2>
-                        <Link to="/boulder">Click to view routes</Link>
+                        <Link to="/routes">Click to view routes</Link>
                     </Popup>
                   </Marker>
             </MapContainer>        
