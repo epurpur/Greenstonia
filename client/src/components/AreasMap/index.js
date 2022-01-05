@@ -2,11 +2,12 @@ import React from 'react';
 
 /* Components */
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Link } from 'react-router-dom';
 
 /* CSS styles */
 import "./styles.css";
 
-const MapComponent = () => {
+const AreasMap = () => {
     return (
         <>
             <div id='mapTitleText'>Search Areas by Map</div>
@@ -15,7 +16,7 @@ const MapComponent = () => {
                 <TileLayer url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"/>
                   <Marker position={[37.95, -78.98]}>
                     <Popup>
-                         Map Centroid
+                         <Link to="/history">Click to see boulders</Link>
                     </Popup>
                 </Marker>
             </MapContainer>
@@ -23,4 +24,4 @@ const MapComponent = () => {
     )
 };
 
-export default MapComponent;
+export default AreasMap;

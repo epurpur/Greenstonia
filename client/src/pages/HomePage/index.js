@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Alerts from "../../components/Alerts";
 import SearchBar from "../../components/SearchBar";
-import MapComponent from "../../components/MapComponent";
+import AreasMap from "../../components/AreasMap";
 import RouteList from "../../components/RouteList";
 import WeatherComponent from "../../components/WeatherComponent";
 
@@ -20,7 +20,7 @@ const HomePage = () => {
             <section>
                 <Alerts />
                 <SearchBar />
-                <MapComponent />
+                <AreasMap />
                 <RouteList />
                 <WeatherComponent />
             </section>
