@@ -16,9 +16,10 @@ const AreasMap = () => {
                 <TileLayer url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"/>
                   <Marker position={[37.95, -78.98]}>
                     <Popup>
-                         <Link to="/history">Click to see boulders</Link>
+                        <h2>Mustang Boulder</h2>
+                        <Link to="/boulder">Click to view area</Link>
                     </Popup>
-                </Marker>
+                  </Marker>
             </MapContainer>
         </>
     )

@@ -10,9 +10,9 @@ import './App.css';
 import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
 import WeatherPage from "./pages/WeatherPage";
-import AreasPage from "./pages/AreasPage";
 import HistoryPage from "./pages/HistoryPage";
 import ContactPage from "./pages/ContactPage";
+import BoulderPage from "./pages/BoulderPage";
 
 /* Components */
 
@@ -39,14 +39,15 @@ function App() {
             <Route exact path="/weather">
               <WeatherPage />
             </Route>
-            <Route exact path="/areas">
-              <AreasPage />
-            </Route>
             <Route exact path="/history">
               <HistoryPage />
             </Route>
             <Route exact path="/contact">
               <ContactPage />
+            </Route>
+            <Route exact path="/boulder">
+            {/* This will eventually be changed to something like "/boulder/:boulderName" */}
+              <BoulderPage />
             </Route>
 
           </Switch>
