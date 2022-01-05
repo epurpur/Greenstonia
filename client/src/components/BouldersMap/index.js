@@ -1,7 +1,6 @@
 import React from 'react'
 
 /* Components */
-import Header from "../Header";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Link } from 'react-router-dom';
 
@@ -11,8 +10,6 @@ import "./styles.css";
 const BouldersMap = () => {
     return (
         <>
-          <Header />
-            <h2> Mustang Boulder Area </h2>
             <div id='mapTitleText'>Search Boulders by Map</div>
             <MapContainer center={[37.95, -78.98]} zoom={10.5} scrollWheelZoom={false}>
                 {/* Google Maps basemap as TileLayer */}
