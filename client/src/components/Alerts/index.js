@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 /* Components */
 
@@ -21,19 +21,35 @@ const Alerts = () => {
 
     return (
         <>
-            <div id='alerts'>
+            {currentSeason === 'winter' && (
+                <>
+                    <div id='red-alert'>
+                        <p>It is possible the blue ridge parkway is currently closed</p>
+                        <p>Please check the following for more information: <a href="https://www.nps.gov/blri/planyourvisit/roadclosures.htm" target="_blank" rel="noreferrer">https://www.nps.gov/blri/planyourvisit/roadclosures.htm</a></p>
+                    </div>
+                </>
+            )}
+            {currentSeason !== 'winter' && (
+                <>
+                    <div id='green-alert'>
+                        <p>No access alerts today!</p>
+                    </div>
+                </>
+            )}
+
+            {/* <div id='alerts'>
                 <h3>Alerts</h3>
                 {currentSeason === 'winter' && (
                     <>
                         <h4>Current season: {currentSeason} </h4>
-                        <p>It is possible the parkway is closed!</p>
+                        <p style={{"color":"purple"}}>It is possible the parkway is closed!</p>
                     </>
                 )} 
                 {currentSeason !== 'winter' && (
                     <h4> Current season: not winter</h4>
                 )}
 
-            </div>
+            </div> */}
             
             
         </>

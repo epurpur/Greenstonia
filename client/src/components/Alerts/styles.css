@@ -1,12 +1,10 @@
-#alerts {
-    border: 1px solid black;
-    border-radius: 10px;
 
+#red-alert {
+    background-color: red;
+    border-radius: 10px;;
 }
-#alerts h3 {
-    margin: 10px;
-    padding: 10px;
-    text-align: center;
-    color: red;
-    text-decoration: underline;
+
+#green-alert {
+    background-color: green;
+    border-radius: 10px;
 }
