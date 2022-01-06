@@ -1,8 +1,12 @@
 #alerts {
+    border: 1px solid black;
+    border-radius: 10px;
+
+}
+#alerts h3 {
     margin: 10px;
     padding: 10px;
     text-align: center;
-    border: 1px solid black;
-    border-radius: 10px;
     color: red;
+    text-decoration: underline;
 }
