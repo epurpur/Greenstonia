@@ -14,6 +14,7 @@ import HistoryPage from "./pages/HistoryPage";
 import ContactPage from "./pages/ContactPage";
 import BoulderPage from "./pages/BoulderPage";
 import RoutesPage from "./pages/RoutesPage";
+import SingleRoutePage from "./pages/SingleRoutePage";
 
 /* Components */
 
@@ -53,6 +54,10 @@ function App() {
             <Route exact path="/routes">
             {/* This will eventually be changed to something like "/routes/:routeName" */}
               <RoutesPage />
+            </Route>
+            <Route exact path="/singleRoute">
+            {/* This will eventually be changed to something like "/singleRoute/:singleRouteName" */}
+              <SingleRoutePage />
             </Route>
 
           </Switch>

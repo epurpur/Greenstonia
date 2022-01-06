@@ -23,10 +23,10 @@ const RoutesPage = () => {
             </div>
             <p> List of routes on boulder </p>
             <ul>
-                <Link to="/home"><li>Dragonball GT</li></Link>
-                <Link to="/home"><li>Supercharger</li></Link>
-                <Link to="/home"><li>Super Snake</li></Link>
-                <Link to="/home"><li>Top Flite</li></Link>
+                <Link to="/singleRoute"><li>Dragonball GT</li></Link>
+                <Link to="/singleRoute"><li>Supercharger</li></Link>
+                <Link to="/singleRoute"><li>Super Snake</li></Link>
+                <Link to="/singleRoute"><li>Top Flite</li></Link>
             </ul>
         </>
     )
