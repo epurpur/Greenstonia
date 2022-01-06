@@ -2,6 +2,7 @@ import React from 'react'
 
 /* Components */
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import { Link } from 'react-router-dom';
 
 /* CSS styles */
@@ -28,6 +29,7 @@ const RoutesPage = () => {
                 <Link to="/singleRoute"><li>Super Snake</li></Link>
                 <Link to="/singleRoute"><li>Top Flite</li></Link>
             </ul>
+            <Footer />
         </>
     )
 }

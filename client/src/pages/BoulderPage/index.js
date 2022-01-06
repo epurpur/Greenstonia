@@ -4,6 +4,7 @@ import React from 'react'
 import Header from "../../components/Header";
 import BouldersMap from "../../components/BouldersMap";
 import BouldersList from '../../components/BouldersList';
+import Footer from "../../components/Footer";
 
 /* CSS styles */
 import "./styles.css";
@@ -16,6 +17,7 @@ const BoulderPage = () => {
             <p> Area description </p>
             <BouldersMap />
             <BouldersList />
+            <Footer />
         </>
     )
 }

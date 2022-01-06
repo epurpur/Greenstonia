@@ -2,6 +2,7 @@ import React from 'react';
 
 /* Components */
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 /* CSS styles */
 import "./styles.css";
@@ -21,6 +22,7 @@ const SingleRoutePage = () => {
             <div> Description: blah blah blah </div>
             <div id="singleRoutePhoto"> Photo goes here </div>
             <div id="singleRouteVideo"> Video goes here </div>
+            <Footer />
         </>
     )
 }
