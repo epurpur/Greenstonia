@@ -1,12 +1,14 @@
 import React from 'react';
 
+/* Components */
+
 /* CSS styles */
 import "./styles.css";
 
 const footer = () => {
     return (
         <>
-            Footer
+            <a href="/contact"><div id="copyright">© Erich Purpur 2022</div></a>
         </>
     )
 };

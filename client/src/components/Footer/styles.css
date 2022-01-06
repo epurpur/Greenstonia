@@ -1,0 +1,17 @@
+:root {
+    /* Colors & Sizes */
+    --text-main: rgb(181, 227, 155);
+    --font-main: 'Permanent Marker', cursive;
+}
+
+#copyright {
+    text-align: center;
+    background-color: black;
+    color: var(--text-main);
+    font-family: var(--font-main);
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+}
