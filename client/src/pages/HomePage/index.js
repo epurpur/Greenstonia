@@ -4,6 +4,7 @@ import React from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import AccessAlert from "../../components/AccessAlert";
+import ConditionsAlert from "../../components/ConditionsAlert";
 import SearchBar from "../../components/SearchBar";
 import AreasMap from "../../components/AreasMap";
 import RouteList from "../../components/RouteList";
@@ -19,6 +20,7 @@ const HomePage = () => {
             <Header />
             <section>
                 <AccessAlert />
+                <ConditionsAlert />
                 <SearchBar />
                 <AreasMap />
                 <RouteList />

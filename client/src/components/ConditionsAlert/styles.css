@@ -1,0 +1,21 @@
+#conditions-good, #conditions-medium, #conditions-bad {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    margin-top: 3px;
+}
+
+#conditions-good {background-color: green;}
+
+#conditions-medium {background-color: yellow;}
+
+#conditions-bad {background-color: red;}
+
+#conditions-good p, #condditions-medium p, #conditions-bad p {
+    font-size: 15px;
+}
+
+
+
+
+
