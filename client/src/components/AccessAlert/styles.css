@@ -4,14 +4,9 @@
     border-radius: 10px;
 }
 
-#red-alert {
-    background-color: red;
-}
+#red-alert {background-color: red;}
 
-#red-alert p, #green-alert p {
-    font-size: 15px;
-}
+#green-alert {background-color: green;}
 
-#green-alert {
-    background-color: green;
-}
+#red-alert p, #green-alert p {font-size: 15px;}
+
