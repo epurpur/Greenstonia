@@ -3,7 +3,7 @@ import React from "react";
 /* Components */
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import Alerts from "../../components/Alerts";
+import AccessAlert from "../../components/AccessAlert";
 import SearchBar from "../../components/SearchBar";
 import AreasMap from "../../components/AreasMap";
 import RouteList from "../../components/RouteList";
@@ -18,7 +18,7 @@ const HomePage = () => {
         <>
             <Header />
             <section>
-                <Alerts />
+                <AccessAlert />
                 <SearchBar />
                 <AreasMap />
                 <RouteList />
