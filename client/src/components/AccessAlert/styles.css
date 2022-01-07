@@ -1,16 +1,17 @@
+#red-alert, #green-alert {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
 
 #red-alert {
     background-color: red;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
 }
 
-#red-alert p {
+#red-alert p, #green-alert p {
     font-size: 15px;
 }
 
 #green-alert {
     background-color: green;
-    border-radius: 10px;
 }
