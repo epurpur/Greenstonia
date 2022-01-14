@@ -7,9 +7,6 @@ import "./styles.css";
 
 const ConditionsAlert = (props) => {
 
-    console.log('PROPS: ', props.todayWeatherData)
-    // const conditions = 'good';
-
     return (
         <>
             {props.todayWeatherData === 'cold' && (
