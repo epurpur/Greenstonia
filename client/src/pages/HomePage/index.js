@@ -19,42 +19,36 @@ const HomePage = () => {
 
     // Getting weather info in order to pass as props to Conditions Alert and Weather Component
     useEffect(() => {
+        // API call to OpenWeatherMap for today's weather forecast in Charlottesville, VA
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=charlottesville&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
             .then(response => {
                 return response.json();
             })
             .then((data) => {
-                console.log('DATA:',data);
-                // setweatherData(data);
+                //drill down to get today's current temperature
+                let currentTemp = data['main']['temp'];
+                //algorithm to decide what the conditions are today. 
+                //BUILD THIS OUT MORE LATER
+                if (currentTemp <= 35) {
+                    setweatherData('cold');
+                } else if (currentTemp > 35 && currentTemp <= 65) {
+                    setweatherData('good');
+                } else if (currentTemp > 65) {
+                    setweatherData('hot');
+                } else {
+                    setweatherData('unavailable')
+                }
+
             })
     }, []);
-    
 
-
-
-
-
-
-    // make API request for today's weather forecast in requested city
-    // fetch(url)
-    //     .then(function (response) {
-    //         if (response.ok) {             //if user input is a valid city name
-    //             return response.json(); 
-    //         } else {
-    //             alert('bad response');
-    //             return Promise.reject(response)
-    //         }
-    //     })
-    //     .then(function (data) {
-    //         console.log('Boone data: ', data);
-    //     });
 
     return (
         <>
             <Header />
             <section>
                 <AccessAlert />
-                <ConditionsAlert />
+                <ConditionsAlert weatherData={weatherData} />     {/* Passing weatherData from API call as props to this component */}
                 <SearchBar />
                 <AreasMap />
                 <RouteList />

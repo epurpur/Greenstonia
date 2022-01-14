@@ -1,17 +1,19 @@
-#conditions-good, #conditions-medium, #conditions-bad {
+#conditions-cold, #conditions-good, #conditions-hot, #conditions-unavailable {
     display: flex;
     justify-content: center;
     border-radius: 10px;
     margin-top: 3px;
 }
 
+#conditions-cold {background-color: rgb(123, 191, 255);}
+
 #conditions-good {background-color: green;}
 
-#conditions-medium {background-color: yellow;}
+#conditions-hot {background-color: red;}
 
-#conditions-bad {background-color: red;}
+#conditions-unavailable {background-color: rgb(190, 177, 177);}
 
-#conditions-good p, #condditions-medium p, #conditions-bad p {
+#conditions-cold p, #conditions-good p, #conditions-hot p, #conditions-unavailable p {
     font-size: 15px;
 }
 
