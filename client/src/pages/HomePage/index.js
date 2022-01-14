@@ -15,7 +15,7 @@ import "./styles.css";
 
 const HomePage = () => {
     
-    const [weatherData, setweatherData] = useState(null);
+    const [todayWeatherData, settodayWeatherData] = useState(null);
 
     // Getting weather info in order to pass as props to Conditions Alert and Weather Component
     useEffect(() => {
@@ -30,13 +30,13 @@ const HomePage = () => {
                 //algorithm to decide what the conditions are today. 
                 //BUILD THIS OUT MORE LATER
                 if (currentTemp <= 35) {
-                    setweatherData('cold');
+                    settodayWeatherData('cold');
                 } else if (currentTemp > 35 && currentTemp <= 65) {
-                    setweatherData('good');
+                    settodayWeatherData('good');
                 } else if (currentTemp > 65) {
-                    setweatherData('hot');
+                    settodayWeatherData('hot');
                 } else {
-                    setweatherData('unavailable')
+                    settodayWeatherData('unavailable')
                 }
 
             })
@@ -48,7 +48,7 @@ const HomePage = () => {
             <Header />
             <section>
                 <AccessAlert />
-                <ConditionsAlert weatherData={weatherData} />     {/* Passing weatherData from API call as props to this component */}
+                <ConditionsAlert todayWeatherData={todayWeatherData} />     {/* Passing weatherData from API call as props to this component */}
                 <SearchBar />
                 <AreasMap />
                 <RouteList />

@@ -7,33 +7,33 @@ import "./styles.css";
 
 const ConditionsAlert = (props) => {
 
-    console.log('PROPS: ', props.weatherData)
+    console.log('PROPS: ', props.todayWeatherData)
     // const conditions = 'good';
 
     return (
         <>
-            {props.weatherData === 'cold' && (
+            {props.todayWeatherData === 'cold' && (
                 <>
                     <div id='conditions-cold'>
                         <p>The conditions are cold today</p>
                     </div>
                 </>
             )} 
-            {props.weatherData === 'good' && (
+            {props.todayWeatherData === 'good' && (
                 <>
                     <div id='conditions-good'>
                         <p>The conditions are good today</p>
                     </div>
                 </>
             )}
-            {props.weatherData === 'hot' && (
+            {props.todayWeatherData === 'hot' && (
                 <>
                     <div id='conditions-hot'>
                         <p>The conditions are hot today</p>
                     </div>
                 </>
             )}  
-            {props.weatherData === 'unavailable' && (
+            {props.todayWeatherData === 'unavailable' && (
                 <>
                     <div id='conditions-unavailable'>
                         <p>Conditions are currently unavailable</p>
