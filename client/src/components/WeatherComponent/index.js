@@ -12,13 +12,17 @@ const WeatherComponent = () => {
         // need to get UTC time for each of last two days
         // START HERE. Figure out how to get correct UTC timestamp
         const currentTimestamp = new Date().getTime();
-        const yesterdayTimestamp = currentTimestamp - (24*60*60*1000);
-        const twoDaysAgoTimestamp = currentTimestamp - 24*60*60*1000*2;
+        console.log('currentTimestamp: ', currentTimestamp - (24*60*60*1000));
+        let yesterdayTimestamp = currentTimestamp - (24*60*60*1000)
+        let twoDaysAgoTimestamp = currentTimestamp - (24*60*60*1000*2);
+        console.log(yesterdayTimestamp, twoDaysAgoTimestamp);
 
+        yesterdayTimestamp = Math.floor(yesterdayTimestamp/1000);
+        twoDaysAgoTimestamp = Math.floor(twoDaysAgoTimestamp/1000);
         console.log(yesterdayTimestamp, twoDaysAgoTimestamp);
     
         // API call to OpenWeatherMap for previous two days weather
-        fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=78.8995&dt=${yesterdayTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
+        fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${yesterdayTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
             .then(response => {
                 return response.json();
             })
