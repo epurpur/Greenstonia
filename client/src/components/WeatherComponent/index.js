@@ -7,8 +7,19 @@ import "./styles.css";
 
 const WeatherComponent = () => {
 
+    // state for historical weather
     const [yesterdayWeather, setyesterdayWeather] = useState(null);
-    const [twoDaysAgoWeather, settwoDaysAgoWeather] = useState(null);
+    const [twoDaysAgoWeather, settwoDaysAgoWeather] = useState(null);    
+    
+    // state for dates
+    const [min2days, setmin2days] = useState(null); 
+    const [yesterday, setyesterday] = useState(null);
+    const [today, settoday] = useState(null);
+    const [tomorrow, settomorrow] = useState(null);
+    const [pl2days, setpl2days] = useState(null);
+    const [pl3days, setpl3days] = useState(null);
+    const [pl4days, setpl4days] = useState(null);
+
 
     const parseHistoricalDailyWeather = (dailyWeatherData) => {
         // takes daily weather data from API call and returns array of weather data for that day
@@ -78,18 +89,116 @@ const WeatherComponent = () => {
 
     // })
 
+    ///////////////////////////////////////
+    // get dates for injecting into HTML //
+    ///////////////////////////////////////
+
+    let minus2days = new Date();
+    minus2days.setDate(minus2days.getDate() -2);
+    minus2days = minus2days.toLocaleDateString();
+    useEffect(() => {setmin2days(minus2days)});
+
+    // ayer means yesterday in spanish
+    let ayer = new Date();
+    ayer.setDate(ayer.getDate() - 1);
+    ayer = ayer.toLocaleDateString();
+    useEffect(() => {setyesterday(ayer)});
+    
+    // hoy mean today in spanish
+    let hoy = new Date();
+    hoy.setDate(hoy.getDate());
+    hoy = hoy.toLocaleDateString();
+    useEffect(() => {settoday(hoy)});
+
+    // manana means tomorrow in spanish
+    let manana = new Date();
+    manana.setDate(manana.getDate() + 1);
+    manana = manana.toLocaleDateString();
+    useEffect(() => {settomorrow(manana)});
+
+    let plus2days = new Date();
+    plus2days.setDate(plus2days.getDate() + 2);
+    plus2days = plus2days.toLocaleDateString();
+    useEffect(() => {setpl2days(plus2days)});
+
+    let plus3days = new Date();
+    plus3days.setDate(plus3days.getDate() + 3);
+    plus3days = plus3days.toLocaleDateString();
+    useEffect(() => {setpl3days(plus3days)});
+
+    let plus4days = new Date();
+    plus4days.setDate(plus4days.getDate() + 4);
+    plus4days = plus4days.toLocaleDateString();
+    useEffect(() => {setpl4days(plus4days)});
+
     return (
         <>
             <div id='weatherBox'>
                 <h2>Weather</h2>
                 <div id='dailyBoxes'>
-                    <p>-2 Days</p>
-                    <p>Yesterday</p>
-                    <p>Today</p>
-                    <p>Tomorrow</p>
-                    <p>+2 Days</p>
-                    <p>+3 Days</p>
-                    <p>+4 Days</p>
+                    <div id='dailyBox'>
+                        <p id="day">-2 Days</p>
+                        <p id="date">{min2days}</p>
+                        <p>Hi Temp:</p>
+                        <p>Lo Temp: </p>
+                        <p>Precip: </p>
+                        <p>Wind: </p>
+                        <p>Humidity: </p>
+                    </div>
+                    <div id='dailyBox'>
+                        <p id="day">Yesterday</p>
+                        <p id="date">{yesterday}</p>
+                        <p>Hi Temp: </p>
+                        <p>Lo Temp: </p>
+                        <p>Precip: </p>
+                        <p>Wind: </p>
+                        <p>Humidity: </p>
+                    </div>
+                    <div id='dailyBox'>
+                        <p id="day">Today</p>
+                        <p id="date">{today}</p>
+                        <p>Hi Temp: </p>
+                        <p>Lo Temp: </p>
+                        <p>Precip: </p>
+                        <p>Wind: </p>
+                        <p>Humidity: </p>
+                    </div>
+                    <div id='dailyBox'>
+                        <p id="day">Tomorrow</p>
+                        <p id="date">{tomorrow}</p>
+                        <p>Hi Temp: </p>
+                        <p>Lo Temp: </p>
+                        <p>Precip: </p>
+                        <p>Wind: </p>
+                        <p>Humidity: </p>
+                    </div>
+                    <div id='dailyBox'>
+                        <p id="day">+2 Days</p>
+                        <p id="date">{pl2days}</p>
+                        <p>Hi Temp: </p>
+                        <p>Lo Temp: </p>
+                        <p>Precip: </p>
+                        <p>Wind: </p>
+                        <p>Humidity: </p>
+                    </div>
+                    <div id='dailyBox'>
+                        <p id="day">+3 Days</p>
+                        <p id="date">{pl3days}</p>
+                        <p>Hi Temp: </p>
+                        <p>Lo Temp: </p>
+                        <p>Precip: </p>
+                        <p>Wind: </p>
+                        <p>Humidity: </p>
+                    </div>
+                    <div id='dailyBox'>
+                        <p id="day">+4 Days</p>
+                        <p id="date">{pl4days}</p>
+                        <p>Hi Temp: </p>
+                        <p>Lo Temp: </p>
+                        <p>Precip: </p>
+                        <p>Wind: </p>
+                        <p>Humidity: </p>
+                    </div>
                 </div>
             </div>
         </>
