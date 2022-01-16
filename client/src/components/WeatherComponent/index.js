@@ -27,18 +27,37 @@ const WeatherComponent = () => {
             })
             .then((data) => {
                 // remember, there is a 24 hour hourly forecast. I am just taking weather at noon of requested day
-                console.log('YESTERDAY WEATHER DATA: ', data);
+                const dailyTemps = [];
+                const dailyHumidity = [];
+                const dailyWind = [];
+
+                for (const hourlyWeather of data['hourly']) {
+                    // add hourly measurements reading to dailyTemps
+                    dailyTemps.push(hourlyWeather['temp']);
+                    dailyHumidity.push(hourlyWeather['humidity']);
+                    dailyWind.push(hourlyWeather['wind_speed']);
+                }
+                const hiTemp = Math.max(...dailyTemps).toFixed(2);  //toFixed = round to 2 decimal places
+                const loTemp = Math.min(...dailyTemps).toFixed(2);
+                
+                // must write function to get avg humidity
+                const getAverage = (array) => array.reduce((a,b) => a + b) / array.length
+                const avgHumidity = getAverage(dailyHumidity).toFixed(2);
+                const avgWind = getAverage(dailyWind).toFixed(2);
+
+
+                console.log(hiTemp, loTemp, avgHumidity, avgWind);
             });
 
         // API call to OpenWeatherMap for two days ago weather
-        fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=38.0685&lon=-78.8895&dt=${twoDaysAgoTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
-            .then(response => {
-                return response.json();
-            })
-            .then((data) => {
-                // remember, there is a 24 hour hourly forecast. I am just taking weather at noon of requested day
-                console.log('TWO DAYS AGO WEATHER DATA: ', data);
-            });
+        // fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=38.0685&lon=-78.8895&dt=${twoDaysAgoTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
+        //     .then(response => {
+        //         return response.json();
+        //     })
+        //     .then((data) => {
+        //         // remember, there is a 24 hour hourly forecast. I am just taking weather at noon of requested day
+        //         console.log('TWO DAYS AGO WEATHER DATA: ', data);
+        //     });
 
 
     })
