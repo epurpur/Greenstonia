@@ -1,7 +1,22 @@
-#weather {
+#weatherBox {
     margin: 10px;
     padding: 10px;
     border: 1px solid black;
     border-radius: 10px;
     height: 300px;
 }
+
+#dailyBoxes {
+    display: flex;
+    flex-direction: row;
+}
+
+#dailyBoxes p {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 2px;
+    width: 14%;
+    text-align: center;
+    height: 100px;
+}
+
