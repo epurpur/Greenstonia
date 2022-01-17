@@ -4,6 +4,15 @@
     --font-main: 'Permanent Marker', cursive;
 }
 
+a {
+    text-decoration: none;
+}
+
+#footer {
+    position: absolute;
+    width: 100%;
+}
+
 #copyright {
     text-align: center;
     background-color: black;
@@ -12,6 +21,3 @@
     font-size: 20px;
 }
 
-a {
-    text-decoration: none;
-}

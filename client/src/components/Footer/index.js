@@ -8,7 +8,9 @@ import "./styles.css";
 const footer = () => {
     return (
         <>
-            <a href="/contact"><div id="copyright">© Erich Purpur 2022</div></a>
+            <a id='footer' href="/contact">
+                <div id="copyright">© Erich Purpur 2022</div>
+            </a>
         </>
     )
 };
