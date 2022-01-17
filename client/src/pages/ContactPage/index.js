@@ -54,8 +54,8 @@ const ContactPage = () => {
                         the greenstone of Central Virginia offers plenty of climbing and natural beauty in the Appalachian Mountains.  I hope you use this resource to enjoy the great bouldering that Central Virginia's Blue Ridge Parkway has to offer! 
                     </p>
                     <p>
-                        I grew up in Boone, NC and started climbing in 2005 while a freshman at Appalachian State University. A friend took me to Blowing Rock Boulders one day and soon after I was hooked. In the beginning I mostly climbed around Boone's local areas like
-                        Blowing Rock, Grandmother, and Highway 221. Eventually we ventured further to places like the Linville Gorge, Rumbling Bald, and New River Gorge. Since then I have climbed extensively around the country and at quite a few international destinations. 
+                        I grew up in Boone, NC and started climbing in 2005 while a freshman at Appalachian State University. A friend took me to Blowing Rock Boulders one day and soon after I was hooked. In the beginning I mostly climbed around Boone's local areas
+                        and eventually beyond to places like the Linville Gorge, Rumbling Bald, and New River Gorge. Since then I have climbed extensively around the country and at quite a few international destinations. 
                         I enjoy bouldering, sport, and trad climbing equally. I moved to Charlottesville in 2017 and have thoroughly enjoyed the process of repeating established routes, exploring the Parkway for new areas, and leaving our own mark on the rocks.
                     </p>
                     <p>
