@@ -27,3 +27,21 @@
     z-index: 1;
     border-radius: 10px;
 }
+
+#contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.link {
+    height: 40px;
+    width: 40px;
+    position: relative;
+    z-index: 1;
+    margin: 5px;
+}
+
+.link:hover {
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+}
