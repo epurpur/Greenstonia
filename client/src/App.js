@@ -9,7 +9,6 @@ import './App.css';
 /* Pages */
 import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
-import WeatherPage from "./pages/WeatherPage";
 import HistoryPage from "./pages/HistoryPage";
 import ContactPage from "./pages/ContactPage";
 import BoulderPage from "./pages/BoulderPage";
@@ -37,9 +36,6 @@ function App() {
             </Route>  
             <Route exact path="/home">
               <HomePage />
-            </Route>
-            <Route exact path="/weather">
-              <WeatherPage />
             </Route>
             <Route exact path="/history">
               <HistoryPage />
