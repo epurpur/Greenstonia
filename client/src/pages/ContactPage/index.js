@@ -33,6 +33,9 @@ const ContactPage = () => {
                     <p>
                         I would like to thank all those who helped to find, develop, and climb around Central Virginia. You know who you are. The small but tight knit local climbing community has led to making great memories on the rocks and lasting friendships that I am very grateful for.
                     </p>
+                    <p>
+                        *******TO DO: LEAVE CONTACT INFORMATION*******
+                    </p>
 
                 </div>
                 <div id="pictureHolder">
