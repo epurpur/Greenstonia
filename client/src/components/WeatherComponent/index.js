@@ -8,8 +8,8 @@ import "./styles.css";
 const WeatherComponent = () => {
 
     // state for historical weather
-    const [yesterdayWeather, setyesterdayWeather] = useState(null);
-    const [twoDaysAgoWeather, settwoDaysAgoWeather] = useState(null);    
+    const [yesterdayWeather, setyesterdayWeather] = useState();
+    const [twoDaysAgoWeather, settwoDaysAgoWeather] = useState();    
 
     const parseHistoricalDailyWeather = (dailyWeatherData) => {
         // takes daily weather data from API call and returns array of weather data for that day
@@ -47,7 +47,7 @@ const WeatherComponent = () => {
             "clouds":avgClouds, 
             "precip":precip
         }
-        
+
         return dailyWeatherStats;
     }
 
@@ -64,30 +64,56 @@ const WeatherComponent = () => {
     twoDaysAgoTimestamp = Math.floor(twoDaysAgoTimestamp/1000);
     
 
+    useEffect(() => {
 
-    // START HERE, WHY IS API REQUEST GOING NON STOP????
-    // API call to OpenWeatherMap for yesterday's weather
-    // fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${yesterdayTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
-    //     .then(response => {
-    //         return response.json();
-    //     })
-    //     .then((data) => {
-    //         const yesterdayWeather = parseHistoricalDailyWeather(data);
-    //         console.log("Yesterday weather: ", yesterdayWeather);
-    //     });
+        async function fetchYesterdayWeather() {
+            try {
+                // API call to OpenWeatherMap for yesterday's weather
+                let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${yesterdayTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
+                let data = await response.json();
+                let weatherYesterday = parseHistoricalDailyWeather(data);
 
-    async function fetchYesterdayWeather() {
-        // API call to OpenWeatherMap for Yesterday's weather
-        let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${yesterdayTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`);
-        let data = await response.json();
-        // send yesterday's weather to parseHistoricalDailyWeather for parsing
-        const yesterdayWeather = parseHistoricalDailyWeather(data);
-        // result looks like this: {'hiTemp': 45.01, 'loTemp': 25.62, 'humidity': 76.71, 'wind': 8.41, 'clouds': 95.00}
+                // set state of yesterdayWeather to the dailyWeatherStats object returned from parseHistoricalDailyWeather
+                setyesterdayWeather(weatherYesterday);
+            } catch (err) {
+                let weatherYesterday = {
+                    "hiTemp":'n/a', 
+                    "loTemp":'n/a', 
+                    "humidity":'n/a', 
+                    "wind":'n/a', 
+                    "clouds":'n/a', 
+                    "precip":'n/a'
+                }
 
-        // set results into HTML of screen
-        return yesterdayWeather;
-    }
-    fetchYesterdayWeather();
+                // set state of yesterdayWeather to the dailyWeatherStats object returned from parseHistoricalDailyWeather
+                setyesterdayWeather(weatherYesterday);
+
+            }
+            
+
+        }
+        
+        fetchYesterdayWeather();
+    }, []);
+
+    // async function fetchYesterdayWeather() {
+    //     // API call to OpenWeatherMap for Yesterday's weather
+    //     let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${yesterdayTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`);
+    //     let data = await response.json();
+    //     // send yesterday's weather to parseHistoricalDailyWeather for parsing
+    //     const yesterdayWeather = parseHistoricalDailyWeather(data);
+    //     // result looks like this: {'hiTemp': 45.01, 'loTemp': 25.62, 'humidity': 76.71, 'wind': 8.41, 'clouds': 95.00}
+
+    //     // dayID of 1 for yesterday (counting starts at 0)
+    //     const dayID = 1
+    //     // set results into HTML of screen
+    //     writeHTML(yesterdayWeather, dayID);
+    // }
+
+    // const writeHTML = (weatherData, dayID) => {
+        
+    // }
+
 
     // API call to OpenWeatherMap for two days ago weather
     // fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${twoDaysAgoTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
@@ -139,8 +165,6 @@ const WeatherComponent = () => {
 
     // });
 
-    // console.log('Yesterday Weather', yesterdayWeather);
-
     ///////////////////////////////////////
     // get dates for injecting into HTML //
     ///////////////////////////////////////
@@ -178,25 +202,25 @@ const WeatherComponent = () => {
             <div id='weatherBox'>
                 <h2>Weather</h2>
                 <div id='dailyBoxes'>
-                    <div id='dailyBox' id='day0'>
+                    <div id='dailyBox'>
                         <p className="day">-2 Days</p>
                         <p className="date">{minus2daysDate}</p>
-                        <p>Hi Temp:</p>
-                        <p>Lo Temp: </p>
-                        <p>Precip: </p>
-                        <p>Wind: </p>
-                        <p>Humidity: </p>
-                    </div>
-                    <div id='dailyBox' id='day1'>
-                        <p className="day">Yesterday</p>
-                        <p className="date">{yesterdayDate}</p>
                         <p>Hi Temp: </p>
                         <p>Lo Temp: </p>
                         <p>Precip: </p>
                         <p>Wind: </p>
                         <p>Humidity: </p>
                     </div>
-                    <div id='dailyBox' id='day2'>
+                    <div id='dailyBox'>
+                        <p className="day">Yesterday</p>
+                        <p className="date">{yesterdayDate}</p>
+                        <p>Hi Temp: {yesterdayWeather && (yesterdayWeather.hiTemp)}</p>
+                        <p>Lo Temp: {yesterdayWeather && (yesterdayWeather.loTemp)}</p>
+                        <p>Precip: {yesterdayWeather && (yesterdayWeather.precip)}</p>
+                        <p>Wind: {yesterdayWeather && (yesterdayWeather.wind)}</p>
+                        <p>Humidity: {yesterdayWeather && (yesterdayWeather.humidity)}</p>
+                    </div>
+                    <div id='dailyBox'>
                         <p className="day">Today</p>
                         <p className="date">{todayDate}</p>
                         <p>Hi Temp: </p>
@@ -205,7 +229,7 @@ const WeatherComponent = () => {
                         <p>Wind: </p>
                         <p>Humidity: </p>
                     </div>
-                    <div id='dailyBox' id='day3'>
+                    <div id='dailyBox'>
                         <p className="day">Tomorrow</p>
                         <p className="date">{tomorrowDate}</p>
                         <p>Hi Temp: </p>
@@ -214,7 +238,7 @@ const WeatherComponent = () => {
                         <p>Wind: </p>
                         <p>Humidity: </p>
                     </div>
-                    <div id='dailyBox' id='day4'>
+                    <div id='dailyBox'>
                         <p className="day">+2 Days</p>
                         <p className="date">{plus2daysDate}</p>
                         <p>Hi Temp: </p>
@@ -223,7 +247,7 @@ const WeatherComponent = () => {
                         <p>Wind: </p>
                         <p>Humidity: </p>
                     </div>
-                    <div id='dailyBox' id='day5'>
+                    <div id='dailyBox'>
                         <p className="day">+3 Days</p>
                         <p className="date">{plus3daysDate}</p>
                         <p>Hi Temp: </p>
@@ -232,7 +256,7 @@ const WeatherComponent = () => {
                         <p>Wind: </p>
                         <p>Humidity: </p>
                     </div>
-                    <div id='dailyBox' id='day6'>
+                    <div id='dailyBox'>
                         <p className="day">+4 Days</p>
                         <p className="date">{plus4daysDate}</p>
                         <p>Hi Temp: </p>
