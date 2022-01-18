@@ -55,7 +55,7 @@ const WeatherComponent = () => {
     // need to get UTC time for each of last two days
     // START HERE. Figure out how to get correct UTC timestamp
     const currentTimestamp = new Date().getTime();
-    console.log('currentTimestamp: ', currentTimestamp - (24*60*60*1000));
+    // console.log('currentTimestamp: ', currentTimestamp - (24*60*60*1000));
     let yesterdayTimestamp = currentTimestamp - (24*60*60*1000)
     let twoDaysAgoTimestamp = currentTimestamp - (24*60*60*1000*2);
 
@@ -75,6 +75,19 @@ const WeatherComponent = () => {
     //         const yesterdayWeather = parseHistoricalDailyWeather(data);
     //         console.log("Yesterday weather: ", yesterdayWeather);
     //     });
+
+    async function fetchYesterdayWeather() {
+        // API call to OpenWeatherMap for Yesterday's weather
+        let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${yesterdayTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`);
+        let data = await response.json();
+        // send yesterday's weather to parseHistoricalDailyWeather for parsing
+        const yesterdayWeather = parseHistoricalDailyWeather(data);
+        // result looks like this: {'hiTemp': 45.01, 'loTemp': 25.62, 'humidity': 76.71, 'wind': 8.41, 'clouds': 95.00}
+
+        // set results into HTML of screen
+        return yesterdayWeather;
+    }
+    fetchYesterdayWeather();
 
     // API call to OpenWeatherMap for two days ago weather
     // fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${twoDaysAgoTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
@@ -132,96 +145,96 @@ const WeatherComponent = () => {
     // get dates for injecting into HTML //
     ///////////////////////////////////////
 
-    let minus2days = new Date();
-    minus2days.setDate(minus2days.getDate() -2);
-    minus2days = minus2days.toLocaleDateString();
+    let minus2daysDate = new Date();
+    minus2daysDate.setDate(minus2daysDate.getDate() -2);
+    minus2daysDate = minus2daysDate.toLocaleDateString();
 
-    let yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    yesterday = yesterday.toLocaleDateString();
+    let yesterdayDate = new Date();
+    yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+    yesterdayDate = yesterdayDate.toLocaleDateString();
     
-    let today = new Date();
-    today.setDate(today.getDate());
-    today = today.toLocaleDateString();
+    let todayDate = new Date();
+    todayDate.setDate(todayDate.getDate());
+    todayDate = todayDate.toLocaleDateString();
 
-    let tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    tomorrow = tomorrow.toLocaleDateString();
+    let tomorrowDate = new Date();
+    tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+    tomorrowDate = tomorrowDate.toLocaleDateString();
 
-    let plus2days = new Date();
-    plus2days.setDate(plus2days.getDate() + 2);
-    plus2days = plus2days.toLocaleDateString();
+    let plus2daysDate = new Date();
+    plus2daysDate.setDate(plus2daysDate.getDate() + 2);
+    plus2daysDate = plus2daysDate.toLocaleDateString();
 
-    let plus3days = new Date();
-    plus3days.setDate(plus3days.getDate() + 3);
-    plus3days = plus3days.toLocaleDateString();
+    let plus3daysDate = new Date();
+    plus3daysDate.setDate(plus3daysDate.getDate() + 3);
+    plus3daysDate = plus3daysDate.toLocaleDateString();
 
-    let plus4days = new Date();
-    plus4days.setDate(plus4days.getDate() + 4);
-    plus4days = plus4days.toLocaleDateString();
+    let plus4daysDate = new Date();
+    plus4daysDate.setDate(plus4daysDate.getDate() + 4);
+    plus4daysDate = plus4daysDate.toLocaleDateString();
 
     return (
         <>
             <div id='weatherBox'>
                 <h2>Weather</h2>
                 <div id='dailyBoxes'>
-                    <div id='dailyBox'>
-                        <p id="day">-2 Days</p>
-                        <p id="date">{minus2days}</p>
+                    <div id='dailyBox' id='day0'>
+                        <p className="day">-2 Days</p>
+                        <p className="date">{minus2daysDate}</p>
                         <p>Hi Temp:</p>
                         <p>Lo Temp: </p>
                         <p>Precip: </p>
                         <p>Wind: </p>
                         <p>Humidity: </p>
                     </div>
-                    <div id='dailyBox'>
-                        <p id="day">Yesterday</p>
-                        <p id="date">{yesterday}</p>
+                    <div id='dailyBox' id='day1'>
+                        <p className="day">Yesterday</p>
+                        <p className="date">{yesterdayDate}</p>
                         <p>Hi Temp: </p>
                         <p>Lo Temp: </p>
                         <p>Precip: </p>
                         <p>Wind: </p>
                         <p>Humidity: </p>
                     </div>
-                    <div id='dailyBox'>
-                        <p id="day">Today</p>
-                        <p id="date">{today}</p>
+                    <div id='dailyBox' id='day2'>
+                        <p className="day">Today</p>
+                        <p className="date">{todayDate}</p>
                         <p>Hi Temp: </p>
                         <p>Lo Temp: </p>
                         <p>Precip: </p>
                         <p>Wind: </p>
                         <p>Humidity: </p>
                     </div>
-                    <div id='dailyBox'>
-                        <p id="day">Tomorrow</p>
-                        <p id="date">{tomorrow}</p>
+                    <div id='dailyBox' id='day3'>
+                        <p className="day">Tomorrow</p>
+                        <p className="date">{tomorrowDate}</p>
                         <p>Hi Temp: </p>
                         <p>Lo Temp: </p>
                         <p>Precip: </p>
                         <p>Wind: </p>
                         <p>Humidity: </p>
                     </div>
-                    <div id='dailyBox'>
-                        <p id="day">+2 Days</p>
-                        <p id="date">{plus2days}</p>
+                    <div id='dailyBox' id='day4'>
+                        <p className="day">+2 Days</p>
+                        <p className="date">{plus2daysDate}</p>
                         <p>Hi Temp: </p>
                         <p>Lo Temp: </p>
                         <p>Precip: </p>
                         <p>Wind: </p>
                         <p>Humidity: </p>
                     </div>
-                    <div id='dailyBox'>
-                        <p id="day">+3 Days</p>
-                        <p id="date">{plus3days}</p>
+                    <div id='dailyBox' id='day5'>
+                        <p className="day">+3 Days</p>
+                        <p className="date">{plus3daysDate}</p>
                         <p>Hi Temp: </p>
                         <p>Lo Temp: </p>
                         <p>Precip: </p>
                         <p>Wind: </p>
                         <p>Humidity: </p>
                     </div>
-                    <div id='dailyBox'>
-                        <p id="day">+4 Days</p>
-                        <p id="date">{plus4days}</p>
+                    <div id='dailyBox' id='day6'>
+                        <p className="day">+4 Days</p>
+                        <p className="date">{plus4daysDate}</p>
                         <p>Hi Temp: </p>
                         <p>Lo Temp: </p>
                         <p>Precip: </p>
