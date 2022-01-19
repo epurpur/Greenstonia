@@ -11,6 +11,65 @@ const WeatherComponent = () => {
     const [yesterdayWeather, setyesterdayWeather] = useState();
     const [twoDaysAgoWeather, settwoDaysAgoWeather] = useState();    
 
+
+    useEffect(() => {
+
+        //Get weather from two days ago
+        async function fetchTwoDaysAgoWeather() {
+            console.log('Fetching weather')
+            try{
+                // API call to OpenWeatherMap for two days ago weather
+                let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${twoDaysAgoTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`);
+                console.log('got response', response)
+                let data = await response.json();
+                console.log('got data', data);
+                let weatherTwoDaysAgo = parseHistoricalDailyWeather(data);
+
+                //set state of twoDaysAgoWeather to the dailyWeatherStats object returned from parseHistoricalDailyWeather
+                settwoDaysAgoWeather(weatherTwoDaysAgo);
+            } catch (err) {
+                //if error, manually set weather data to 'n/a'
+                let weatherTwoDaysAgo = {
+                    "hiTemp":'n/a', 
+                    "loTemp":'n/a', 
+                    "humidity":'n/a', 
+                    "wind":'n/a', 
+                    "clouds":'n/a', 
+                    "precip":'n/a'
+                }
+
+                //set weatherTwoDaysAgo to the fake weather data object
+                settwoDaysAgoWeather(weatherTwoDaysAgo);
+            }
+        }
+
+        //Get weather from Yesterday
+        async function fetchYesterdayWeather() {
+            try {
+                // API call to OpenWeatherMap for yesterday's weather
+                let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${yesterdayTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
+                let data = await response.json();
+                let weatherYesterday = parseHistoricalDailyWeather(data);
+
+                // set state of yesterdayWeather to the dailyWeatherStats object returned from parseHistoricalDailyWeather
+                setyesterdayWeather(weatherYesterday);
+  
+            } catch (err) {
+                let weatherYesterday = {
+                    "hiTemp":'n/a', 
+                    "loTemp":'n/a', 
+                    "humidity":'n/a', 
+                    "wind":'n/a', 
+                    "clouds":'n/a', 
+                    "precip":'n/a'
+                }
+            }
+        }
+
+        fetchTwoDaysAgoWeather();
+        fetchYesterdayWeather();
+    }, []);
+
     const parseHistoricalDailyWeather = (dailyWeatherData) => {
         // takes daily weather data from API call and returns array of weather data for that day
         // this is for historical daily weather (ie: yesterday and two days ago weather)
@@ -64,106 +123,9 @@ const WeatherComponent = () => {
     twoDaysAgoTimestamp = Math.floor(twoDaysAgoTimestamp/1000);
     
 
-    useEffect(() => {
-
-        async function fetchYesterdayWeather() {
-            try {
-                // API call to OpenWeatherMap for yesterday's weather
-                let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${yesterdayTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
-                let data = await response.json();
-                let weatherYesterday = parseHistoricalDailyWeather(data);
-
-                // set state of yesterdayWeather to the dailyWeatherStats object returned from parseHistoricalDailyWeather
-                setyesterdayWeather(weatherYesterday);
-            } catch (err) {
-                let weatherYesterday = {
-                    "hiTemp":'n/a', 
-                    "loTemp":'n/a', 
-                    "humidity":'n/a', 
-                    "wind":'n/a', 
-                    "clouds":'n/a', 
-                    "precip":'n/a'
-                }
-
-                // set state of yesterdayWeather to the dailyWeatherStats object returned from parseHistoricalDailyWeather
-                setyesterdayWeather(weatherYesterday);
-
-            }
-            
-
-        }
-        
-        fetchYesterdayWeather();
-    }, []);
-
-    // async function fetchYesterdayWeather() {
-    //     // API call to OpenWeatherMap for Yesterday's weather
-    //     let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${yesterdayTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`);
-    //     let data = await response.json();
-    //     // send yesterday's weather to parseHistoricalDailyWeather for parsing
-    //     const yesterdayWeather = parseHistoricalDailyWeather(data);
-    //     // result looks like this: {'hiTemp': 45.01, 'loTemp': 25.62, 'humidity': 76.71, 'wind': 8.41, 'clouds': 95.00}
-
-    //     // dayID of 1 for yesterday (counting starts at 0)
-    //     const dayID = 1
-    //     // set results into HTML of screen
-    //     writeHTML(yesterdayWeather, dayID);
-    // }
-
-    // const writeHTML = (weatherData, dayID) => {
-        
-    // }
-
-
-    // API call to OpenWeatherMap for two days ago weather
-    // fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${twoDaysAgoTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
-    //     .then(response => {
-    //         return response.json();
-    //     })
-    //     .then((data) => {
-    //         // remember, there is a 24 hour hourly forecast. I am just taking weather at noon of requested day
-    //         const twodaysweather = parseHistoricalDailyWeather(data);
-    //         console.log('Two days ago weather: ', twodaysweather);
-    //     });
 
 
 
-
-
-    // useEffect(() => {
-
-    //     // need to get UTC time for each of last two days
-    //     // START HERE. Figure out how to get correct UTC timestamp
-    //     const currentTimestamp = new Date().getTime();
-    //     console.log('currentTimestamp: ', currentTimestamp - (24*60*60*1000));
-    //     let yesterdayTimestamp = currentTimestamp - (24*60*60*1000)
-    //     let twoDaysAgoTimestamp = currentTimestamp - (24*60*60*1000*2);
-
-    //     //need to remove last 3 digits of UTC timestamp and convert to integer
-    //     yesterdayTimestamp = Math.floor(yesterdayTimestamp/1000);
-    //     twoDaysAgoTimestamp = Math.floor(twoDaysAgoTimestamp/1000);
-    
-        // API call to OpenWeatherMap for yesterday's weather
-        // fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${yesterdayTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
-        //     .then(response => {
-        //         return response.json();
-        //     })
-        //     .then((data) => {
-        //         parseHistoricalDailyWeather(data);
-        //     });
-
-        // // API call to OpenWeatherMap for two days ago weather
-        // fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${twoDaysAgoTimestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
-        //     .then(response => {
-        //         return response.json();
-        //     })
-        //     .then((data) => {
-        //         // remember, there is a 24 hour hourly forecast. I am just taking weather at noon of requested day
-        //         parseHistoricalDailyWeather(data);
-        //     });
-
-
-    // });
 
     ///////////////////////////////////////
     // get dates for injecting into HTML //
@@ -205,11 +167,11 @@ const WeatherComponent = () => {
                     <div id='dailyBox'>
                         <p className="day">-2 Days</p>
                         <p className="date">{minus2daysDate}</p>
-                        <p>Hi Temp: </p>
-                        <p>Lo Temp: </p>
-                        <p>Precip: </p>
-                        <p>Wind: </p>
-                        <p>Humidity: </p>
+                        <p>Hi Temp: {twoDaysAgoWeather && (twoDaysAgoWeather.hiTemp)}</p>
+                        <p>Lo Temp: {twoDaysAgoWeather && (twoDaysAgoWeather.loTemp)}</p>
+                        <p>Precip: {twoDaysAgoWeather && (twoDaysAgoWeather.precip)}</p>
+                        <p>Wind: {twoDaysAgoWeather && (twoDaysAgoWeather.wind)}</p>
+                        <p>Humidity: {twoDaysAgoWeather && (twoDaysAgoWeather.humidity)}</p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">Yesterday</p>
