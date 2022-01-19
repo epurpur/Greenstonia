@@ -31,10 +31,10 @@ const WeatherComponent = () => {
 
     useEffect(() => {
 
-        //Get weather from two days ago
+        //Get historical weather data
         async function fetchHistoricalWeatherData(timestamp) {
             try{
-                // API call to OpenWeatherMap for two days ago weather
+                // API call to OpenWeatherMap
                 let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=37.8849&lon=-78.8995&dt=${timestamp}&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`);
                 let data = await response.json();
                 let weatherData = parseHistoricalDailyWeather(data);
@@ -68,8 +68,23 @@ const WeatherComponent = () => {
             }
         }
 
-        fetchHistoricalWeatherData(twoDaysAgoTimestamp);  //get weather two days ago
-        fetchHistoricalWeatherData(yesterdayTimestamp);   //get weather yesterday
+        // fetchHistoricalWeatherData(twoDaysAgoTimestamp);  //get weather two days ago
+        // fetchHistoricalWeatherData(yesterdayTimestamp);   //get weather yesterday
+
+
+
+        //Get future weather forecast data
+        //REMEMBER EXCLUDE
+        async function getWeatherForecast() {
+            let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=37.8849&lon=-78.8995&exclude=hourly,minutely&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
+            let data = await response.json();
+            data = data['daily'].slice(0,-3);
+            console.log('Forecast: ', data);
+        }
+
+
+        getWeatherForecast();
+
     }, []);
 
     const parseHistoricalDailyWeather = (dailyWeatherData) => {
