@@ -10,7 +10,11 @@ const WeatherComponent = () => {
     // state needed to get historical weather
     const [twoDaysAgoWeather, settwoDaysAgoWeather] = useState();
     const [yesterdayWeather, setyesterdayWeather] = useState();
-        
+    const [todayWeather, settodayWeather] = useState();
+    const [tomorrowWeather, settomorrowWeather] = useState();
+    const [inTwoDaysWeather, setinTwoDaysWeather] = useState();
+    const [inThreeDaysWeather, setinThreeDaysWeather] = useState();
+    const [inFourDaysWeather, setinFourDaysWeather] = useState(); 
 
     ///////////////////////////////////////////
     // Get timestamps for historical weather //
@@ -74,18 +78,59 @@ const WeatherComponent = () => {
 
 
         //Get future weather forecast data
-        //REMEMBER EXCLUDE
+        //START HERE//
         async function getWeatherForecast() {
             let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=37.8849&lon=-78.8995&exclude=hourly,minutely&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
             let data = await response.json();
+            // get just 'daily' key and just first 5 items from array (includes 7 day forecast but I only want 5 days)
             data = data['daily'].slice(0,-3);
-            console.log('Forecast: ', data);
+            
+            // make accumulator array to capture each day's daily weather object
+            const dailyWeatherData = []
+            
+            for (let i of data) {
+
+                //need to format precipitation data
+                let dailyPrecip = i['rain'] + i['snow'];
+
+                if (isNaN(dailyPrecip)) {
+                    dailyPrecip = "0.00"
+                    console.log('DailyPrecip', dailyPrecip)
+                } else {
+                    //convert mm to in
+                    dailyPrecip = dailyPrecip * .0393701
+                    //round to 2 decimal places
+                    dailyPrecip = dailyPrecip.toFixed(2)
+                    console.log("Daily Precipitation", dailyPrecip)
+                }
+
+                // create weather object for each day
+                const oneDayWeather = {
+                    "hiTemp": i['temp']['max'],
+                    "loTemp": i['temp']['min'],
+                    "humidity": i['humidity'],
+                    "wind": i['wind_speed'],
+                    "clouds": i['clouds'],
+                    "precip": dailyPrecip,  //round to 2 decimal places. convert mm to in
+                    "overall": i['weather'][0]['main']
+                }
+                
+                // push weather object to dailyWeatherData array
+                dailyWeatherData.push(oneDayWeather);
+            }
+                // set state for corresponding day with each object in dailyWeatherData array
+                settodayWeather(dailyWeatherData[0]);
+                settomorrowWeather(dailyWeatherData[1]);
+                setinTwoDaysWeather(dailyWeatherData[2]);
+                setinThreeDaysWeather(dailyWeatherData[3]);
+                setinFourDaysWeather(dailyWeatherData[4]);
         }
 
 
         getWeatherForecast();
 
     }, []);
+
 
     const parseHistoricalDailyWeather = (dailyWeatherData) => {
         // takes daily weather data from API call and returns array of weather data for that day
@@ -123,17 +168,11 @@ const WeatherComponent = () => {
             "clouds":avgClouds, 
             "precip":precip
         }
-
         return dailyWeatherStats;
     }
 
 
     
-    
-
-
-
-
 
     ///////////////////////////////////////
     // get dates for injecting into HTML //
@@ -175,65 +214,65 @@ const WeatherComponent = () => {
                     <div id='dailyBox'>
                         <p className="day">-2 Days</p>
                         <p className="date">{minus2daysDate}</p>
-                        <p>Hi Temp: {twoDaysAgoWeather && (twoDaysAgoWeather.hiTemp)}</p>
-                        <p>Lo Temp: {twoDaysAgoWeather && (twoDaysAgoWeather.loTemp)}</p>
+                        <p>Hi Temp: {twoDaysAgoWeather && (twoDaysAgoWeather.hiTemp)}F</p>
+                        <p>Lo Temp: {twoDaysAgoWeather && (twoDaysAgoWeather.loTemp)}F</p>
                         <p>Precip: {twoDaysAgoWeather && (twoDaysAgoWeather.precip)}</p>
-                        <p>Wind: {twoDaysAgoWeather && (twoDaysAgoWeather.wind)}</p>
-                        <p>Humidity: {twoDaysAgoWeather && (twoDaysAgoWeather.humidity)}</p>
+                        <p>Wind: {twoDaysAgoWeather && (twoDaysAgoWeather.wind)}mph</p>
+                        <p>Humidity: {twoDaysAgoWeather && (twoDaysAgoWeather.humidity)}%</p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">Yesterday</p>
                         <p className="date">{yesterdayDate}</p>
-                        <p>Hi Temp: {yesterdayWeather && (yesterdayWeather.hiTemp)}</p>
-                        <p>Lo Temp: {yesterdayWeather && (yesterdayWeather.loTemp)}</p>
+                        <p>Hi Temp: {yesterdayWeather && (yesterdayWeather.hiTemp)}F</p>
+                        <p>Lo Temp: {yesterdayWeather && (yesterdayWeather.loTemp)}F</p>
                         <p>Precip: {yesterdayWeather && (yesterdayWeather.precip)}</p>
-                        <p>Wind: {yesterdayWeather && (yesterdayWeather.wind)}</p>
-                        <p>Humidity: {yesterdayWeather && (yesterdayWeather.humidity)}</p>
+                        <p>Wind: {yesterdayWeather && (yesterdayWeather.wind)}mph</p>
+                        <p>Humidity: {yesterdayWeather && (yesterdayWeather.humidity)}%</p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">Today</p>
                         <p className="date">{todayDate}</p>
-                        <p>Hi Temp: </p>
-                        <p>Lo Temp: </p>
-                        <p>Precip: </p>
-                        <p>Wind: </p>
-                        <p>Humidity: </p>
+                        <p>Hi Temp: {todayWeather && (todayWeather.hiTemp)}F</p>
+                        <p>Lo Temp: {todayWeather && (todayWeather.loTemp)}F</p>
+                        <p>Precip: {todayWeather && (todayWeather.precip)}in</p>
+                        <p>Wind: {todayWeather && (todayWeather.wind)}mph</p>
+                        <p>Humidity: {todayWeather && (todayWeather.humidity)}%</p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">Tomorrow</p>
                         <p className="date">{tomorrowDate}</p>
-                        <p>Hi Temp: </p>
-                        <p>Lo Temp: </p>
-                        <p>Precip: </p>
-                        <p>Wind: </p>
-                        <p>Humidity: </p>
+                        <p>Hi Temp: {tomorrowWeather && (tomorrowWeather.hiTemp)}F</p>
+                        <p>Lo Temp: {tomorrowWeather && (tomorrowWeather.loTemp)}F</p>
+                        <p>Precip: {tomorrowWeather && (tomorrowWeather.precip)}in</p>
+                        <p>Wind: {tomorrowWeather && (tomorrowWeather.wind)}mph</p>
+                        <p>Humidity: {tomorrowWeather && (tomorrowWeather.humidity)}%</p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">+2 Days</p>
                         <p className="date">{plus2daysDate}</p>
-                        <p>Hi Temp: </p>
-                        <p>Lo Temp: </p>
-                        <p>Precip: </p>
-                        <p>Wind: </p>
-                        <p>Humidity: </p>
+                        <p>Hi Temp: {inTwoDaysWeather && (inTwoDaysWeather.hiTemp)}F</p>
+                        <p>Lo Temp: {inTwoDaysWeather && (inTwoDaysWeather.loTemp)}F</p>
+                        <p>Precip: {inTwoDaysWeather && (inTwoDaysWeather.precip)}in</p>
+                        <p>Wind: {inTwoDaysWeather && (inTwoDaysWeather.wind)}mph</p>
+                        <p>Humidity: {inTwoDaysWeather && (inTwoDaysWeather.humidity)}%</p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">+3 Days</p>
                         <p className="date">{plus3daysDate}</p>
-                        <p>Hi Temp: </p>
-                        <p>Lo Temp: </p>
-                        <p>Precip: </p>
-                        <p>Wind: </p>
-                        <p>Humidity: </p>
+                        <p>Hi Temp: {inThreeDaysWeather && (inThreeDaysWeather.hiTemp)}F</p>
+                        <p>Lo Temp: {inThreeDaysWeather && (inThreeDaysWeather.loTemp)}F</p>
+                        <p>Precip: {inThreeDaysWeather && (inThreeDaysWeather.precip)}in</p>
+                        <p>Wind: {inThreeDaysWeather && (inThreeDaysWeather.wind)}mph</p>
+                        <p>Humidity: {inThreeDaysWeather && (inThreeDaysWeather.humidity)}%</p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">+4 Days</p>
                         <p className="date">{plus4daysDate}</p>
-                        <p>Hi Temp: </p>
-                        <p>Lo Temp: </p>
-                        <p>Precip: </p>
-                        <p>Wind: </p>
-                        <p>Humidity: </p>
+                        <p>Hi Temp: {inFourDaysWeather && (inFourDaysWeather.hiTemp)}F</p>
+                        <p>Lo Temp: {inFourDaysWeather && (inFourDaysWeather.loTemp)}F</p>
+                        <p>Precip: {inFourDaysWeather && (inFourDaysWeather.precip)}in</p>
+                        <p>Wind: {inFourDaysWeather && (inFourDaysWeather.wind)}mph</p>
+                        <p>Humidity: {inFourDaysWeather && (inFourDaysWeather.humidity)}%</p>
                     </div>
                 </div>
             </div>
