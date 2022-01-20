@@ -78,52 +78,84 @@ const WeatherComponent = () => {
 
 
         //Get future weather forecast data
-        //START HERE//
         async function getWeatherForecast() {
-            let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=37.8849&lon=-78.8995&exclude=hourly,minutely&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
-            let data = await response.json();
-            // get just 'daily' key and just first 5 items from array (includes 7 day forecast but I only want 5 days)
-            data = data['daily'].slice(0,-3);
-            
-            // make accumulator array to capture each day's daily weather object
-            const dailyWeatherData = []
-            
-            for (let i of data) {
 
-                //need to format precipitation data
-                let dailyPrecip = i['rain'] + i['snow'];
-
-                if (isNaN(dailyPrecip)) {
-                    dailyPrecip = "0.00"
-                    console.log('DailyPrecip', dailyPrecip)
-                } else {
-                    //convert mm to in
-                    dailyPrecip = dailyPrecip * .0393701
-                    //round to 2 decimal places
-                    dailyPrecip = dailyPrecip.toFixed(2)
-                    console.log("Daily Precipitation", dailyPrecip)
-                }
-
-                // create weather object for each day
-                const oneDayWeather = {
-                    "hiTemp": i['temp']['max'],
-                    "loTemp": i['temp']['min'],
-                    "humidity": i['humidity'],
-                    "wind": i['wind_speed'],
-                    "clouds": i['clouds'],
-                    "precip": dailyPrecip,  //round to 2 decimal places. convert mm to in
-                    "overall": i['weather'][0]['main']
-                }
+            try {
+                let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=37.8849&lon=-78.8995&exclude=hourly,minutely&appid=333de4e909a5ffe9bfa46f0f89cad105&units=imperial`)
+                let data = await response.json();
+                // get just 'daily' key and just first 5 items from array (includes 7 day forecast but I only want 5 days)
+                data = data['daily'].slice(0,-3);
                 
-                // push weather object to dailyWeatherData array
-                dailyWeatherData.push(oneDayWeather);
-            }
+                // make accumulator array to capture each day's daily weather object
+                const dailyWeatherData = []
+                
+                for (let i of data) {
+    
+                    //need to format precipitation data
+                    let dailyPrecip = i['rain'] + i['snow'];
+    
+                    // need to use weird isNaN function to check if daily precip is null
+                    if (isNaN(dailyPrecip)) {
+                        dailyPrecip = "0.00"
+                        console.log('DailyPrecip', dailyPrecip)
+                    } else {
+                        //convert mm to in
+                        dailyPrecip = dailyPrecip * .0393701
+                        //round to 2 decimal places
+                        dailyPrecip = dailyPrecip.toFixed(2)
+                        console.log("Daily Precipitation", dailyPrecip)
+                    }
+    
+                    // create weather object for each day
+                    const oneDayWeather = {
+                        "hiTemp": i['temp']['max'],
+                        "loTemp": i['temp']['min'],
+                        "humidity": i['humidity'],
+                        "wind": i['wind_speed'],
+                        "clouds": i['clouds'],
+                        "precip": dailyPrecip,  //round to 2 decimal places. convert mm to in
+                        "overall": i['weather'][0]['main']
+                    }
+                    
+                    // push weather object to dailyWeatherData array
+                    dailyWeatherData.push(oneDayWeather);
+                }
+                    // set state for corresponding day with each object in dailyWeatherData array
+                    settodayWeather(dailyWeatherData[0]);
+                    settomorrowWeather(dailyWeatherData[1]);
+                    setinTwoDaysWeather(dailyWeatherData[2]);
+                    setinThreeDaysWeather(dailyWeatherData[3]);
+                    setinFourDaysWeather(dailyWeatherData[4]);
+            } catch (err) {
+
+                // make accumulator array to capture each day's daily weather object
+                const dailyWeatherData = []
+
+                // run loop 5 times (5 days in weather forecast)
+                for (let i = 0; i<5; i++) {
+
+                    // create weather object for each day
+                    const oneDayWeather = {
+                        "hiTemp": 'n/a',
+                        "loTemp": 'n/a',
+                        "humidity": 'n/a',
+                        "wind": 'n/a',
+                        "clouds": 'n/a',
+                        "precip": 'n/a',  
+                        "overall": 'n/a'
+                    }
+
+                    // push weather object to dailyWeatherData array
+                    dailyWeatherData.push(oneDayWeather);
+                }
+
                 // set state for corresponding day with each object in dailyWeatherData array
                 settodayWeather(dailyWeatherData[0]);
                 settomorrowWeather(dailyWeatherData[1]);
                 setinTwoDaysWeather(dailyWeatherData[2]);
                 setinThreeDaysWeather(dailyWeatherData[3]);
                 setinFourDaysWeather(dailyWeatherData[4]);
+            }
         }
 
 
