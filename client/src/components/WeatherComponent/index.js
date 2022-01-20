@@ -74,7 +74,7 @@ const WeatherComponent = () => {
         }
 
         fetchHistoricalWeatherData(twoDaysAgoTimestamp);  //get weather two days ago
-        // fetchHistoricalWeatherData(yesterdayTimestamp);   //get weather yesterday
+        fetchHistoricalWeatherData(yesterdayTimestamp);   //get weather yesterday
 
 
 
@@ -161,7 +161,7 @@ const WeatherComponent = () => {
         }
 
 
-        // getWeatherForecast();  // get 5 day weather forecast
+        getWeatherForecast();  // get 5 day weather forecast
 
     }, []);
 
@@ -256,7 +256,7 @@ const WeatherComponent = () => {
                         <p><b>Precip:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.precip)} in</p>
                         <p><b>Wind:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.humidity)} %</p>
-                        <p><b>Overall:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.overall)} %</p>
+                        <p><b>Overall:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.overall)}</p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">Yesterday</p>
@@ -266,6 +266,7 @@ const WeatherComponent = () => {
                         <p><b>Precip:</b> {yesterdayWeather && (yesterdayWeather.precip)} in</p>
                         <p><b>Wind:</b> {yesterdayWeather && (yesterdayWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {yesterdayWeather && (yesterdayWeather.humidity)} %</p>
+                        <p><b>Overall:</b> {yesterdayWeather && (yesterdayWeather.overall)}</p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">Today</p>
@@ -275,6 +276,7 @@ const WeatherComponent = () => {
                         <p><b>Precip:</b> {todayWeather && (todayWeather.precip)} in</p>
                         <p><b>Wind:</b> {todayWeather && (todayWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {todayWeather && (todayWeather.humidity)} %</p>
+                        <p><b>Humidity:</b> {todayWeather && (todayWeather.overall)} </p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">Tomorrow</p>
@@ -284,6 +286,7 @@ const WeatherComponent = () => {
                         <p><b>Precip:</b> {tomorrowWeather && (tomorrowWeather.precip)} in</p>
                         <p><b>Wind:</b> {tomorrowWeather && (tomorrowWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {tomorrowWeather && (tomorrowWeather.humidity)} %</p>
+                        <p><b>Humidity:</b> {tomorrowWeather && (tomorrowWeather.overall)} </p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">+2 Days</p>
@@ -293,6 +296,7 @@ const WeatherComponent = () => {
                         <p><b>Precip:</b> {inTwoDaysWeather && (inTwoDaysWeather.precip)} in</p>
                         <p><b>Wind:</b> {inTwoDaysWeather && (inTwoDaysWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {inTwoDaysWeather && (inTwoDaysWeather.humidity)} %</p>
+                        <p><b>Overall:</b> {inTwoDaysWeather && (inTwoDaysWeather.overall)} </p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">+3 Days</p>
@@ -302,6 +306,7 @@ const WeatherComponent = () => {
                         <p><b>Precip:</b> {inThreeDaysWeather && (inThreeDaysWeather.precip)} in</p>
                         <p><b>Wind:</b> {inThreeDaysWeather && (inThreeDaysWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {inThreeDaysWeather && (inThreeDaysWeather.humidity)} %</p>
+                        <p><b>Overall:</b> {inThreeDaysWeather && (inThreeDaysWeather.overall)} </p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">+4 Days</p>
@@ -311,6 +316,7 @@ const WeatherComponent = () => {
                         <p><b>Precip:</b> {inFourDaysWeather && (inFourDaysWeather.precip)} in</p>
                         <p><b>Wind:</b> {inFourDaysWeather && (inFourDaysWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {inFourDaysWeather && (inFourDaysWeather.humidity)} %</p>
+                        <p><b>Overall:</b> {inFourDaysWeather && (inFourDaysWeather.overall)} %</p>
                     </div>
                 </div>
             </div>
