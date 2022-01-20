@@ -59,7 +59,8 @@ const WeatherComponent = () => {
                     "humidity":'n/a', 
                     "wind":'n/a', 
                     "clouds":'n/a', 
-                    "precip":'n/a'
+                    "precip":'n/a',
+                    "overall":'n/a'
                 }
 
                 if (timestamp === twoDaysAgoTimestamp) {
@@ -72,7 +73,7 @@ const WeatherComponent = () => {
             }
         }
 
-        // fetchHistoricalWeatherData(twoDaysAgoTimestamp);  //get weather two days ago
+        fetchHistoricalWeatherData(twoDaysAgoTimestamp);  //get weather two days ago
         // fetchHistoricalWeatherData(yesterdayTimestamp);   //get weather yesterday
 
 
@@ -165,10 +166,12 @@ const WeatherComponent = () => {
     }, []);
 
 
+    // Helper function to parse long historical daily weather strings
     const parseHistoricalDailyWeather = (dailyWeatherData) => {
         // takes daily weather data from API call and returns array of weather data for that day
         // this is for historical daily weather (ie: yesterday and two days ago weather)
 
+        console.log('HISTORY', dailyWeatherData);
         // remember, there is a 24 hour hourly forecast. I am just taking weather at noon of requested day
         const dailyTemps = [];
         const dailyHumidity = [];
@@ -199,7 +202,8 @@ const WeatherComponent = () => {
             "humidity":avgHumidity, 
             "wind":avgWind, 
             "clouds":avgClouds, 
-            "precip":precip
+            "precip":precip,
+            "overall":dailyWeatherData['hourly'][11]['weather'][0]['main']  //getting weather description at 12 noon that day
         }
         return dailyWeatherStats;
     }
@@ -252,6 +256,7 @@ const WeatherComponent = () => {
                         <p><b>Precip:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.precip)} in</p>
                         <p><b>Wind:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.humidity)} %</p>
+                        <p><b>Overall:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.overall)} %</p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">Yesterday</p>
