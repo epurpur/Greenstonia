@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-/* Components */
+/* Weather Images */
+import nodata from '../../images/weather_images/nodata.png';
+import cold from '../../images/weather_images/cold.png';
+import hot from '../../images/weather_images/hot.png';
+import partlycloudy from '../../images/weather_images/partlycloudy.png';
+import rain from '../../images/weather_images/rain.png';
+import sun from '../../images/weather_images/sun.png';
+import wind from '../../images/weather_images/wind.png';
 
 /* CSS styles */
 import "./styles.css";
@@ -251,6 +258,7 @@ const WeatherComponent = () => {
                     <div id='dailyBox'>
                         <p className="day">-2 Days</p>
                         <p className="date">{minus2daysDate}</p>
+                        <img className="weatherImg" src={nodata}></img>
                         <p><b>Hi Temp:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.precip)} in</p>
@@ -261,6 +269,7 @@ const WeatherComponent = () => {
                     <div id='dailyBox'>
                         <p className="day">Yesterday</p>
                         <p className="date">{yesterdayDate}</p>
+                        <img className="weatherImg" src={cold}></img>
                         <p><b>Hi Temp:</b> {yesterdayWeather && (yesterdayWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {yesterdayWeather && (yesterdayWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {yesterdayWeather && (yesterdayWeather.precip)} in</p>
@@ -271,6 +280,7 @@ const WeatherComponent = () => {
                     <div id='dailyBox'>
                         <p className="day">Today</p>
                         <p className="date">{todayDate}</p>
+                        <img className="weatherImg" src={hot}></img>
                         <p><b>Hi Temp:</b> {todayWeather && (todayWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {todayWeather && (todayWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {todayWeather && (todayWeather.precip)} in</p>
@@ -281,6 +291,7 @@ const WeatherComponent = () => {
                     <div id='dailyBox'>
                         <p className="day">Tomorrow</p>
                         <p className="date">{tomorrowDate}</p>
+                        <img className="weatherImg" src={partlycloudy}></img>
                         <p><b>Hi Temp:</b> {tomorrowWeather && (tomorrowWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {tomorrowWeather && (tomorrowWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {tomorrowWeather && (tomorrowWeather.precip)} in</p>
@@ -291,6 +302,7 @@ const WeatherComponent = () => {
                     <div id='dailyBox'>
                         <p className="day">+2 Days</p>
                         <p className="date">{plus2daysDate}</p>
+                        <img className="weatherImg" src={rain}></img>
                         <p><b>Hi Temp:</b> {inTwoDaysWeather && (inTwoDaysWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {inTwoDaysWeather && (inTwoDaysWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {inTwoDaysWeather && (inTwoDaysWeather.precip)} in</p>
@@ -301,6 +313,7 @@ const WeatherComponent = () => {
                     <div id='dailyBox'>
                         <p className="day">+3 Days</p>
                         <p className="date">{plus3daysDate}</p>
+                        <img className="weatherImg" src={sun}></img>
                         <p><b>Hi Temp:</b> {inThreeDaysWeather && (inThreeDaysWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {inThreeDaysWeather && (inThreeDaysWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {inThreeDaysWeather && (inThreeDaysWeather.precip)} in</p>
@@ -311,12 +324,13 @@ const WeatherComponent = () => {
                     <div id='dailyBox'>
                         <p className="day">+4 Days</p>
                         <p className="date">{plus4daysDate}</p>
+                        <img className="weatherImg" src={wind}></img>
                         <p><b>Hi Temp:</b> {inFourDaysWeather && (inFourDaysWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {inFourDaysWeather && (inFourDaysWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {inFourDaysWeather && (inFourDaysWeather.precip)} in</p>
                         <p><b>Wind:</b> {inFourDaysWeather && (inFourDaysWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {inFourDaysWeather && (inFourDaysWeather.humidity)} %</p>
-                        <p><b>Overall:</b> {inFourDaysWeather && (inFourDaysWeather.overall)} %</p>
+                        <p><b>Overall:</b> {inFourDaysWeather && (inFourDaysWeather.overall)} </p>
                     </div>
                 </div>
             </div>
