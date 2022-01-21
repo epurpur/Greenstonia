@@ -8,6 +8,7 @@ import partlycloudy from '../../images/weather_images/partlycloudy.png';
 import rain from '../../images/weather_images/rain.png';
 import sun from '../../images/weather_images/sun.png';
 import wind from '../../images/weather_images/wind.png';
+import extreme from '../../images/weather_images/extreme.png';
 
 /* CSS styles */
 import "./styles.css";
@@ -22,6 +23,7 @@ const WeatherComponent = () => {
     const [inTwoDaysWeather, setinTwoDaysWeather] = useState();
     const [inThreeDaysWeather, setinThreeDaysWeather] = useState();
     const [inFourDaysWeather, setinFourDaysWeather] = useState(); 
+    const [extraVar, setextraVar] = useState('extreme');
 
     ///////////////////////////////////////////
     // Get timestamps for historical weather //
@@ -67,7 +69,7 @@ const WeatherComponent = () => {
                     "wind":'n/a', 
                     "clouds":'n/a', 
                     "precip":'n/a',
-                    "overall":'n/a'
+                    "image":'nodata'
                 }
 
                 if (timestamp === twoDaysAgoTimestamp) {
@@ -80,8 +82,8 @@ const WeatherComponent = () => {
             }
         }
 
-        fetchHistoricalWeatherData(twoDaysAgoTimestamp);  //get weather two days ago
-        fetchHistoricalWeatherData(yesterdayTimestamp);   //get weather yesterday
+        // fetchHistoricalWeatherData(twoDaysAgoTimestamp);  //get weather two days ago
+        // fetchHistoricalWeatherData(yesterdayTimestamp);   //get weather yesterday
 
 
 
@@ -105,15 +107,32 @@ const WeatherComponent = () => {
                     // need to use weird isNaN function to check if daily precip is null
                     if (isNaN(dailyPrecip)) {
                         dailyPrecip = "0.00"
-                        console.log('DailyPrecip', dailyPrecip)
                     } else {
                         //convert mm to in
                         dailyPrecip = dailyPrecip * .0393701
                         //round to 2 decimal places
                         dailyPrecip = dailyPrecip.toFixed(2)
-                        console.log("Daily Precipitation", dailyPrecip)
                     }
     
+                    // create image object out of 'overall' description for the day
+                    // THIS WILL LATER BECOME A MORE INVOLVED ALGORITHM FOR THE WEATHER
+                    let overallWeather = i['weather'][0]['main']
+                    //clouds, snow, mist, rain, clear, drizzle, extreme
+                    // console.log('clouds: ', i['clouds'], typeof(i['clouds'])) //clouds are number
+                    console.log('hiTemp', overallWeather, i['temp']['max'], typeof(i['temp']['max']))
+                    // initialize weather image, which will be determined by weather below
+                    let weatherImage = 'extreme'
+                    console.log(weatherImage);
+                    // if (overallWeather === 'Extreme') {
+                    //     weatherImage = extreme;
+                    // } else if (overallWeather === 'Snow') {
+                    //     weatherImage = cold;
+                    // } else if (overallWeather === 'Mist' || overallWeather === 'Drizzle' || overallWeather === 'Rain') {
+                    //     weatherImage = rain;
+                    // } else if (overallWeather === 'Clear' && overallWeather === 'Clouds') {
+                    //     weatherImage = wind;
+                    // }
+
                     // create weather object for each day
                     const oneDayWeather = {
                         "hiTemp": i['temp']['max'],
@@ -122,7 +141,7 @@ const WeatherComponent = () => {
                         "wind": i['wind_speed'],
                         "clouds": i['clouds'],
                         "precip": dailyPrecip,  //round to 2 decimal places. convert mm to in
-                        "overall": i['weather'][0]['main']
+                        "image": weatherImage
                     }
                     
                     // push weather object to dailyWeatherData array
@@ -151,7 +170,7 @@ const WeatherComponent = () => {
                         "wind": 'n/a',
                         "clouds": 'n/a',
                         "precip": 'n/a',  
-                        "overall": 'n/a'
+                        "image": 'nodata'
                     }
 
                     // push weather object to dailyWeatherData array
@@ -178,7 +197,6 @@ const WeatherComponent = () => {
         // takes daily weather data from API call and returns array of weather data for that day
         // this is for historical daily weather (ie: yesterday and two days ago weather)
 
-        console.log('HISTORY', dailyWeatherData);
         // remember, there is a 24 hour hourly forecast. I am just taking weather at noon of requested day
         const dailyTemps = [];
         const dailyHumidity = [];
@@ -202,7 +220,9 @@ const WeatherComponent = () => {
         const avgClouds = getAverage(dailyClouds).toFixed(2);
         const precip = 'n/a';
 
-        // THIS IS THE STRUCTURE OF THE DATA RETURNED FROM API CALL
+        // logic to handle 'image', which will be translated to the image shown for each daily forecast
+
+        // THIS IS THE STRUCTURE OF THE DATA RETURNED BY THIS FUNCTION
         const dailyWeatherStats = {
             "hiTemp":hiTemp, 
             "loTemp":loTemp, 
@@ -210,7 +230,7 @@ const WeatherComponent = () => {
             "wind":avgWind, 
             "clouds":avgClouds, 
             "precip":precip,
-            "overall":dailyWeatherData['hourly'][11]['weather'][0]['main']  //getting weather description at 12 noon that day
+            "image":dailyWeatherData['hourly'][11]['weather'][0]['main']  //getting weather description at 12 noon that day
         }
         return dailyWeatherStats;
     }
@@ -264,73 +284,82 @@ const WeatherComponent = () => {
                         <p><b>Precip:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.precip)} in</p>
                         <p><b>Wind:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.humidity)} %</p>
-                        <p><b>Overall:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.overall)}</p>
+                        <p><b>image:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.image)}</p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">Yesterday</p>
                         <p className="date">{yesterdayDate}</p>
-                        <img className="weatherImg" src={cold}></img>
+                        <img className="weatherImg" src={nodata}></img>
                         <p><b>Hi Temp:</b> {yesterdayWeather && (yesterdayWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {yesterdayWeather && (yesterdayWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {yesterdayWeather && (yesterdayWeather.precip)} in</p>
                         <p><b>Wind:</b> {yesterdayWeather && (yesterdayWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {yesterdayWeather && (yesterdayWeather.humidity)} %</p>
-                        <p><b>Overall:</b> {yesterdayWeather && (yesterdayWeather.overall)}</p>
+                        <p><b>image:</b> {yesterdayWeather && (yesterdayWeather.image)}</p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">Today</p>
                         <p className="date">{todayDate}</p>
-                        <img className="weatherImg" src={hot}></img>
+                        {/* START HERE!!! */}
+                        <img className="weatherImg" alt='test' src={
+                            (() => {
+                                switch(extraVar === 'extreme') {
+                                    case "extreme": return {extreme};
+                                    default: return {sun};
+                                }
+                            })
+                        } ></img>
                         <p><b>Hi Temp:</b> {todayWeather && (todayWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {todayWeather && (todayWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {todayWeather && (todayWeather.precip)} in</p>
                         <p><b>Wind:</b> {todayWeather && (todayWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {todayWeather && (todayWeather.humidity)} %</p>
-                        <p><b>Humidity:</b> {todayWeather && (todayWeather.overall)} </p>
+                        <p><b>image:</b> {todayWeather && (todayWeather.image)} </p>
+
                     </div>
                     <div id='dailyBox'>
                         <p className="day">Tomorrow</p>
                         <p className="date">{tomorrowDate}</p>
-                        <img className="weatherImg" src={partlycloudy}></img>
+                        <img className="weatherImg" src={nodata}></img>
                         <p><b>Hi Temp:</b> {tomorrowWeather && (tomorrowWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {tomorrowWeather && (tomorrowWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {tomorrowWeather && (tomorrowWeather.precip)} in</p>
                         <p><b>Wind:</b> {tomorrowWeather && (tomorrowWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {tomorrowWeather && (tomorrowWeather.humidity)} %</p>
-                        <p><b>Humidity:</b> {tomorrowWeather && (tomorrowWeather.overall)} </p>
+                        <p><b>image:</b> {tomorrowWeather && (tomorrowWeather.image)} </p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">+2 Days</p>
                         <p className="date">{plus2daysDate}</p>
-                        <img className="weatherImg" src={rain}></img>
+                        <img className="weatherImg" src={nodata}></img>
                         <p><b>Hi Temp:</b> {inTwoDaysWeather && (inTwoDaysWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {inTwoDaysWeather && (inTwoDaysWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {inTwoDaysWeather && (inTwoDaysWeather.precip)} in</p>
                         <p><b>Wind:</b> {inTwoDaysWeather && (inTwoDaysWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {inTwoDaysWeather && (inTwoDaysWeather.humidity)} %</p>
-                        <p><b>Overall:</b> {inTwoDaysWeather && (inTwoDaysWeather.overall)} </p>
+                        <p><b>image:</b> {inTwoDaysWeather && (inTwoDaysWeather.image)} </p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">+3 Days</p>
                         <p className="date">{plus3daysDate}</p>
-                        <img className="weatherImg" src={sun}></img>
+                        <img className="weatherImg" src={nodata}></img>
                         <p><b>Hi Temp:</b> {inThreeDaysWeather && (inThreeDaysWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {inThreeDaysWeather && (inThreeDaysWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {inThreeDaysWeather && (inThreeDaysWeather.precip)} in</p>
                         <p><b>Wind:</b> {inThreeDaysWeather && (inThreeDaysWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {inThreeDaysWeather && (inThreeDaysWeather.humidity)} %</p>
-                        <p><b>Overall:</b> {inThreeDaysWeather && (inThreeDaysWeather.overall)} </p>
+                        <p><b>image:</b> {inThreeDaysWeather && (inThreeDaysWeather.image)} </p>
                     </div>
                     <div id='dailyBox'>
                         <p className="day">+4 Days</p>
                         <p className="date">{plus4daysDate}</p>
-                        <img className="weatherImg" src={wind}></img>
+                        <img className="weatherImg" src={nodata}></img>
                         <p><b>Hi Temp:</b> {inFourDaysWeather && (inFourDaysWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {inFourDaysWeather && (inFourDaysWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {inFourDaysWeather && (inFourDaysWeather.precip)} in</p>
                         <p><b>Wind:</b> {inFourDaysWeather && (inFourDaysWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {inFourDaysWeather && (inFourDaysWeather.humidity)} %</p>
-                        <p><b>Overall:</b> {inFourDaysWeather && (inFourDaysWeather.overall)} </p>
+                        <p><b>image:</b> {inFourDaysWeather && (inFourDaysWeather.image)} </p>
                     </div>
                 </div>
             </div>
