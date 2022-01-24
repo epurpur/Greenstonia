@@ -5,6 +5,7 @@ import nodata from '../../images/weather_images/nodata.png';
 import cold from '../../images/weather_images/cold.png';
 import hot from '../../images/weather_images/hot.png';
 import partlycloudy from '../../images/weather_images/partlycloudy.png';
+import clouds from '../../images/weather_images/clouds.png';
 import rain from '../../images/weather_images/rain.png';
 import sun from '../../images/weather_images/sun.png';
 import wind from '../../images/weather_images/wind.png';
@@ -23,7 +24,11 @@ const WeatherComponent = () => {
     const [inTwoDaysWeather, setinTwoDaysWeather] = useState();
     const [inThreeDaysWeather, setinThreeDaysWeather] = useState();
     const [inFourDaysWeather, setinFourDaysWeather] = useState(); 
-    const [extraVar, setextraVar] = useState('extreme');
+
+    // state for weather images
+    const [twoDaysAgoWeatherImg, settwoDaysAgoWeatherImg] = useState(nodata);
+    const [yesterdayWeatherImg, setyesterdayWeatherImg] = useState(nodata);
+    
 
     ///////////////////////////////////////////
     // Get timestamps for historical weather //
@@ -55,9 +60,36 @@ const WeatherComponent = () => {
                 if (timestamp === twoDaysAgoTimestamp) {
                     //set state of twoDaysAgoWeather to the dailyWeatherStats object returned from parseHistoricalDailyWeather
                     settwoDaysAgoWeather(weatherData);
+
+                    //set state of twoDaysAgoWeather image
+                    if (weatherData.image === 'Clouds') {
+                        settwoDaysAgoWeatherImg(clouds);
+                    } else if (weatherData.image === 'Snow') {
+                        settwoDaysAgoWeatherImg(cold);
+                    } else if (weatherData.image === 'Mist' || weatherData.image === 'Rain' || weatherData.image === 'Drizzle') {
+                        settwoDaysAgoWeatherImg(rain);
+                    } else if (weatherData.image === 'Clear') {
+                        settwoDaysAgoWeatherImg(sun);
+                    } else if (weatherData.image === 'Extreme') {
+                        settwoDaysAgoWeatherImg(extreme)
+                    }
+
                 } else if (timestamp === yesterdayTimestamp) {
                     // set state of yesterdayWeather to the dailyWeatherStats object returned from parseHistoricalDailyWeather
                     setyesterdayWeather(weatherData);
+
+                    //set state of yesterdayWeather image
+                    if (weatherData.image === 'Clouds') {
+                        setyesterdayWeatherImg(clouds);
+                    } else if (weatherData.image === 'Snow') {
+                        setyesterdayWeatherImg(cold);
+                    } else if (weatherData.image === 'Mist' || weatherData.image === 'Rain' || weatherData.image === 'Drizzle') {
+                        setyesterdayWeatherImg(rain);
+                    } else if (weatherData.image === 'Clear') {
+                        setyesterdayWeatherImg(sun);
+                    } else if (weatherData.image === 'Extreme') {
+                        setyesterdayWeatherImg(extreme)
+                    }
                 }
                 
             } catch (err) {
@@ -82,8 +114,8 @@ const WeatherComponent = () => {
             }
         }
 
-        // fetchHistoricalWeatherData(twoDaysAgoTimestamp);  //get weather two days ago
-        // fetchHistoricalWeatherData(yesterdayTimestamp);   //get weather yesterday
+        fetchHistoricalWeatherData(twoDaysAgoTimestamp);  //get weather two days ago
+        fetchHistoricalWeatherData(yesterdayTimestamp);   //get weather yesterday
 
 
 
@@ -103,7 +135,7 @@ const WeatherComponent = () => {
     
                     //need to format precipitation data
                     let dailyPrecip = i['rain'] + i['snow'];
-    
+
                     // need to use weird isNaN function to check if daily precip is null
                     if (isNaN(dailyPrecip)) {
                         dailyPrecip = "0.00"
@@ -118,20 +150,7 @@ const WeatherComponent = () => {
                     // THIS WILL LATER BECOME A MORE INVOLVED ALGORITHM FOR THE WEATHER
                     let overallWeather = i['weather'][0]['main']
                     //clouds, snow, mist, rain, clear, drizzle, extreme
-                    // console.log('clouds: ', i['clouds'], typeof(i['clouds'])) //clouds are number
-                    console.log('hiTemp', overallWeather, i['temp']['max'], typeof(i['temp']['max']))
-                    // initialize weather image, which will be determined by weather below
-                    let weatherImage = 'extreme'
-                    console.log(weatherImage);
-                    // if (overallWeather === 'Extreme') {
-                    //     weatherImage = extreme;
-                    // } else if (overallWeather === 'Snow') {
-                    //     weatherImage = cold;
-                    // } else if (overallWeather === 'Mist' || overallWeather === 'Drizzle' || overallWeather === 'Rain') {
-                    //     weatherImage = rain;
-                    // } else if (overallWeather === 'Clear' && overallWeather === 'Clouds') {
-                    //     weatherImage = wind;
-                    // }
+                    
 
                     // create weather object for each day
                     const oneDayWeather = {
@@ -141,7 +160,7 @@ const WeatherComponent = () => {
                         "wind": i['wind_speed'],
                         "clouds": i['clouds'],
                         "precip": dailyPrecip,  //round to 2 decimal places. convert mm to in
-                        "image": weatherImage
+                        "image": overallWeather
                     }
                     
                     // push weather object to dailyWeatherData array
@@ -222,6 +241,7 @@ const WeatherComponent = () => {
 
         // logic to handle 'image', which will be translated to the image shown for each daily forecast
 
+
         // THIS IS THE STRUCTURE OF THE DATA RETURNED BY THIS FUNCTION
         const dailyWeatherStats = {
             "hiTemp":hiTemp, 
@@ -232,6 +252,7 @@ const WeatherComponent = () => {
             "precip":precip,
             "image":dailyWeatherData['hourly'][11]['weather'][0]['main']  //getting weather description at 12 noon that day
         }
+
         return dailyWeatherStats;
     }
 
@@ -270,6 +291,7 @@ const WeatherComponent = () => {
     plus4daysDate.setDate(plus4daysDate.getDate() + 4);
     plus4daysDate = plus4daysDate.toLocaleDateString();
 
+
     return (
         <>
             <div id='weatherBox'>
@@ -278,7 +300,7 @@ const WeatherComponent = () => {
                     <div id='dailyBox'>
                         <p className="day">-2 Days</p>
                         <p className="date">{minus2daysDate}</p>
-                        <img className="weatherImg" src={nodata}></img>
+                        <img className="weatherImg" src={twoDaysAgoWeatherImg && (twoDaysAgoWeatherImg)}></img>
                         <p><b>Hi Temp:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.precip)} in</p>
@@ -289,7 +311,7 @@ const WeatherComponent = () => {
                     <div id='dailyBox'>
                         <p className="day">Yesterday</p>
                         <p className="date">{yesterdayDate}</p>
-                        <img className="weatherImg" src={nodata}></img>
+                        <img className="weatherImg" src={yesterdayWeatherImg && (yesterdayWeatherImg)}></img>
                         <p><b>Hi Temp:</b> {yesterdayWeather && (yesterdayWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {yesterdayWeather && (yesterdayWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {yesterdayWeather && (yesterdayWeather.precip)} in</p>
@@ -300,15 +322,7 @@ const WeatherComponent = () => {
                     <div id='dailyBox'>
                         <p className="day">Today</p>
                         <p className="date">{todayDate}</p>
-                        {/* START HERE!!! */}
-                        <img className="weatherImg" alt='test' src={
-                            (() => {
-                                switch(extraVar === 'extreme') {
-                                    case "extreme": return {extreme};
-                                    default: return {sun};
-                                }
-                            })
-                        } ></img>
+                        <img className="weatherImg" src={nodata}></img>
                         <p><b>Hi Temp:</b> {todayWeather && (todayWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {todayWeather && (todayWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {todayWeather && (todayWeather.precip)} in</p>
