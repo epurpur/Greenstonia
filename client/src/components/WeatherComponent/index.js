@@ -25,9 +25,14 @@ const WeatherComponent = () => {
     const [inThreeDaysWeather, setinThreeDaysWeather] = useState();
     const [inFourDaysWeather, setinFourDaysWeather] = useState(); 
 
-    // state for weather images
+    // state for weather images. set to nodata by default
     const [twoDaysAgoWeatherImg, settwoDaysAgoWeatherImg] = useState(nodata);
     const [yesterdayWeatherImg, setyesterdayWeatherImg] = useState(nodata);
+    const [todayWeatherImg, settodayWeatherImg] = useState(nodata);
+    const [tomorrowWeatherImg, settomorrowWeatherImg] = useState(nodata);
+    const [inTwoDaysWeatherImg, setinTwoDaysWeatherImg] = useState(nodata);
+    const [inThreeDaysWeatherImg, setinThreeDaysWeatherImg] = useState(nodata);
+    const [inFourDaysWeatherImg, setinFourDaysWeatherImg] = useState(nodata);
     
 
     ///////////////////////////////////////////
@@ -131,6 +136,7 @@ const WeatherComponent = () => {
                 // make accumulator array to capture each day's daily weather object
                 const dailyWeatherData = []
                 
+                // for each day in 5 day weather forecast
                 for (let i of data) {
     
                     //need to format precipitation data
@@ -166,12 +172,76 @@ const WeatherComponent = () => {
                     // push weather object to dailyWeatherData array
                     dailyWeatherData.push(oneDayWeather);
                 }
-                    // set state for corresponding day with each object in dailyWeatherData array
-                    settodayWeather(dailyWeatherData[0]);
-                    settomorrowWeather(dailyWeatherData[1]);
-                    setinTwoDaysWeather(dailyWeatherData[2]);
-                    setinThreeDaysWeather(dailyWeatherData[3]);
-                    setinFourDaysWeather(dailyWeatherData[4]);
+                    // set state for corresponding day and weather image with each object in dailyWeatherData array
+                    settodayWeather(dailyWeatherData[0]);  //today
+                    //set state of todayWeather image
+                    if (dailyWeatherData[0].image === 'Clouds') {
+                        settodayWeatherImg(clouds);
+                    } else if (dailyWeatherData[0].image === 'Snow') {
+                        settodayWeatherImg(cold);
+                    } else if (dailyWeatherData[0].image === 'Mist' || dailyWeatherData[0].image === 'Rain' || dailyWeatherData[0].image === 'Drizzle') {
+                        settodayWeatherImg(rain);
+                    } else if (dailyWeatherData[0].image === 'Clear') {
+                        settodayWeatherImg(sun);
+                    } else if (dailyWeatherData[0].image === 'Extreme') {
+                        settodayWeatherImg(extreme)
+                    }
+                    
+                    settomorrowWeather(dailyWeatherData[1]);  // tomorrow
+                    //set state of tomorrowWeather image
+                    if (dailyWeatherData[1].image === 'Clouds') {
+                        settomorrowWeatherImg(clouds);
+                    } else if (dailyWeatherData[1].image === 'Snow') {
+                        settomorrowWeatherImg(cold);
+                    } else if (dailyWeatherData[1].image === 'Mist' || dailyWeatherData[1].image === 'Rain' || dailyWeatherData[1].image === 'Drizzle') {
+                        settomorrowWeatherImg(rain);
+                    } else if (dailyWeatherData[1].image === 'Clear') {
+                        settomorrowWeatherImg(sun);
+                    } else if (dailyWeatherData[1].image === 'Extreme') {
+                        settomorrowWeatherImg(extreme)
+                    }
+
+                    setinTwoDaysWeather(dailyWeatherData[2]);  // in two days
+                    //set state of inTwoDaysWeather image
+                    if (dailyWeatherData[2].image === 'Clouds') {
+                        setinTwoDaysWeatherImg(clouds);
+                    } else if (dailyWeatherData[2].image === 'Snow') {
+                        setinTwoDaysWeatherImg(cold);
+                    } else if (dailyWeatherData[2].image === 'Mist' || dailyWeatherData[2].image === 'Rain' || dailyWeatherData[2].image === 'Drizzle') {
+                        setinTwoDaysWeatherImg(rain);
+                    } else if (dailyWeatherData[2].image === 'Clear') {
+                        setinTwoDaysWeatherImg(sun);
+                    } else if (dailyWeatherData[2].image === 'Extreme') {
+                        setinTwoDaysWeatherImg(extreme)
+                    }
+
+                    setinThreeDaysWeather(dailyWeatherData[3]); // in three days
+                    //set state of inThreeDaysWeather image
+                    if (dailyWeatherData[3].image === 'Clouds') {
+                        setinThreeDaysWeatherImg(clouds);
+                    } else if (dailyWeatherData[3].image === 'Snow') {
+                        setinThreeDaysWeatherImg(cold);
+                    } else if (dailyWeatherData[3].image === 'Mist' || dailyWeatherData[3].image === 'Rain' || dailyWeatherData[3].image === 'Drizzle') {
+                        setinThreeDaysWeatherImg(rain);
+                    } else if (dailyWeatherData[3].image === 'Clear') {
+                        setinThreeDaysWeatherImg(sun);
+                    } else if (dailyWeatherData[3].image === 'Extreme') {
+                        setinThreeDaysWeatherImg(extreme)
+                    }
+
+                    setinFourDaysWeather(dailyWeatherData[4]);  // in four days
+                    //set state of inFourDaysWeather image
+                    if (dailyWeatherData[4].image === 'Clouds') {
+                        setinFourDaysWeatherImg(clouds);
+                    } else if (dailyWeatherData[4].image === 'Snow') {
+                        setinFourDaysWeatherImg(cold);
+                    } else if (dailyWeatherData[4].image === 'Mist' || dailyWeatherData[4].image === 'Rain' || dailyWeatherData[4].image === 'Drizzle') {
+                        setinFourDaysWeatherImg(rain);
+                    } else if (dailyWeatherData[4].image === 'Clear') {
+                        setinFourDaysWeatherImg(sun);
+                    } else if (dailyWeatherData[4].image === 'Extreme') {
+                        setinFourDaysWeatherImg(extreme)
+                    }
 
             } catch (err) {
 
@@ -306,7 +376,7 @@ const WeatherComponent = () => {
                         <p><b>Precip:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.precip)} in</p>
                         <p><b>Wind:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.humidity)} %</p>
-                        <p><b>image:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.image)}</p>
+                        {/* <p><b>image:</b> {twoDaysAgoWeather && (twoDaysAgoWeather.image)}</p> */}
                     </div>
                     <div id='dailyBox'>
                         <p className="day">Yesterday</p>
@@ -317,63 +387,63 @@ const WeatherComponent = () => {
                         <p><b>Precip:</b> {yesterdayWeather && (yesterdayWeather.precip)} in</p>
                         <p><b>Wind:</b> {yesterdayWeather && (yesterdayWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {yesterdayWeather && (yesterdayWeather.humidity)} %</p>
-                        <p><b>image:</b> {yesterdayWeather && (yesterdayWeather.image)}</p>
+                        {/* <p><b>image:</b> {yesterdayWeather && (yesterdayWeather.image)}</p> */}
                     </div>
                     <div id='dailyBox'>
                         <p className="day">Today</p>
                         <p className="date">{todayDate}</p>
-                        <img className="weatherImg" src={nodata}></img>
+                        <img className="weatherImg" src={todayWeatherImg && (todayWeatherImg)}></img>
                         <p><b>Hi Temp:</b> {todayWeather && (todayWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {todayWeather && (todayWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {todayWeather && (todayWeather.precip)} in</p>
                         <p><b>Wind:</b> {todayWeather && (todayWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {todayWeather && (todayWeather.humidity)} %</p>
-                        <p><b>image:</b> {todayWeather && (todayWeather.image)} </p>
+                        {/* <p><b>image:</b> {todayWeather && (todayWeather.image)} </p> */}
 
                     </div>
                     <div id='dailyBox'>
                         <p className="day">Tomorrow</p>
                         <p className="date">{tomorrowDate}</p>
-                        <img className="weatherImg" src={nodata}></img>
+                        <img className="weatherImg" src={tomorrowWeatherImg && (tomorrowWeatherImg)}></img>
                         <p><b>Hi Temp:</b> {tomorrowWeather && (tomorrowWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {tomorrowWeather && (tomorrowWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {tomorrowWeather && (tomorrowWeather.precip)} in</p>
                         <p><b>Wind:</b> {tomorrowWeather && (tomorrowWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {tomorrowWeather && (tomorrowWeather.humidity)} %</p>
-                        <p><b>image:</b> {tomorrowWeather && (tomorrowWeather.image)} </p>
+                        {/* <p><b>image:</b> {tomorrowWeather && (tomorrowWeather.image)} </p> */}
                     </div>
                     <div id='dailyBox'>
                         <p className="day">+2 Days</p>
                         <p className="date">{plus2daysDate}</p>
-                        <img className="weatherImg" src={nodata}></img>
+                        <img className="weatherImg" src={inTwoDaysWeatherImg && (inTwoDaysWeatherImg)}></img>
                         <p><b>Hi Temp:</b> {inTwoDaysWeather && (inTwoDaysWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {inTwoDaysWeather && (inTwoDaysWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {inTwoDaysWeather && (inTwoDaysWeather.precip)} in</p>
                         <p><b>Wind:</b> {inTwoDaysWeather && (inTwoDaysWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {inTwoDaysWeather && (inTwoDaysWeather.humidity)} %</p>
-                        <p><b>image:</b> {inTwoDaysWeather && (inTwoDaysWeather.image)} </p>
+                        {/* <p><b>image:</b> {inTwoDaysWeather && (inTwoDaysWeather.image)} </p> */}
                     </div>
                     <div id='dailyBox'>
                         <p className="day">+3 Days</p>
                         <p className="date">{plus3daysDate}</p>
-                        <img className="weatherImg" src={nodata}></img>
+                        <img className="weatherImg" src={inThreeDaysWeatherImg && (inThreeDaysWeatherImg)}></img>
                         <p><b>Hi Temp:</b> {inThreeDaysWeather && (inThreeDaysWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {inThreeDaysWeather && (inThreeDaysWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {inThreeDaysWeather && (inThreeDaysWeather.precip)} in</p>
                         <p><b>Wind:</b> {inThreeDaysWeather && (inThreeDaysWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {inThreeDaysWeather && (inThreeDaysWeather.humidity)} %</p>
-                        <p><b>image:</b> {inThreeDaysWeather && (inThreeDaysWeather.image)} </p>
+                        {/* <p><b>image:</b> {inThreeDaysWeather && (inThreeDaysWeather.image)} </p> */}
                     </div>
                     <div id='dailyBox'>
                         <p className="day">+4 Days</p>
                         <p className="date">{plus4daysDate}</p>
-                        <img className="weatherImg" src={nodata}></img>
+                        <img className="weatherImg" src={inFourDaysWeatherImg && (inFourDaysWeatherImg)}></img>
                         <p><b>Hi Temp:</b> {inFourDaysWeather && (inFourDaysWeather.hiTemp)} F</p>
                         <p><b>Lo Temp:</b> {inFourDaysWeather && (inFourDaysWeather.loTemp)} F</p>
                         <p><b>Precip:</b> {inFourDaysWeather && (inFourDaysWeather.precip)} in</p>
                         <p><b>Wind:</b> {inFourDaysWeather && (inFourDaysWeather.wind)} mph</p>
                         <p><b>Humidity:</b> {inFourDaysWeather && (inFourDaysWeather.humidity)} %</p>
-                        <p><b>image:</b> {inFourDaysWeather && (inFourDaysWeather.image)} </p>
+                        {/* <p><b>image:</b> {inFourDaysWeather && (inFourDaysWeather.image)} </p> */}
                     </div>
                 </div>
             </div>
