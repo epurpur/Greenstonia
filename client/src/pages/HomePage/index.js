@@ -18,29 +18,29 @@ const HomePage = () => {
     const [todayWeatherData, settodayWeatherData] = useState(null);
 
     // Getting weather info in order to pass as props to Conditions Alert and Weather Component
-    useEffect(() => {
-        // API call to OpenWeatherMap for today's weather forecast in Charlottesville, VA
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=charlottesville&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}&units=imperial`)
-            .then(response => {
-                return response.json();
-            })
-            .then((data) => {
-                //drill down to get today's current temperature
-                let currentTemp = data['main']['temp'];
-                //algorithm to decide what the conditions are today. 
-                //BUILD THIS OUT MORE LATER
-                if (currentTemp <= 35) {
-                    settodayWeatherData('cold');
-                } else if (currentTemp > 35 && currentTemp <= 65) {
-                    settodayWeatherData('good');
-                } else if (currentTemp > 65) {
-                    settodayWeatherData('hot');
-                } else {
-                    settodayWeatherData('unavailable')
-                }
+    // useEffect(() => {
+    //     // API call to OpenWeatherMap for today's weather forecast in Charlottesville, VA
+    //     fetch(`https://api.openweathermap.org/data/2.5/weather?q=charlottesville&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}&units=imperial`)
+    //         .then(response => {
+    //             return response.json();
+    //         })
+    //         .then((data) => {
+    //             //drill down to get today's current temperature
+    //             let currentTemp = data['main']['temp'];
+    //             //algorithm to decide what the conditions are today. 
+    //             //BUILD THIS OUT MORE LATER
+    //             if (currentTemp <= 35) {
+    //                 settodayWeatherData('cold');
+    //             } else if (currentTemp > 35 && currentTemp <= 65) {
+    //                 settodayWeatherData('good');
+    //             } else if (currentTemp > 65) {
+    //                 settodayWeatherData('hot');
+    //             } else {
+    //                 settodayWeatherData('unavailable')
+    //             }
 
-            })
-    }, []);
+    //         })
+    // }, []);
 
 
     return (
