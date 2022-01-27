@@ -19,12 +19,13 @@ import SingleRoutePage from "./pages/SingleRoutePage";
 
 /* Apollo Setup */
 const client = new ApolloClient({
-  uri: "/graphql",
+  uri: "/graphql",        //short for localhost:3001/graphql
   cache: new InMemoryCache(),
 });
 
 function App() {
   return (
+    // all components need to be inside ApolloProvider tag. Any component inside this tag can now make requests to graphql
     <ApolloProvider client={client}>
       <Router>
         <div className="App">
