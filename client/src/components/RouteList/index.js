@@ -1,9 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_AREAS } from '../../utils/queries';
 
 /* CSS styles */
 import "./styles.css";
 
 const RouteList = () => {
+
+    // // Make DB call for all Area data
+    // const { loading, data: allAreasData } = useQuery(QUERY_AREAS);
+    
+
     return (
         <>
             <section id='routeList'>
