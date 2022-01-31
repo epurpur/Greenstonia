@@ -8,10 +8,6 @@ import "./styles.css";
 
 const RouteList = () => {
 
-    // // Make DB call for all Area data
-    // const { loading, data: allAreasData } = useQuery(QUERY_AREAS);
-    
-
     return (
         <>
             <section id='routeList'>

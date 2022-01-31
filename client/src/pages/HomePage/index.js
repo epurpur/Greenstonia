@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useQuery } from '@apollo/client';
+import { QUERY_AREAS } from '../../utils/queries';
 
 /* Components */
 import Header from "../../components/Header";
@@ -16,6 +18,11 @@ import "./styles.css";
 const HomePage = () => {
     
     const [todayWeatherData, settodayWeatherData] = useState(null);
+
+    // Make DB call for all Area data
+    const { loading, data } = useQuery(QUERY_AREAS);
+    console.log(data.areas);
+    
 
     // Getting weather info in order to pass as props to Conditions Alert and Weather Component
     // useEffect(() => {
@@ -41,11 +48,14 @@ const HomePage = () => {
 
     //         })
     // }, []);
-
+    
 
     return (
         <>
             <Header />
+            <div>
+                Placeholder
+            </div>
             <section>
                 <AccessAlert />
                 <ConditionsAlert todayWeatherData={todayWeatherData} />     {/* Passing weatherData from API call as props to this component */}

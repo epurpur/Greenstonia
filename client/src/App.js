@@ -19,7 +19,7 @@ import SingleRoutePage from "./pages/SingleRoutePage";
 
 /* Apollo Setup */
 const client = new ApolloClient({
-  uri: "/graphql",        //short for localhost:3001/graphql
+  uri: "http://localhost:3001/graphql",        //short for http://localhost:3001/graphql
   cache: new InMemoryCache(),
 });
 
