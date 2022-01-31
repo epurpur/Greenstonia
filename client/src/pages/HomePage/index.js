@@ -60,7 +60,7 @@ const HomePage = () => {
                 <AccessAlert />
                 <ConditionsAlert todayWeatherData={todayWeatherData} />     {/* Passing weatherData from API call as props to this component */}
                 <SearchBar />
-                <AreasMap />
+                <AreasMap areas={areas} />
                 <RouteList areas={areas} />
                 <WeatherComponent />
             </section>

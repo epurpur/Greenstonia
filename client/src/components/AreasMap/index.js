@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom';
 /* CSS styles */
 import "./styles.css";
 
-const AreasMap = () => {
+const AreasMap = (props) => {
+    console.log('From areasMap component', props);
     return (
         <>
             <div id='mapTitleText'>Search Areas by Map</div>
