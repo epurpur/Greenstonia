@@ -6,8 +6,8 @@ import { QUERY_AREAS } from '../../utils/queries';
 /* CSS styles */
 import "./styles.css";
 
-const RouteList = () => {
-
+const RouteList = (props) => {
+    console.log('From routelist component',props)
     return (
         <>
             <section id='routeList'>
