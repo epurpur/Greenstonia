@@ -21,7 +21,8 @@ const HomePage = () => {
 
     // Make DB call for all Area data
     const { loading, data } = useQuery(QUERY_AREAS);
-    console.log(data.areas);
+    // need to wait for data to appear as useQuery is an asynchronous API call
+    if (data) {console.log(data.areas)}
     
 
     // Getting weather info in order to pass as props to Conditions Alert and Weather Component
@@ -53,9 +54,6 @@ const HomePage = () => {
     return (
         <>
             <Header />
-            <div>
-                Placeholder
-            </div>
             <section>
                 <AccessAlert />
                 <ConditionsAlert todayWeatherData={todayWeatherData} />     {/* Passing weatherData from API call as props to this component */}
