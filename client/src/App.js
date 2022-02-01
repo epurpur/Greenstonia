@@ -14,6 +14,7 @@ import ContactPage from "./pages/ContactPage";
 import BoulderPage from "./pages/BoulderPage";
 import RoutesPage from "./pages/RoutesPage";
 import SingleRoutePage from "./pages/SingleRoutePage";
+import AreasPage from "./pages/AreasPage";
 
 /* Components */
 
@@ -43,6 +44,10 @@ function App() {
             </Route>
             <Route exact path="/contact">
               <ContactPage />
+            </Route>
+            <Route exact path="/area">
+            {/* This will eventually be changed to something like "/area/:areaName" */}
+              <AreasPage />
             </Route>
             <Route exact path="/boulder">
             {/* This will eventually be changed to something like "/boulder/:boulderName" */}

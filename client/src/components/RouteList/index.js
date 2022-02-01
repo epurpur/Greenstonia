@@ -9,7 +9,6 @@ import "./styles.css";
 const RouteList = (props) => {
     
     let climbingAreas = props.areas
-    console.log(climbingAreas)
     // sort climbing areas alphabetically by name
     // need to make copy of climbingAreas array to do this
     const arrayForSort = [...climbingAreas]
@@ -23,6 +22,8 @@ const RouteList = (props) => {
                     {climbingAreasByName.map((area) =>
                     // create card for each climbing area. These are sorted into alphabetical order
                         (
+                            // START HERE
+                            // this should be a link to Area Page
                             <p className='areaCard'>{area.areaName}</p>
                         )
                     )}
