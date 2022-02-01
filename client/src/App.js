@@ -45,7 +45,7 @@ function App() {
             <Route exact path="/contact">
               <ContactPage />
             </Route>
-            <Route exact path="/area">
+            <Route exact path="/area/:areaName">
             {/* This will eventually be changed to something like "/area/:areaName" */}
               <AreasPage />
             </Route>

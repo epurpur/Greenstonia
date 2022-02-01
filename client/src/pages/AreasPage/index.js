@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from "react-router-dom";
 
 /* Components */
 import Header from "../../components/Header";
@@ -8,7 +9,11 @@ import Footer from "../../components/Footer";
 import "./styles.css";
 
 const AreasPage = () => {
-  return( 
+    
+    // START HERE. WHY CANT I USE useLocation();?
+    // let data = useLocation();
+    
+    return( 
         <> 
             <Header />
             <h1>Areas Page</h1>
