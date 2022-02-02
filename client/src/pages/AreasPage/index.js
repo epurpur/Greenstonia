@@ -11,7 +11,8 @@ import "./styles.css";
 const AreasPage = () => {
     
     // START HERE. WHY CANT I USE useLocation();?
-    // let data = useLocation();
+    let data = useLocation();
+    console.log('STATE', data.state);
     
     return( 
         <> 
