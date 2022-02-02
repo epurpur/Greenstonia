@@ -23,6 +23,7 @@ const HomePage = () => {
     const { loading, data } = useQuery(QUERY_AREAS);
     // need to wait for data to appear as useQuery is an asynchronous API call
     const areas = data?.areas || [];
+    console.log('Areas', areas);
 
     
     

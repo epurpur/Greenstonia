@@ -9,6 +9,10 @@ export const QUERY_AREAS = gql`
       areaDescription
       parkingDescription
       approachDescription
+      boulders{
+        boulderName
+        boulderDescription
+      }
     }
   }
 `;
