@@ -13,7 +13,7 @@ const RouteList = (props) => {
     // need to make copy of climbingAreas array to do this
     const arrayForSort = [...climbingAreas]
     const climbingAreasByName = arrayForSort.sort((a, b) => a.areaName < b.areaName ? -1 : (a.areaName > b.areaName ? 1 : 0))
-    
+
     return (
         <>
             <section id='routeList'>
@@ -28,7 +28,8 @@ const RouteList = (props) => {
                                         state: {key: area.id,
                                                 areaName: area.areaName ,
                                                 areaDescription: area.areaDescription,
-                                                parkingDescription: area.parkingDescription }}}>
+                                                parkingDescription: area.parkingDescription,
+                                                boulders: area.boulders }}}>
                                 <p className='areaCard'>{area.areaName}</p>
                             </Link>
                         )

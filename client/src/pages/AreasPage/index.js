@@ -18,6 +18,8 @@ const AreasPage = () => {
     console.log('STATE OF AREA', areaData);
     console.log(areaData.areaName)
     
+    // START HERE - make page beautiful
+
     return( 
         <> 
             <Header />
@@ -26,7 +28,13 @@ const AreasPage = () => {
                     <p>Area Name: {areaData.areaName} </p>
                     <p>Area Description: {areaData.areaDescription} </p>
                     <p>Parking Description: {areaData.parkingDescription} </p>
-                    <p>List of boulders in this area go here</p>
+                    <div>List of boulders in this area go here
+                        {areaData.boulders.map((boulder) =>
+                            (
+                                <p>{boulder.boulderName}</p>
+                            )
+                        )}
+                    </div>
                 </div>
                 <div id="boulderMap">
                     <MapContainer center={[37.95, -78.98]} zoom={11.25} scrollWheelZoom={false}>

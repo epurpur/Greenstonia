@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import "./styles.css";
 
 const AreasMap = (props) => {
-    console.log('From areasMap component', props);
+
     return (
         <>
             <div id='mapTitleText'>Search Areas by Map</div>
