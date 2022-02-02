@@ -10,14 +10,25 @@ import "./styles.css";
 
 const AreasPage = () => {
     
-    // START HERE. WHY CANT I USE useLocation();?
-    let data = useLocation();
-    console.log('STATE', data.state);
+    // data passed in as state from RouteList component on homepage
+    let areaData = useLocation();
+    areaData = areaData.state;
+    console.log('STATE OF AREA', areaData);
+    console.log(areaData.areaName)
     
     return( 
         <> 
             <Header />
-            <h1>Areas Page</h1>
+            <div id="areaHolder">
+                <div id="areaInfo">
+                    <p>Area Name: {areaData.areaName} </p>
+                    <p>Area Description: {areaData.areaDescription} </p>
+                    <p>Parking Description: {areaData.parkingDescription} </p>
+                </div>
+                <div>
+                    Map goes here
+                </div>
+            </div>
             <Footer />
         </> 
     );

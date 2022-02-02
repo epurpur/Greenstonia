@@ -13,7 +13,7 @@ const RouteList = (props) => {
     // need to make copy of climbingAreas array to do this
     const arrayForSort = [...climbingAreas]
     const climbingAreasByName = arrayForSort.sort((a, b) => a.areaName < b.areaName ? -1 : (a.areaName > b.areaName ? 1 : 0))
-    console.log(climbingAreasByName)
+    
     return (
         <>
             <section id='routeList'>
@@ -25,7 +25,7 @@ const RouteList = (props) => {
                             // START HERE
                             // this should be a link to Area Page
                             <Link to={{pathname: `/area/${area.areaName}`,
-                                        state: {key: area._id,
+                                        state: {key: area.id,
                                                 areaName: area.areaName ,
                                                 areaDescription: area.areaDescription,
                                                 parkingDescription: area.parkingDescription }}}>

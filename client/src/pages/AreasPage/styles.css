@@ -1,0 +1,8 @@
+#areaHolder {
+    display: flex;
+    flex-direction: row;
+}
+#areaInfo {
+    border: 1px solid black;
+    width: 50%;
+}
