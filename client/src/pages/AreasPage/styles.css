@@ -1,3 +1,8 @@
+:root {
+    /* Colors */
+    --background: rgb(181, 227, 155);
+}
+
 #areaHolder {
     display: flex;
     flex-direction: row;
@@ -9,4 +14,17 @@
 
 #boulderMap {
     width: 50%
+}
+
+#boulderCardHolder {
+    display: flex;
+}
+
+.boulderCard {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: var(--background);
+    background-color: #212529;
 }

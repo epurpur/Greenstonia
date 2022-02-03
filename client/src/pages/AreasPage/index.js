@@ -28,13 +28,14 @@ const AreasPage = () => {
                     <p>Area Name: {areaData.areaName} </p>
                     <p>Area Description: {areaData.areaDescription} </p>
                     <p>Parking Description: {areaData.parkingDescription} </p>
-                    <div>List of boulders in this area go here
+                    <div>Search Boulders by Name</div>
+                        <div id="boulderCardHolder">
                         {areaData.boulders.map((boulder) =>
                             (
-                                <p>{boulder.boulderName}</p>
+                                <p className='boulderCard'>{boulder.boulderName}</p>
                             )
                         )}
-                    </div>
+                        </div>
                 </div>
                 <div id="boulderMap">
                     <MapContainer center={[37.95, -78.98]} zoom={11.25} scrollWheelZoom={false}>
