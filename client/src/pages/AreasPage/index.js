@@ -19,26 +19,31 @@ const AreasPage = () => {
     let areaData = useLocation();
     areaData = areaData.state;
     
-    // I THINK WHAT I NEED TO DO HERE IS NOW MAKE ANOTHER API REQUEST FOR BOULDERS IN THIS SPECIFIC AREA
-    // START HERE. MAKE NEW API REQUEST FOR QUERY bouldersbyarea.
-    // NEED TO INCLUDE THIS IN THE UTILS AND WHATNOT
-    const { loading, data:bouldersByArea } = useQuery(QUERY_BOULDERSBYAREA, {variables: {areaName: areaData.areaName}});
-    // const newArea = data?.bouldersByArea || [];
-    console.log('New Boulders by AreaX', bouldersByArea.bouldersByArea);
+    // making API call to database for boulders by area query, using area name of current area
+    const { loading, data } = useQuery(QUERY_BOULDERSBYAREA, {variables: {areaName: areaData.areaName}});
+    const bouldersByArea = data?.bouldersByArea || [];
+    //sort boulders alphabetically by name
+    bouldersByArea && console.log('BOULDERS BY AREA', bouldersByArea.boulders)
+    const arrayForSort = [...bouldersByArea.boulders]
+    const bouldersByName = arrayForSort.sort((a, b) => a.boulderName < b.boulderName ? -1 : (a.boulderName > b.boulderName ? 1 : 0))
+    bouldersByName && console.log('BOULDERS BY AREA SORTED', bouldersByName)
 
     return( 
         <> 
             <Header />
             <div id="areaHolder">
                 <div id="areaInfo">
-                    <p>Area Name: {bouldersByArea.bouldersByArea.areaName} </p>
-                    <p>Area Description: {bouldersByArea.bouldersByArea.areaDescription} </p>
-                    <p>Parking Description: {bouldersByArea.bouldersByArea.parkingDescription} </p>
+                    <p>Area Name: {bouldersByArea.areaName} </p>
+                    <p>Area Description: {bouldersByArea.areaDescription} </p>
+                    <p>Parking Description: {bouldersByArea.parkingDescription} </p>
                     <div>Search Boulders by Name</div>
                         <div id="boulderCardHolder">
-                        {bouldersByArea.bouldersByArea.boulders.map((boulder) =>
+                        {bouldersByName.map((boulder) =>
+                        // create card for each boulder. These are sorted alphabetically by name
                             (
-                                <p key={boulder._id} className='boulderCard'>{boulder.boulderName}</p>
+                                ///// START HERE /////
+                                //this should be a link to route page
+                                <p className='boulderCard'>{boulder.boulderName}</p>
                             )
                         )}
                         </div>
