@@ -43,6 +43,7 @@ const typeDefs = gql`
     type Query {
       areas: [Area!]
       boulders: [Boulder!]
+      bouldersByArea(areaName: String!): Area 
       routes: [Route!]
       users: [User]
     }

@@ -10,6 +10,9 @@ const resolvers = {
         boulders: async () => {
             return await Boulder.find().populate('routes');
           },
+        bouldersByArea: async (parent, { areaName }) => {
+          return await Area.findOne({areaName}).populate('boulders');
+        },
         routes: async () => {
             return await Route.find();
           },

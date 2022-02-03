@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from "react-router-dom";
+import { useQuery } from '@apollo/client';
 
 /* Components */
 import Header from "../../components/Header";
@@ -18,7 +19,8 @@ const AreasPage = () => {
     console.log('STATE OF AREA', areaData);
     console.log(areaData.areaName)
     
-    // START HERE - make page beautiful
+    // I THINK WHAT I NEED TO DO HERE IS NOW MAKE ANOTHER API REQUEST FOR BOULDERS IN THIS SPECIFIC AREA
+
 
     return( 
         <> 
