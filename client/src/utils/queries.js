@@ -10,9 +10,27 @@ export const QUERY_AREAS = gql`
       parkingDescription
       approachDescription
       boulders{
+        _id
         boulderName
         boulderDescription
       }
     }
   }
 `;
+
+// query data for one area and boulders within that area
+export const QUERY_BOULDERSBYAREA = gql`
+  query bouldersByArea($areaName:String!){
+    bouldersByArea(areaName:$areaName){
+      _id
+      areaName
+      areaDescription
+      parkingDescription
+      approachDescription
+      boulders{
+        boulderName
+        boulderDescription
+      }
+    }
+  }
+`

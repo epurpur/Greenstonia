@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { useQuery } from '@apollo/client';
+import { QUERY_BOULDERSBYAREA } from '../../utils/queries';
 
 /* Components */
 import Header from "../../components/Header";
@@ -14,27 +15,30 @@ import "./styles.css";
 const AreasPage = () => {
     
     // data passed in as state from RouteList component on homepage
+    // this is used for the current area's name which is accesses by areaData.areaName
     let areaData = useLocation();
     areaData = areaData.state;
-    console.log('STATE OF AREA', areaData);
-    console.log(areaData.areaName)
     
     // I THINK WHAT I NEED TO DO HERE IS NOW MAKE ANOTHER API REQUEST FOR BOULDERS IN THIS SPECIFIC AREA
-
+    // START HERE. MAKE NEW API REQUEST FOR QUERY bouldersbyarea.
+    // NEED TO INCLUDE THIS IN THE UTILS AND WHATNOT
+    const { loading, data:bouldersByArea } = useQuery(QUERY_BOULDERSBYAREA, {variables: {areaName: areaData.areaName}});
+    // const newArea = data?.bouldersByArea || [];
+    console.log('New Boulders by AreaX', bouldersByArea.bouldersByArea);
 
     return( 
         <> 
             <Header />
             <div id="areaHolder">
                 <div id="areaInfo">
-                    <p>Area Name: {areaData.areaName} </p>
-                    <p>Area Description: {areaData.areaDescription} </p>
-                    <p>Parking Description: {areaData.parkingDescription} </p>
+                    <p>Area Name: {bouldersByArea.bouldersByArea.areaName} </p>
+                    <p>Area Description: {bouldersByArea.bouldersByArea.areaDescription} </p>
+                    <p>Parking Description: {bouldersByArea.bouldersByArea.parkingDescription} </p>
                     <div>Search Boulders by Name</div>
                         <div id="boulderCardHolder">
-                        {areaData.boulders.map((boulder) =>
+                        {bouldersByArea.bouldersByArea.boulders.map((boulder) =>
                             (
-                                <p className='boulderCard'>{boulder.boulderName}</p>
+                                <p key={boulder._id} className='boulderCard'>{boulder.boulderName}</p>
                             )
                         )}
                         </div>
