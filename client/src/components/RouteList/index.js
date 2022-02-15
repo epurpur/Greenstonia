@@ -21,7 +21,7 @@ const RouteList = (props) => {
                     // create card for each climbing area. These are sorted into alphabetical order
                         (
                             // this is a link to Area Page
-                            <Link to={{pathname: `/area/${area.areaName}`,
+                            <Link key={area._id} to={{pathname: `/area/${area.areaName}`,
                                         state: {key: area._id,
                                                 areaName: area.areaName  }}}>
                                 <p key={area._id} className='areaCard'>{area.areaName}</p>

@@ -31,6 +31,13 @@ const AreasPage = () => {
     // const bouldersByName = arrayForSort.sort((a, b) => a.boulderName < b.boulderName ? -1 : (a.boulderName > b.boulderName ? 1 : 0))
     // bouldersByName && console.log('BOULDERS BY AREA SORTED', bouldersByName)
 
+    const makeBoulderCards = () => {
+
+        return bouldersByArea.boulders.map((boulder) =>
+        (
+            <p className='boulderCard'>testCard</p>
+        ))
+    }
 
 
     return( 
@@ -42,6 +49,9 @@ const AreasPage = () => {
                     <p>Area Description: {bouldersByArea && bouldersByArea.areaDescription} </p>
                     <p>Parking Description: {bouldersByArea && bouldersByArea.parkingDescription} </p>
                     <div>Search Boulders by Name</div>
+                        <div id="boulderCardHolder">
+                            {bouldersByArea && makeBoulderCards()}
+                        </div>
                         {/* <div id="boulderCardHolder">
                         {bouldersByArea && bouldersByArea.boulders.map((boulder) =>
                         // create card for each boulder. These are sorted alphabetically by name
