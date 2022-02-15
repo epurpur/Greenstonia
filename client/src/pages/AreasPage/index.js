@@ -24,21 +24,26 @@ const AreasPage = () => {
     const bouldersByArea = data?.bouldersByArea || [];
     //sort boulders alphabetically by name
     bouldersByArea && console.log('BOULDERS BY AREA', bouldersByArea.boulders)
-    const arrayForSort = [...bouldersByArea.boulders]
-    const bouldersByName = arrayForSort.sort((a, b) => a.boulderName < b.boulderName ? -1 : (a.boulderName > b.boulderName ? 1 : 0))
-    bouldersByName && console.log('BOULDERS BY AREA SORTED', bouldersByName)
+    
+    // sort climbing areas alphabetically by name
+    // need to make copy of climbingAreas array to do this
+    // const arrayForSort = [...bouldersByArea.boulders]
+    // const bouldersByName = arrayForSort.sort((a, b) => a.boulderName < b.boulderName ? -1 : (a.boulderName > b.boulderName ? 1 : 0))
+    // bouldersByName && console.log('BOULDERS BY AREA SORTED', bouldersByName)
+
+
 
     return( 
         <> 
             <Header />
             <div id="areaHolder">
                 <div id="areaInfo">
-                    <p>Area Name: {bouldersByArea.areaName} </p>
-                    <p>Area Description: {bouldersByArea.areaDescription} </p>
-                    <p>Parking Description: {bouldersByArea.parkingDescription} </p>
+                    <p>Area Name: {bouldersByArea && bouldersByArea.areaName} </p>
+                    <p>Area Description: {bouldersByArea && bouldersByArea.areaDescription} </p>
+                    <p>Parking Description: {bouldersByArea && bouldersByArea.parkingDescription} </p>
                     <div>Search Boulders by Name</div>
-                        <div id="boulderCardHolder">
-                        {bouldersByName.map((boulder) =>
+                        {/* <div id="boulderCardHolder">
+                        {bouldersByArea && bouldersByArea.boulders.map((boulder) =>
                         // create card for each boulder. These are sorted alphabetically by name
                             (
                                 ///// START HERE /////
@@ -46,11 +51,11 @@ const AreasPage = () => {
                                 <p className='boulderCard'>{boulder.boulderName}</p>
                             )
                         )}
-                        </div>
+                        </div> */}
                 </div>
                 <div id="boulderMap">
                     <MapContainer center={[37.95, -78.98]} zoom={11.25} scrollWheelZoom={false}>
-                        {/* Google Maps basemap as TileLayer */}
+                        Google Maps basemap as TileLayer
                         <TileLayer url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"/>
                             <Marker position={[37.95, -78.93]}>
                                 <Popup>
