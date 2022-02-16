@@ -28,6 +28,7 @@ export const QUERY_BOULDERSBYAREA = gql`
       parkingDescription
       approachDescription
       boulders{
+        _id
         boulderName
         boulderDescription
       }

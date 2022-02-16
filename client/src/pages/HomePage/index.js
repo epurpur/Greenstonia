@@ -25,8 +25,6 @@ const HomePage = () => {
     const areas = data?.areas || [];
 
     
-    
-
     // Getting weather info in order to pass as props to Conditions Alert and Weather Component
     // useEffect(() => {
     //     // API call to OpenWeatherMap for today's weather forecast in Charlottesville, VA
