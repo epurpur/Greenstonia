@@ -45,7 +45,7 @@ const AreasPage = () => {
                             //create card for each boulder in the area
                                 (
                                     // this is a link to the Boulder Page 
-                                    <Link key={boulder._id} to={{pathname:`/boulder/${boulder.boulderName}`}}>
+                                    <Link key={boulder._id} to={{pathname:`/boulder/${boulder.boulderName}`, state: {boulderID: boulder._id, boulderName: boulder.boulderName }}}>
                                         <p key={boulder._id} className='boulderCard'>{boulder.boulderName}</p>
                                     </Link>
                                 )

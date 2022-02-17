@@ -35,3 +35,21 @@ export const QUERY_BOULDERSBYAREA = gql`
     }
   }
 `
+
+// query data for one boulder and routes within that boulder
+export const QUERY_ROUTESBYBOULDER = gql`
+  query routesByBoulder($boulderID: ID!){
+    routesByBoulder(boulderID:$boulderID){
+      _id
+      boulderName
+      routes{
+        _id
+        routeName
+        routeDescription
+        firstAscent
+        routeGrade
+        routeQuality
+      }
+    }
+  }
+`
