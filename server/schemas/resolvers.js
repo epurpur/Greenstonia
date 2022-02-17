@@ -15,7 +15,10 @@ const resolvers = {
         },
         routes: async () => {
             return await Route.find();
-          },
+        },
+        routesByBoulder: async (parent, { boulderID }) => {
+          return await Boulder.findOne({ _id: boulderID }).populate('routes');
+        },
         users: async () => {
             return User.find();
           },

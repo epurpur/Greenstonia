@@ -45,6 +45,7 @@ const typeDefs = gql`
       boulders: [Boulder!]
       bouldersByArea(areaName: String!): Area 
       routes: [Route!]
+      routesByBoulder(boulderID: ID!): Boulder
       users: [User]
     }
 

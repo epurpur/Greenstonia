@@ -46,11 +46,9 @@ function App() {
               <ContactPage />
             </Route>
             <Route exact path="/area/:areaName">
-            {/* This will eventually be changed to something like "/area/:areaName" */}
               <AreasPage />
             </Route>
-            <Route exact path="/boulder">
-            {/* This will eventually be changed to something like "/boulder/:boulderName" */}
+            <Route exact path="/boulder/:boulderName">
               <BoulderPage />
             </Route>
             <Route exact path="/routes">

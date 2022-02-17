@@ -30,7 +30,6 @@ const AreasPage = () => {
     // need to make copy of climbingAreas array to do this
     const arrayForSort = boulders && [...boulders]
     const bouldersSorted = arrayForSort && arrayForSort.sort((a, b) => a.boulderName < b.boulderName ? -1 : (a.boulderName > b.boulderName ? 1 : 0))
-    console.log('bouldersSorted', bouldersSorted)
 
     return( 
         <> 
@@ -45,8 +44,8 @@ const AreasPage = () => {
                             {bouldersSorted && bouldersSorted.map((boulder) =>
                             //create card for each boulder in the area
                                 (
-                                    // this is a link to the Boulder Page
-                                    <Link key={boulder._id}>
+                                    // this is a link to the Boulder Page 
+                                    <Link key={boulder._id} to={'/home'}>
                                         <p key={boulder._id} className='boulderCard'>{boulder.boulderName}</p>
                                     </Link>
                                 )
