@@ -35,10 +35,17 @@ const BoulderPage = () => {
     return (
         <>            
             <Header />
-            <h2> {routesByBoulder && routesByBoulder.boulderName} </h2>
-            <p> {routesByBoulder && routesByBoulder.boulderDescription} </p>
-            <BouldersMap />
-            <BouldersList />
+            <div id="boulderInfoHolder">
+                <div id='boulderInfo'>
+                    <h2> {routesByBoulder && routesByBoulder.boulderName} </h2>
+                    <p> {routesByBoulder && routesByBoulder.boulderDescription} </p>
+                    <div>Search Routes by Name</div>
+                        <div id='routeCardHolder'>
+                            Add Route Cards here
+                        </div>
+                </div>
+                <BouldersMap />
+            </div>
             <Footer />
         </>
     )
