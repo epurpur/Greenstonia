@@ -13,7 +13,7 @@ const BoulderPage = () => {
     return (
         <>            
             <Header />
-            <h2> Mustang Boulder Area </h2>
+            <h2> Mustang Boulder </h2>
             <p> Area description </p>
             <BouldersMap />
             <BouldersList />
