@@ -42,6 +42,7 @@ export const QUERY_ROUTESBYBOULDER = gql`
     routesByBoulder(boulderID:$boulderID){
       _id
       boulderName
+      boulderDescription
       routes{
         _id
         routeName

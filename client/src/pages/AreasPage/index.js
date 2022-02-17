@@ -27,7 +27,7 @@ const AreasPage = () => {
     
     // need to wait for API call for boulders array to exist
     // sort climbing areas alphabetically by name
-    // need to make copy of climbingAreas array to do this
+    // need to make copy of bouldersByArea array to do this
     const arrayForSort = boulders && [...boulders]
     const bouldersSorted = arrayForSort && arrayForSort.sort((a, b) => a.boulderName < b.boulderName ? -1 : (a.boulderName > b.boulderName ? 1 : 0))
 
