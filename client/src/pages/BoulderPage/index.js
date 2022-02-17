@@ -41,7 +41,13 @@ const BoulderPage = () => {
                     <p> {routesByBoulder && routesByBoulder.boulderDescription} </p>
                     <div>Search Routes by Name</div>
                         <div id='routeCardHolder'>
-                            Add Route Cards here
+                            {routesSorted && routesSorted.map((route) =>
+                            // create card for each route in the area
+                                (
+                                    // START HERE: this will be a link to a single route page
+                                    <p key={route._id} className='routeCard'>{route.routeName}</p>
+                                )
+                            )}
                         </div>
                 </div>
                 <BouldersMap />
