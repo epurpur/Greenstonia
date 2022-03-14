@@ -6,7 +6,6 @@ import { QUERY_ROUTESBYBOULDER } from '../../utils/queries';
 /* Components */
 import Header from "../../components/Header";
 import BouldersMap from "../../components/BouldersMap";
-import BouldersList from '../../components/BouldersList';
 import Footer from "../../components/Footer";
 
 /* CSS styles */
@@ -44,8 +43,9 @@ const BoulderPage = () => {
                             {routesSorted && routesSorted.map((route) =>
                             // create card for each route in the area
                                 (
-                                    // START HERE: this will be a link to a single route page
-                                    <p key={route._id} className='routeCard'>{route.routeName}</p>
+                                    <Link key={route._id} to={{pathname:`/singleRoute/${route.routeName}`, state: {routeID: route._id, firstAscent: route.firstAscent, routeDescription: route.routeDescription, routeGrade: route.routeGrade, routeName: route.routeName, routeQuality: route.routeQuality}}}>
+                                        <p key={route._id} className='routeCard'>{route.routeName}</p>
+                                    </Link>
                                 )
                             )}
                         </div>

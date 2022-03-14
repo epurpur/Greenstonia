@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, useLocation } from "react-router-dom";
 
 /* Components */
 import Header from "../../components/Header";
@@ -12,6 +13,10 @@ import star_img from "../../images/star.png";
 
 
 const SingleRoutePage = () => {
+
+    let singleRouteData = useLocation();
+    console.log('SINGLE ROUTE DATA', singleRouteData);
+
     return (
         <>
             <Header />

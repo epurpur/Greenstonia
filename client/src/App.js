@@ -51,11 +51,7 @@ function App() {
             <Route exact path="/boulder/:boulderName">
               <BoulderPage />
             </Route>
-            <Route exact path="/routes">
-            {/* This will eventually be changed to something like "/routes/:routeName" */}
-              <RoutesPage />
-            </Route>
-            <Route exact path="/singleRoute">
+            <Route exact path="/singleRoute/:routeName">
             {/* This will eventually be changed to something like "/singleRoute/:singleRouteName" */}
               <SingleRoutePage />
             </Route>
