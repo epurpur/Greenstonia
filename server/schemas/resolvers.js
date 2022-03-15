@@ -43,8 +43,8 @@ const resolvers = {
     
             return { token, user };
         },
-        addArea: async (parent, { areaName, areaDescription, parkingDescription, approachDescription }) => {
-            return await Area.create({ areaName, areaDescription, parkingDescription, approachDescription });
+        addArea: async (parent, { areaName, areaDescription, parkingDescription, approachDescription, latitude, longitude }) => {
+            return await Area.create({ areaName, areaDescription, parkingDescription, approachDescription, latitude, longitude });
         },
         addBoulder: async (parent, { boulderName, boulderDescription, areaID }) => {
             const boulder = await Boulder.create({ boulderName, boulderDescription, areaID });

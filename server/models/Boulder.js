@@ -9,37 +9,24 @@ const boulderSchema = new Schema({
     type: String,
     required: true,
   },
+  latitude: {
+      type: String,
+      required: true,
+  },
+  longitude: {
+      type: String,
+      required: true,
+  },
   area: {
-      type: Schema.Types.ObjectId,
-      ref: 'Area'
-    },
+    type: Schema.Types.ObjectId,
+    ref: 'Area'
+  },
   routes: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Route'
     }
   ]
-
-//   location: {
-//     type: {
-//         type: String,
-//         enum: ['Point'],
-//         required: true,
-//     },
-//     coordinates: {
-//         type: [Number],
-//         required: true,
-//     }
-//   },
-//   routes: [
-//     {
-//       type: Schema.Types.ObjectId,
-//       ref: 'Route',
-//     },
-//     ],  
-// photo: {
-
-// }
 });
 
 const Boulder = model('Boulder', boulderSchema);

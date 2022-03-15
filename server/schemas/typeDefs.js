@@ -8,6 +8,8 @@ const typeDefs = gql`
       areaDescription: String!
       parkingDescription: String!
       approachDescription: String!
+      latitude: String!
+      longitude: String!
       boulders: [Boulder]
     }
 
@@ -16,6 +18,8 @@ const typeDefs = gql`
       boulderName: String!
       boulderDescription: String!
       areaID: Area!
+      latitude: String!
+      longitude: String!
       routes: [Route]
     }
 

@@ -17,23 +17,20 @@ const areaSchema = new Schema({
     type: String,
     required: true,
   },
+  latitude: {
+    type: String,
+    required: true,
+  },
+  longitude: {
+    type: String,
+    required: true,
+  },
   boulders: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Boulder'
     }
-  ]
-//   location: {
-//     type: {
-//         type: String,
-//         enum: ['Point'],
-//         required: true,
-//     },
-//     coordinates: {
-//         type: [Number],
-//         required: true,
-//     }
-//   },  
+  ],
 });
 
 const Area = model('Area', areaSchema);
