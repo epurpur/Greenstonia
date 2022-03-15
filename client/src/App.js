@@ -12,7 +12,6 @@ import HomePage from "./pages/HomePage";
 import HistoryPage from "./pages/HistoryPage";
 import ContactPage from "./pages/ContactPage";
 import BoulderPage from "./pages/BoulderPage";
-import RoutesPage from "./pages/RoutesPage";
 import SingleRoutePage from "./pages/SingleRoutePage";
 import AreasPage from "./pages/AreasPage";
 
