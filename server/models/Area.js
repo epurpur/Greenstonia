@@ -19,11 +19,9 @@ const areaSchema = new Schema({
   },
   latitude: {
     type: String,
-    required: true,
   },
   longitude: {
     type: String,
-    required: true,
   },
   boulders: [
     {

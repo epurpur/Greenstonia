@@ -11,11 +11,9 @@ const boulderSchema = new Schema({
   },
   latitude: {
       type: String,
-      required: true,
   },
   longitude: {
       type: String,
-      required: true,
   },
   area: {
     type: Schema.Types.ObjectId,
