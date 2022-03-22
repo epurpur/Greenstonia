@@ -46,8 +46,8 @@ const resolvers = {
         addArea: async (parent, { areaName, areaDescription, parkingDescription, approachDescription, latitude, longitude }) => {
             return await Area.create({ areaName, areaDescription, parkingDescription, approachDescription, latitude, longitude });
         },
-        addBoulder: async (parent, { boulderName, boulderDescription, areaID }) => {
-            const boulder = await Boulder.create({ boulderName, boulderDescription, areaID });
+        addBoulder: async (parent, { boulderName, boulderDescription, areaID, latitude, longitude }) => {
+            const boulder = await Boulder.create({ boulderName, boulderDescription, areaID, latitude, longitude });
 
             await Area.findOneAndUpdate(
               { _id: areaID },
