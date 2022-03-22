@@ -10,7 +10,8 @@ import "./styles.css";
 const AreasMap = (props) => {
 
     console.log('FROM AREAS MAP')
-    console.log(props.areas)
+    const areas = props.areas
+    console.log('Areas', areas)   
 
     return (
         <>
@@ -18,12 +19,21 @@ const AreasMap = (props) => {
             <MapContainer center={[37.95, -78.98]} zoom={11.25} scrollWheelZoom={false}>
                 {/* Google Maps basemap as TileLayer */}
                 <TileLayer url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"/>
-                  <Marker position={[37.95, -78.93]}>
+                  {/* Add marker with popups for each location here */}
+                  {areas.map((area) => 
+                    (<Marker position={[parseFloat(area.latitude), parseFloat(area.longitude)]}>
+                        <Popup>
+                            <h2>{area.areaName}</h2>
+                            <Link to={{pathname: `/area/${area.areaName}`, state: {key: area._id, areaName: area.areaName  }}}> Click to view area </Link>
+                        </Popup>
+                    </Marker>)
+                  )}
+                  {/* <Marker position={[37.95, -78.93]}>
                     <Popup>
                         <h2>Mustang Boulder</h2>
                         <Link to="/boulder">Click to view area</Link>
                     </Popup>
-                  </Marker>
+                  </Marker> */}
             </MapContainer>
         </>
     )
