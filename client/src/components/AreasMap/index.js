@@ -9,6 +9,9 @@ import "./styles.css";
 
 const AreasMap = (props) => {
 
+    console.log('FROM AREAS MAP')
+    console.log(props.areas)
+
     return (
         <>
             <div id='mapTitleText'>Search Areas by Map</div>

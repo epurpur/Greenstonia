@@ -9,10 +9,14 @@ export const QUERY_AREAS = gql`
       areaDescription
       parkingDescription
       approachDescription
+      latitude
+      longitude
       boulders{
         _id
         boulderName
         boulderDescription
+        latitude
+        longitude
       }
     }
   }
