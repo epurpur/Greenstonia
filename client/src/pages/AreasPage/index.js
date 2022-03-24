@@ -6,8 +6,7 @@ import { QUERY_BOULDERSBYAREA } from '../../utils/queries';
 /* Components */
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-
+import BouldersMap from '../../components/BouldersMap';
 
 /* CSS styles */
 import "./styles.css";
@@ -31,8 +30,6 @@ const AreasPage = () => {
     const arrayForSort = boulders && [...boulders]
     const bouldersSorted = arrayForSort && arrayForSort.sort((a, b) => a.boulderName < b.boulderName ? -1 : (a.boulderName > b.boulderName ? 1 : 0))
 
-    console.log('BOULDERS SORTED')
-
     return( 
         <> 
             <Header />
@@ -47,38 +44,20 @@ const AreasPage = () => {
                             //create card for each boulder in the area
                                 (
                                     // this is a link to the Boulder Page 
-                                    <Link key={boulder._id} to={{pathname:`/boulder/${boulder.boulderName}`, state: {boulderID: boulder._id, boulderName: boulder.boulderName }}}>
+                                    <Link key={boulder._id} to={{pathname:`/boulder/${boulder.boulderName}`, state: {boulderID: boulder._id, boulderName: boulder.boulderName, latitude: boulder.latitude, longitude: boulder.longitude }}}>
                                         <p key={boulder._id} className='boulderCard'>{boulder.boulderName}</p>
                                     </Link>
                                 )
                             )}
-                        
                         </div>
                 </div>
                 <div id="boulderMap">
                     <p id="boulderMapTitle">Search boulders by map</p>
                     <div>
-                        {/* Need to wait for bouldersSorted to exist before drawing map */}
+                        {/* Need to wait for bouldersSorted to exist before rendering boulders map */}
                         {bouldersSorted &&
-
-                            <MapContainer center={[bouldersSorted[0].latitude, bouldersSorted[0].longitude]} zoom={14} scrollWheelZoom={false}>
-                            Google Maps basemap as TileLayer
-                            <TileLayer url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"/>
-                                {bouldersSorted.map((boulder) => 
-                                    (
-                                        //create marker w/ popup for each boulder in this area
-                                        <Marker position={[parseFloat(boulder.latitude), parseFloat(boulder.longitude)]}>
-                                            <Popup>
-                                                <h2>{boulder.boulderName}</h2>
-                                                <Link key={boulder._id} to={{pathname:`/boulder/${boulder.boulderName}`, state: {boulderID: boulder._id, boulderName: boulder.boulderName }}}> Click to view boulder info </Link>
-                                            </Popup>
-                                        </Marker>
-                                    )
-                                )}
-                            </MapContainer>
-                            
+                            <BouldersMap bouldersData={bouldersSorted}/>
                         }
-
                     </div>
                 </div>
             </div>

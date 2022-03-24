@@ -14,14 +14,15 @@ import "./styles.css";
 const BoulderPage = () => {
 
     // data passed in as state from AreasPage component
-    // this is used for the current boulder's name and id number which is accessed by boulderData.state
-    let boulderData = useLocation();
-    boulderData = boulderData.state;
+    // this is used for the current boulder's name and id number which is accessed by bouldersData.state
+    let bouldersData = useLocation();
+    bouldersData = bouldersData.state;
+    console.log('BOULDERS DATA XX')
+    console.log(bouldersData)
 
     // make API call to database for routes for this particular boulder, using ID of current boulder
-    const { loading, data } = useQuery(QUERY_ROUTESBYBOULDER, {variables: {boulderID: boulderData.boulderID}});
+    const { loading, data } = useQuery(QUERY_ROUTESBYBOULDER, {variables: {boulderID: bouldersData.boulderID}});
     const routesByBoulder = data?.routesByBoulder || [];
-    console.log('RTS BY BOULDER', routesByBoulder);
     // separate out just the routes
     const routes = routesByBoulder && routesByBoulder.routes;
     
@@ -50,7 +51,7 @@ const BoulderPage = () => {
                             )}
                         </div>
                 </div>
-                <BouldersMap />
+            {/* <BouldersMap bouldersData={bouldersData}/> */}
             </div>
             <Footer />
         </>

@@ -1,34 +1,38 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 /* Components */
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { Link } from 'react-router-dom';
 
 /* CSS styles */
 import "./styles.css";
 
-const BouldersMap = () => {
+const BouldersMap = (props) => {
+
+    // START HERE. I HAVE BEEN UNABLE TO USE THIS COMPONENT IN THE MAP FOR BOTH THE AreasPage and BoulderPage COMPONENTS
+
+    console.log('FROM BOULDERS MAP COMPONENT')
+    let bouldersData = props.bouldersData;
+    console.log(bouldersData)
+
     return (
         <>
-            <div id="totalContainer">
-                <div id='mapTitleText'>Search Boulders by Map</div>
-                <MapContainer center={[37.95, -78.98]} zoom={10.5} scrollWheelZoom={false}>
+            {/* Set center of map to location of first boulder in bouldersData */}
+            <MapContainer center={[bouldersData[0].latitude, bouldersData[0].longitude]} zoom={14} scrollWheelZoom={false}>
                     {/* Google Maps basemap as TileLayer */}
                     <TileLayer url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"/>
-                    <Marker position={[37.95, -78.88]}>
-                        <Popup>
-                            <h2>Incredibles Boulder</h2>
-                            <Link to="/routes">Click to view routes</Link>
-                        </Popup>
-                    </Marker>
-                    <Marker position={[37.95, -78.98]}>
-                        <Popup>
-                            <h2>Mustang Boulder</h2>
-                            <Link to="/routes">Click to view routes</Link>
-                        </Popup>
-                    </Marker>
-                </MapContainer>    
-            </div>    
+                    {bouldersData.map((boulder) => 
+                        (
+                            //create marker w/ popup for each boulder in this area
+                            <Marker position={[parseFloat(boulder.latitude), parseFloat(boulder.longitude)]}>
+                                <Popup>
+                                    <h2>{boulder.boulderName}</h2>
+                                    <Link key={boulder._id} to={{pathname:`/boulder/${boulder.boulderName}`, state: {boulderID: boulder._id, boulderName: boulder.boulderName, latitude: boulder.latitude, longitude: boulder.longitude }}}> Click to view boulder info </Link>
+                                </Popup>
+                            </Marker>
+                        )
+                    )}
+            </MapContainer>
         </>
     )
 }
