@@ -64,7 +64,7 @@ const AreasPage = () => {
                             <MapContainer center={[bouldersSorted[0].latitude, bouldersSorted[0].longitude]} zoom={14} scrollWheelZoom={false}>
                             Google Maps basemap as TileLayer
                             <TileLayer url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"/>
-                                {bouldersSorted && bouldersSorted.map((boulder) => 
+                                {bouldersSorted.map((boulder) => 
                                     (
                                         //create marker w/ popup for each boulder in this area
                                         <Marker position={[parseFloat(boulder.latitude), parseFloat(boulder.longitude)]}>
