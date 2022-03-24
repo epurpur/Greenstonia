@@ -25,7 +25,7 @@ const AreasMap = (props) => {
                         <Marker position={[parseFloat(area.latitude), parseFloat(area.longitude)]}>
                             <Popup>
                                 <h2>{area.areaName}</h2>
-                                <Link to={{pathname: `/area/${area.areaName}`, state: {key: area._id, areaName: area.areaName  }}}> Click to view area info </Link>
+                                <Link key={area._id} to={{pathname: `/area/${area.areaName}`, state: {key: area._id, areaName: area.areaName  }}}> Click to view area info </Link>
                             </Popup>
                         </Marker>
                     )

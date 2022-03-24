@@ -32,7 +32,6 @@ const AreasPage = () => {
     const bouldersSorted = arrayForSort && arrayForSort.sort((a, b) => a.boulderName < b.boulderName ? -1 : (a.boulderName > b.boulderName ? 1 : 0))
 
     console.log('BOULDERS SORTED')
-    console.log(bouldersSorted);
 
     return( 
         <> 
@@ -59,7 +58,10 @@ const AreasPage = () => {
                 <div id="boulderMap">
                     <p id="boulderMapTitle">Search boulders by map</p>
                     <div>
-                        <MapContainer center={[37.95, -78.98]} zoom={11.25} scrollWheelZoom={false}>
+                        {/* Need to wait for bouldersSorted to exist before drawing map */}
+                        {bouldersSorted &&
+
+                            <MapContainer center={[bouldersSorted[0].latitude, bouldersSorted[0].longitude]} zoom={14} scrollWheelZoom={false}>
                             Google Maps basemap as TileLayer
                             <TileLayer url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"/>
                                 {bouldersSorted && bouldersSorted.map((boulder) => 
@@ -68,12 +70,15 @@ const AreasPage = () => {
                                         <Marker position={[parseFloat(boulder.latitude), parseFloat(boulder.longitude)]}>
                                             <Popup>
                                                 <h2>{boulder.boulderName}</h2>
-                                                <Link to={{pathname:`/boulder/${boulder.boulderName}`, state: {boulderID: boulder._id, boulderName: boulder.boulderName }}}> Click to view boulder info </Link>
+                                                <Link key={boulder._id} to={{pathname:`/boulder/${boulder.boulderName}`, state: {boulderID: boulder._id, boulderName: boulder.boulderName }}}> Click to view boulder info </Link>
                                             </Popup>
                                         </Marker>
                                     )
                                 )}
-                        </MapContainer>
+                            </MapContainer>
+                            
+                        }
+
                     </div>
                 </div>
             </div>
