@@ -42,7 +42,7 @@ const AreasPage = () => {
                     <p>Area Name: {bouldersByArea && bouldersByArea.areaName} </p>
                     <p>Area Description: {bouldersByArea && bouldersByArea.areaDescription} </p>
                     <p>Parking Description: {bouldersByArea && bouldersByArea.parkingDescription} </p>
-                    <div>Search Boulders in this area by Name</div>
+                    <div>Search Boulders by Name</div>
                         <div id="boulderCardHolder">
                             {bouldersSorted && bouldersSorted.map((boulder) =>
                             //create card for each boulder in the area
@@ -57,17 +57,22 @@ const AreasPage = () => {
                         </div>
                 </div>
                 <div id="boulderMap">
-                    <p id="boulderMapTitle">Search boulders in this area on the map</p>
+                    <p id="boulderMapTitle">Search boulders by map</p>
                     <div>
                         <MapContainer center={[37.95, -78.98]} zoom={11.25} scrollWheelZoom={false}>
                             Google Maps basemap as TileLayer
                             <TileLayer url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"/>
-                                <Marker position={[37.95, -78.93]}>
-                                    <Popup>
-                                        <h2>Mustang Boulder</h2>
-                                        <Link to="/boulder">Click to view area</Link>
-                                    </Popup>
-                                </Marker>
+                                {bouldersSorted && bouldersSorted.map((boulder) => 
+                                    (
+                                        //create marker w/ popup for each boulder in this area
+                                        <Marker position={[parseFloat(boulder.latitude), parseFloat(boulder.longitude)]}>
+                                            <Popup>
+                                                <h2>{boulder.boulderName}</h2>
+                                                <Link to={{pathname:`/boulder/${boulder.boulderName}`, state: {boulderID: boulder._id, boulderName: boulder.boulderName }}}> Click to view boulder info </Link>
+                                            </Popup>
+                                        </Marker>
+                                    )
+                                )}
                         </MapContainer>
                     </div>
                 </div>
