@@ -35,6 +35,8 @@ export const QUERY_BOULDERSBYAREA = gql`
         _id
         boulderName
         boulderDescription
+        latitude
+        longitude
       }
     }
   }

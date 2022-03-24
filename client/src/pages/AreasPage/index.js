@@ -31,6 +31,9 @@ const AreasPage = () => {
     const arrayForSort = boulders && [...boulders]
     const bouldersSorted = arrayForSort && arrayForSort.sort((a, b) => a.boulderName < b.boulderName ? -1 : (a.boulderName > b.boulderName ? 1 : 0))
 
+    console.log('BOULDERS SORTED')
+    console.log(bouldersSorted);
+
     return( 
         <> 
             <Header />
