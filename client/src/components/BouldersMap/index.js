@@ -9,8 +9,6 @@ import "./styles.css";
 
 const BouldersMap = (props) => {
 
-    // START HERE. I HAVE BEEN UNABLE TO USE THIS COMPONENT IN THE MAP FOR BOTH THE AreasPage and BoulderPage COMPONENTS
-
     console.log('FROM BOULDERS MAP COMPONENT')
     let bouldersData = props.bouldersData;
     console.log(bouldersData)

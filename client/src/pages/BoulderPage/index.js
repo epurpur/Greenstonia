@@ -5,7 +5,6 @@ import { QUERY_ROUTESBYBOULDER } from '../../utils/queries';
 
 /* Components */
 import Header from "../../components/Header";
-import BouldersMap from "../../components/BouldersMap";
 import Footer from "../../components/Footer";
 
 /* CSS styles */
@@ -51,7 +50,13 @@ const BoulderPage = () => {
                             )}
                         </div>
                 </div>
-            {/* <BouldersMap bouldersData={bouldersData}/> */}
+                <div>
+
+                </div>
+                <div id="imgBox">
+                    Boulder Images go here
+                </div>
+
             </div>
             <Footer />
         </>
