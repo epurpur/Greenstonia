@@ -17,6 +17,9 @@ const AreasPage = () => {
     // this is used for the current area's name which is accesses by areaData.areaName
     let areaData = useLocation();
     areaData = areaData.state;
+
+    // console.log('data in AREAS PAGE')
+    // console.log(areaData)
     
     // making API call to database for boulders by area query, using area name of current area
     const { loading, data } = useQuery(QUERY_BOULDERSBYAREA, {variables: {areaName: areaData.areaName}});
@@ -35,6 +38,7 @@ const AreasPage = () => {
             <Header />
             <div id="areaHolder">
                 <div id="areaInfo">
+                    <p id="breadcrumb">Go Back: <Link to='/home'>Home Page</Link></p>
                     <p>Area Name: {bouldersByArea && bouldersByArea.areaName} </p>
                     <p>Area Description: {bouldersByArea && bouldersByArea.areaDescription} </p>
                     <p>Parking Description: {bouldersByArea && bouldersByArea.parkingDescription} </p>
@@ -44,7 +48,7 @@ const AreasPage = () => {
                             //create card for each boulder in the area
                                 (
                                     // this is a link to the Boulder Page 
-                                    <Link key={boulder._id} to={{pathname:`/boulder/${boulder.boulderName}`, state: {boulderID: boulder._id, boulderName: boulder.boulderName, latitude: boulder.latitude, longitude: boulder.longitude }}}>
+                                    <Link key={boulder._id} to={{pathname:`/boulder/${boulder.boulderName}`, state: {key: boulder._id, boulderID: boulder._id, boulderName: boulder.boulderName, latitude: boulder.latitude, longitude: boulder.longitude, areaId: areaData.key, areaName: areaData.areaName }}}>
                                         <p key={boulder._id} className='boulderCard'>{boulder.boulderName}</p>
                                     </Link>
                                 )

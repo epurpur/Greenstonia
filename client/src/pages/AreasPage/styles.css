@@ -3,6 +3,10 @@
     --background: rgb(181, 227, 155);
 }
 
+#breadcrumb {
+    font-size: 13px;
+}
+
 #areaHolder {
     display: flex;
     flex-direction: row;
