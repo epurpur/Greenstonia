@@ -17,10 +17,11 @@ import AreasPage from "./pages/AreasPage";
 
 /* Components */
 
+
 /* Apollo Setup */
 const client = new ApolloClient({
-  uri: "http://localhost:3001/graphql",        //short for http://localhost:3001/graphql
-  cache: new InMemoryCache(),
+    uri: "http://localhost:3001/graphql",        //short for http://localhost:3001/graphql
+    cache: new InMemoryCache(),
 });
 
 function App() {
@@ -51,14 +52,13 @@ function App() {
               <BoulderPage />
             </Route>
             <Route exact path="/singleRoute/:routeName">
-            {/* This will eventually be changed to something like "/singleRoute/:singleRouteName" */}
               <SingleRoutePage />
             </Route>
-
           </Switch>
         </div>
 
       </Router>
+
     </ApolloProvider>
   );
 }
