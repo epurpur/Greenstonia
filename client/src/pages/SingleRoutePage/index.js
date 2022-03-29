@@ -21,6 +21,9 @@ const SingleRoutePage = () => {
     return (
         <>
             <Header />
+            <p id="breadcrumb">Go Back:  
+                <Link to={{pathname: `/boulder/${singleRouteData.boulderName}`, state: {key: singleRouteData.boulderID, boulderID: singleRouteData.boulderID, areaName: singleRouteData.areaName }}}>{singleRouteData.boulderName}</Link>
+            </p>
             <h2> {singleRouteData.routeName} </h2>
             <div> Grade: {singleRouteData.routeGrade} </div>
             <div> Quality: {singleRouteData.routeQuality} stars </div>

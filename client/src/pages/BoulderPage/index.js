@@ -16,8 +16,8 @@ const BoulderPage = () => {
     // this is used for the current boulder's name and id number which is accessed by bouldersData.state
     let bouldersData = useLocation();
     bouldersData = bouldersData.state;
-    // console.log('BOULDERS DATA XX')
-    // console.log(bouldersData)
+    console.log('BOULDERS DATA XX')
+    console.log(bouldersData)
 
     // make API call to database for routes for this particular boulder, using ID of current boulder
     const { loading, data } = useQuery(QUERY_ROUTESBYBOULDER, {variables: {boulderID: bouldersData.boulderID}});
@@ -44,7 +44,16 @@ const BoulderPage = () => {
                             {routesSorted && routesSorted.map((route) =>
                             // create card for each route in the area
                                 (
-                                    <Link key={route._id} to={{pathname:`/singleRoute/${route.routeName}`, state: {routeID: route._id, firstAscent: route.firstAscent, routeDescription: route.routeDescription, routeGrade: route.routeGrade, routeName: route.routeName, routeQuality: route.routeQuality}}}>
+                                    <Link key={route._id} to={{pathname:`/singleRoute/${route.routeName}`, state: {key: route._id, 
+                                                                                                                        routeID: route._id, 
+                                                                                                                        firstAscent: route.firstAscent, 
+                                                                                                                        routeDescription: route.routeDescription, 
+                                                                                                                        routeGrade: route.routeGrade, 
+                                                                                                                        routeName: route.routeName, 
+                                                                                                                        routeQuality: route.routeQuality, 
+                                                                                                                        boulderID: bouldersData.boulderID,
+                                                                                                                        boulderName: bouldersData.boulderName,
+                                                                                                                        areaName: bouldersData.areaName}}}>
                                         <p key={route._id} className='routeCard'>{route.routeName}</p>
                                     </Link>
                                 )

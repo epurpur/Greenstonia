@@ -18,8 +18,8 @@ const AreasPage = () => {
     let areaData = useLocation();
     areaData = areaData.state;
 
-    // console.log('data in AREAS PAGE')
-    // console.log(areaData)
+    console.log('data in AREAS PAGE')
+    console.log(areaData)
     
     // making API call to database for boulders by area query, using area name of current area
     const { loading, data } = useQuery(QUERY_BOULDERSBYAREA, {variables: {areaName: areaData.areaName}});
@@ -48,7 +48,13 @@ const AreasPage = () => {
                             //create card for each boulder in the area
                                 (
                                     // this is a link to the Boulder Page 
-                                    <Link key={boulder._id} to={{pathname:`/boulder/${boulder.boulderName}`, state: {key: boulder._id, boulderID: boulder._id, boulderName: boulder.boulderName, latitude: boulder.latitude, longitude: boulder.longitude, areaId: areaData.key, areaName: areaData.areaName }}}>
+                                    <Link key={boulder._id} to={{pathname:`/boulder/${boulder.boulderName}`, state: {key: boulder._id, 
+                                                                                                                    boulderID: boulder._id, 
+                                                                                                                    boulderName: boulder.boulderName, 
+                                                                                                                    latitude: boulder.latitude, 
+                                                                                                                    longitude: boulder.longitude, 
+                                                                                                                    areaId: areaData.key, 
+                                                                                                                    areaName: areaData.areaName }}}>
                                         <p key={boulder._id} className='boulderCard'>{boulder.boulderName}</p>
                                     </Link>
                                 )
