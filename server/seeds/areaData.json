@@ -3,12 +3,16 @@
         "areaName": "Area A",
         "areaDescription": "Area Description",
         "parkingDescription": "Parking Description",
-        "approachDescription": "Approach Description"
+        "approachDescription": "Approach Description",
+        "latitude": 37.9639,
+        "longitude": -78.9073
     },
     {
         "areaName": "Area B",
         "areaDescription": "AreaB Description",
         "parkingDescription": "ParkingB Description",
-        "approachDescription": "ApproachB Description"
+        "approachDescription": "ApproachB Description",
+        "latitude": 37.9072,
+        "longitude": -79.0524
     }
 ]
