@@ -2,9 +2,6 @@ const { AuthenticationError } = require('apollo-server-express');
 const { Area, Boulder, Route, User } = require('../models');
 const { signToken } = require('../utils/auth');
 
-const path = require('path');
-const fs = require('fs');
-
 const resolvers = {
     Query: {
         areas: async () => {

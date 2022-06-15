@@ -14,6 +14,7 @@ import ContactPage from "./pages/ContactPage";
 import BoulderPage from "./pages/BoulderPage";
 import SingleRoutePage from "./pages/SingleRoutePage";
 import AreasPage from "./pages/AreasPage";
+import UploadForm from "./pages/UploadForm";
 
 /* Components */
 
@@ -53,6 +54,9 @@ function App() {
             </Route>
             <Route exact path="/singleRoute/:routeName">
               <SingleRoutePage />
+            </Route>
+            <Route exact path="/uploadForm">
+              <UploadForm />
             </Route>
           </Switch>
         </div>

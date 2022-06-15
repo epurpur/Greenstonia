@@ -44,10 +44,6 @@ const typeDefs = gql`
       user: User
     }
 
-    type File {
-      url: String!
-    }
-
     type Query {
       areas: [Area!]
       boulders: [Boulder!]
@@ -63,7 +59,6 @@ const typeDefs = gql`
       addBoulder(boulderName: String!, boulderDescription: String!, areaID: String!, latitude: String, longitude: String): Boulder
       addRoute(routeName: String!, routeDescription: String!, firstAscent: String, routeGrade: String!, routeQuality: Int, boulderID: String!): Route
       addUser(username: String!, password: String!): Auth
-      uploadFile(file: Upload!): File!
     } 
 `;
 

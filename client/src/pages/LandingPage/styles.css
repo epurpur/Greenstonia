@@ -12,7 +12,7 @@
     padding: 0;
 }
 
-img {
+#landingPage img {
     position: absolute;
     z-index: -1;
     width: 100%;
