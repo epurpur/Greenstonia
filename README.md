@@ -1,3 +1,3 @@
 # Greenstonia
 
-repo for Greenstonia, Climbing Guide to Central Virginia bouldering
+MountainProject-esque guide to climbing in central Virginia.
