@@ -9,9 +9,14 @@ import "./styles.css";
 
 const BouldersMap = (props) => {
 
-    console.log('FROM BOULDERS MAP COMPONENT')
     let bouldersData = props.bouldersData;
-    console.log(bouldersData)
+    let areaData = props.areaData
+
+    // console.log('DATA FROM BOULDERSMAP COMPONENT');
+    // console.log("Boulders Data", bouldersData);
+    // console.log("Area Data", areaData);
+
+
 
     return (
         <>
@@ -25,7 +30,12 @@ const BouldersMap = (props) => {
                             <Marker position={[parseFloat(boulder.latitude), parseFloat(boulder.longitude)]}>
                                 <Popup>
                                     <h2>{boulder.boulderName}</h2>
-                                    <Link key={boulder._id} to={{pathname:`/boulder/${boulder.boulderName}`, state: {boulderID: boulder._id, boulderName: boulder.boulderName, latitude: boulder.latitude, longitude: boulder.longitude }}}> Click to view boulder info </Link>
+                                    <Link key={boulder._id} to={{pathname:`/boulder/${boulder.boulderName}`, state: {boulderID: boulder._id, 
+                                                                                                                    boulderName: boulder.boulderName, 
+                                                                                                                    latitude: boulder.latitude, 
+                                                                                                                    longitude: boulder.longitude,
+                                                                                                                    areaId: areaData.key,
+                                                                                                                    areaName: areaData.areaName }}}> Click to view boulder info </Link>
                                 </Popup>
                             </Marker>
                         )

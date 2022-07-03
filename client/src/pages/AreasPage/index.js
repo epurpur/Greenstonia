@@ -64,7 +64,7 @@ const AreasPage = () => {
                     <div>
                         {/* Need to wait for bouldersSorted to exist before rendering boulders map */}
                         {bouldersSorted &&
-                            <BouldersMap bouldersData={bouldersSorted}/>
+                            <BouldersMap bouldersData={bouldersSorted} areaData={areaData}/>
                         }
                     </div>
                 </div>
