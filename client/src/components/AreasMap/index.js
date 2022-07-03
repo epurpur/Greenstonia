@@ -9,9 +9,8 @@ import "./styles.css";
 
 const AreasMap = (props) => {
 
-    console.log('FROM AREAS MAP')
+    // pass in props from home page
     const areas = props.areas
-    console.log('Areas', areas)   
 
     return (
         <>

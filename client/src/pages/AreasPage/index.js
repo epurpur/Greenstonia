@@ -18,8 +18,6 @@ const AreasPage = () => {
     let areaData = useLocation();
     areaData = areaData.state;
 
-    console.log('data in AREAS PAGE')
-    console.log(areaData)
     
     // making API call to database for boulders by area query, using area name of current area
     const { loading, data } = useQuery(QUERY_BOULDERSBYAREA, {variables: {areaName: areaData.areaName}});
