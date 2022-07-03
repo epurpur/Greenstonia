@@ -12,12 +12,6 @@ const BouldersMap = (props) => {
     let bouldersData = props.bouldersData;
     let areaData = props.areaData
 
-    // console.log('DATA FROM BOULDERSMAP COMPONENT');
-    // console.log("Boulders Data", bouldersData);
-    // console.log("Area Data", areaData);
-
-
-
     return (
         <>
             {/* Set center of map to location of first boulder in bouldersData */}
