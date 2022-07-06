@@ -35,6 +35,7 @@ const UploadForm = () => {
 
         setSuccessMessage('');
 
+        //request sent to this url on server (/upload)
         const uploadUrl = 'http://localhost:3001/upload';
         const formData = new FormData();
         formData.append('image', file);
@@ -48,6 +49,9 @@ const UploadForm = () => {
             setFile(null);
             setSuccessMessage('Image saved with filename ' + response.data);
         });
+
+        //also need to store filename in DB for each boulder/route/etc
+        //need to do put route to do this (or equivalent in graphql apollo)
     }
 
     return (

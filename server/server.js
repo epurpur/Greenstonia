@@ -34,6 +34,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
+//handles file upload from client side (/uploadForm at the moment)
 app.post('/upload', function(req, res) {
   const uploadedImage = req.files.image;
   if (!uploadedImage) {
@@ -63,9 +64,6 @@ app.post('/upload', function(req, res) {
   );
 });
 
-app.get('/test', function(req, res) {
-  return res.send('Hello, world');
-});
 
 db.once('open', () => {
   app.listen(PORT, () => {
@@ -73,6 +71,7 @@ db.once('open', () => {
     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
   });
 });
+
 
 fs.mkdir(
     IMAGE_DIR,
