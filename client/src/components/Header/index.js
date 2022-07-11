@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../utils/UserContext";
 
 /* Components */ 
 import { Navbar, Container, Nav } from 'react-bootstrap';
@@ -8,6 +9,9 @@ import "./styles.css";
 
 const Header = () => {
   
+    //const { userRole, setUserRole } = useContext(UserContext);
+
+
     return (
       <>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
