@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { UserContext } from "../../utils/UserContext";
+import React, { useState, useContext } from "react";
 
 /* Components */ 
 import { Navbar, Container, Nav } from 'react-bootstrap';
@@ -7,10 +6,17 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 /* CSS styles */
 import "./styles.css";
 
+/* Context */
+import { UserContext } from "../../utils/UserContext";
+
 const Header = () => {
   
-    const { userRole, setUserRole } = useContext(UserContext);
-    console.log('user role: ', userRole);
+    const {login, setLogin} = useContext(UserContext);
+
+    const loginUser = (event) => {
+      //using ternary operator
+      login === 0 ? setLogin(1) : setLogin(0);
+    }
 
     return (
       <>
@@ -26,6 +32,7 @@ const Header = () => {
             </Nav>
             <Nav>
               <Nav.Link>Login</Nav.Link>
+              <button onClick={loginUser}>{login}</button>
             </Nav>
           </Navbar.Collapse>
           </Container>

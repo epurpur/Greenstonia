@@ -18,11 +18,9 @@ import UploadForm from "./pages/UploadForm";
 
 /* Components */
 
-
 /* User Context Provider */
 /* This is like a global state that wraps around all components/pages */
-import UserProvider from "./utils/UserContext"; 
-
+import UserProvider from "./utils/UserContext";
 
 /* Apollo Setup */
 const client = new ApolloClient({
@@ -66,7 +64,6 @@ function App() {
               </Route>
             </Switch>
           </div>
-
         </Router>
       </UserProvider>
     </ApolloProvider>

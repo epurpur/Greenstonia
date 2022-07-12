@@ -19,6 +19,7 @@ const HomePage = () => {
     
     const [todayWeatherData, settodayWeatherData] = useState(null);
 
+
     // Make DB call for all Area data
     const { loading, data } = useQuery(QUERY_AREAS);
     // need to wait for data to appear as useQuery is an asynchronous API call
