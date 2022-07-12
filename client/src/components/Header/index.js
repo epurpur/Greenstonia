@@ -9,8 +9,8 @@ import "./styles.css";
 
 const Header = () => {
   
-    //const { userRole, setUserRole } = useContext(UserContext);
-
+    const { userRole, setUserRole } = useContext(UserContext);
+    console.log('user role: ', userRole);
 
     return (
       <>

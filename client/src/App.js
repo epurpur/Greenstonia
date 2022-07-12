@@ -19,6 +19,11 @@ import UploadForm from "./pages/UploadForm";
 /* Components */
 
 
+/* User Context Provider */
+/* This is like a global state that wraps around all components/pages */
+import UserProvider from "./utils/UserContext"; 
+
+
 /* Apollo Setup */
 const client = new ApolloClient({
     uri: "http://localhost:3001/graphql",        //short for http://localhost:3001/graphql
@@ -29,40 +34,41 @@ function App() {
   return (
     // all components need to be inside ApolloProvider tag. Any component inside this tag can now make requests to graphql
     <ApolloProvider client={client}>
-      <Router>
-        <div className="App">
-          {/* Establishing routes to all endpoints */}
-          <Switch>
+      <UserProvider>
+        <Router>
+          <div className="App">
+            {/* Establishing routes to all endpoints */}
+            <Switch>
 
-            <Route exact path="/">
-              <LandingPage />
-            </Route>  
-            <Route exact path="/home">
-              <HomePage />
-            </Route>
-            <Route exact path="/history">
-              <HistoryPage />
-            </Route>
-            <Route exact path="/contact">
-              <ContactPage />
-            </Route>
-            <Route exact path="/area/:areaName">
-              <AreasPage />
-            </Route>
-            <Route exact path="/boulder/:boulderName">
-              <BoulderPage />
-            </Route>
-            <Route exact path="/singleRoute/:routeName">
-              <SingleRoutePage />
-            </Route>
-            <Route exact path="/uploadForm">
-              <UploadForm />
-            </Route>
-          </Switch>
-        </div>
+              <Route exact path="/">
+                <LandingPage />
+              </Route>  
+              <Route exact path="/home">
+                <HomePage />
+              </Route>
+              <Route exact path="/history">
+                <HistoryPage />
+              </Route>
+              <Route exact path="/contact">
+                <ContactPage />
+              </Route>
+              <Route exact path="/area/:areaName">
+                <AreasPage />
+              </Route>
+              <Route exact path="/boulder/:boulderName">
+                <BoulderPage />
+              </Route>
+              <Route exact path="/singleRoute/:routeName">
+                <SingleRoutePage />
+              </Route>
+              <Route exact path="/uploadForm">
+                <UploadForm />
+              </Route>
+            </Switch>
+          </div>
 
-      </Router>
-
+        </Router>
+      </UserProvider>
     </ApolloProvider>
   );
 }
