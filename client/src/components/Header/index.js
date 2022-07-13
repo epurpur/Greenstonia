@@ -34,6 +34,7 @@ const Header = () => {
       }, 1000)
     }
 
+
     return (
       <>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -50,7 +51,7 @@ const Header = () => {
               {login === 0 ? 
                 <Nav.Link onClick={loginUser}>Login</Nav.Link> 
                 : 
-                <Nav.Link>Logout</Nav.Link>
+                <Nav.Link onClick={()=>setLogin(0)}>Logout</Nav.Link>
               }
                            
             </Nav>
