@@ -22,22 +22,16 @@ const Header = () => {
       login === 0 ? setLogin(1) : setLogin(0);
 
       //timer function
-      // if (seconds > 0) {
-      //   const interval = setInterval(() => {
-      //     setSeconds((seconds) => seconds - 1)
-      //   }, 1000);
-      // } else {
-      //   clearInterval()
-      // }
-
-      //new timer functio
       const interval = setInterval(() => {
-        if (seconds > 0) {
-          setSeconds((seconds) => seconds - 1)
-        } else {
-          clearInterval(interval)
-        }
-      }, 1000);
+        setSeconds((seconds) => {
+          if (seconds === 0) {
+            setSeconds(0)
+            setLogin(0)  // resets login back to 0 meaning 'not logged in'
+            return clearInterval(interval)
+          }
+          return (seconds -= 1)
+        })
+      }, 1000)
     }
 
     return (
@@ -53,8 +47,12 @@ const Header = () => {
               <Nav.Link href="/contact">Contact</Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link>Login</Nav.Link>
-              <button id='counter' onClick={loginUser}>{login} Seconds: {seconds} </button>
+              {login === 0 ? 
+                <Nav.Link onClick={loginUser}>Login</Nav.Link> 
+                : 
+                <Nav.Link>Logout</Nav.Link>
+              }
+                           
             </Nav>
           </Navbar.Collapse>
           </Container>
