@@ -12,7 +12,7 @@ import { UserContext } from "../../utils/UserContext";
 const Header = () => {
   
     const { login, setLogin } = useContext(UserContext);
-    const [ seconds, setSeconds ] = useState(5);
+    const [ seconds, setSeconds ] = useState(2700);  //timer set to 45 minutes (45mins x 60sec)
     
   
 
@@ -57,7 +57,9 @@ const Header = () => {
             </Nav>
           </Navbar.Collapse>
           </Container>
-        </Navbar>      
+        </Navbar>    
+        {/* ####START HERE. START WITH ALERT THAT FLASHES WHEN LOGGED IN: https://www.youtube.com/watch?v=TTFd9csHJtA */}
+        <div>THIS IS A TEST</div>  
       </>
     );
   };
