@@ -18,6 +18,8 @@ const Header = () => {
     //sets alert message when logging in or out
     const [loginAlert, setLoginAlert] = useState(0);
     const [loginAlertSeconds, setLoginAlertSeconds] = useState(3);
+    const [logoutAlert, setLogoutAlert] = useState(0);
+    const [logoutAlertSeconds, setLogoutAlertSeconds] = useState(3);
 
     const loginUser = (event) => {
       //using ternary operator
@@ -51,12 +53,36 @@ const Header = () => {
             //reset login alerts back to original state
             setLoginAlertSeconds(3)
             setLoginAlert(0)
+            // logoutUser()    START HERE. FIGURE OUT THE LOGIN/LOGOUT
             return clearInterval(interval)
           }
           return (seconds - 1)
         })
       }, 1000)
     }
+
+    const logoutUser = () => {
+      //set login back to 0 (logged out)
+      setLogin(0)
+
+      // if the alert is set to 0, it is toggled off
+      logoutAlert === 0 ? setLoginAlert(1) : setLoginAlert(0);
+
+      //timer function. I only want the alert to show for a few seconds
+      const interval = setInterval(() => {
+        setLoginAlertSeconds((seconds) => {
+          if (seconds === 0) {
+            //reset logout alerts back to original state
+            setLogoutAlertSeconds(3)
+            setLogoutAlert(0)
+            return clearInterval(interval)
+          }
+          return (seconds - 1)
+        })
+      }, 1000)
+    }
+
+
 
 
     return (
@@ -76,7 +102,7 @@ const Header = () => {
               {login === 0 ? 
                 <Nav.Link onClick={loginUser}>Login</Nav.Link> 
                 : 
-                <Nav.Link onClick={()=>setLogin(0)}>Logout</Nav.Link>
+                <Nav.Link onClick={logoutUser}>Logout</Nav.Link>
               }
                            
             </Nav>
@@ -84,7 +110,10 @@ const Header = () => {
           </Container>
         </Navbar> 
         {loginAlert === 1 ?
-          <Alert id='test' variant='info'>You are now logged in</Alert> : null
+          <Alert className='alertText' variant='info'>You are now logged in</Alert> : null
+        }
+        {logoutAlert === 1 ?
+          <Alert className='alertText' variant='error'>You are now logged out</Alert> : null
         }
       </>
     );
