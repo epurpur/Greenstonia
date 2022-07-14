@@ -13,7 +13,7 @@ import { UserContext } from "../../utils/UserContext";
 const Header = () => {
   
     const { login, setLogin } = useContext(UserContext);
-    const [ seconds, setSeconds ] = useState(10);  //timer set to 45 minutes (45mins x 60sec)
+    const [ seconds, setSeconds ] = useState(5);  //timer set to 45 minutes (45mins x 60sec)
 
     //sets alert message when logging in or out
     const [loginAlert, setLoginAlert] = useState(0);
@@ -25,19 +25,19 @@ const Header = () => {
       login === 0 ? setLogin(1) : setLogin(0);
 
       // //timer function
-      // const interval = setInterval(() => {
-      //   setSeconds((seconds) => {
-      //     if (seconds === 0) {
-      //       setSeconds(10)
-      //       setLogin(0)  // resets login back to 0 meaning 'not logged in'
-      //       return clearInterval(interval)
-      //     }
-      //     return (seconds -= 1)
-      //   })
-      // }, 1000)
+      const interval = setInterval(() => {
+        setSeconds((seconds) => {
+          if (seconds === 0) {
+            setSeconds(5)
+            setLogin(0)  // resets login back to 0 meaning 'not logged in'
+            return clearInterval(interval)
+          }
+          return (seconds -= 1)
+        })
+      }, 1000)
 
       // set CSS message flash across the screen
-      //makeLoginAlert()
+      makeLoginAlert()
     }
 
     const makeLoginAlert = () => {
