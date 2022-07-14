@@ -2,6 +2,7 @@ import React, { useState, useContext, } from "react";
 
 /* Components */ 
 import { Navbar, Container, Nav, Alert } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 /* CSS styles */
 import "./styles.css";
@@ -13,7 +14,7 @@ const Header = () => {
   
     const { login, setLogin } = useContext(UserContext);
     const [ seconds, setSeconds ] = useState(10);  //timer set to 45 minutes (45mins x 60sec)
-    
+
     //sets alert message when logging in or out
     const [loginAlert, setLoginAlert] = useState(0);
     const [loginAlertSeconds, setLoginAlertSeconds] = useState(3);
@@ -23,20 +24,20 @@ const Header = () => {
       //login of 1 = user is logged in, else user is not logged in.
       login === 0 ? setLogin(1) : setLogin(0);
 
-      //timer function
-      const interval = setInterval(() => {
-        setSeconds((seconds) => {
-          if (seconds === 0) {
-            setSeconds(10)
-            setLogin(0)  // resets login back to 0 meaning 'not logged in'
-            return clearInterval(interval)
-          }
-          return (seconds -= 1)
-        })
-      }, 1000)
+      // //timer function
+      // const interval = setInterval(() => {
+      //   setSeconds((seconds) => {
+      //     if (seconds === 0) {
+      //       setSeconds(10)
+      //       setLogin(0)  // resets login back to 0 meaning 'not logged in'
+      //       return clearInterval(interval)
+      //     }
+      //     return (seconds -= 1)
+      //   })
+      // }, 1000)
 
       // set CSS message flash across the screen
-      makeLoginAlert()
+      //makeLoginAlert()
     }
 
     const makeLoginAlert = () => {
@@ -66,9 +67,10 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/home">Home</Nav.Link>
-              <Nav.Link href="/history">History</Nav.Link>
-              <Nav.Link href="/contact">Contact</Nav.Link>
+              <Nav.Link><Link className="navLink" to='/home'>Home</Link></Nav.Link>
+              <Nav.Link><Link className="navLink" to='/history'>History</Link></Nav.Link>
+              <Nav.Link><Link className="navLink" to='/contact'>Contact</Link></Nav.Link>
+              <Nav.Link>{login}</Nav.Link>
             </Nav>
             <Nav>
               {login === 0 ? 
