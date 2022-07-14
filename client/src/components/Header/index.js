@@ -1,7 +1,7 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext, } from "react";
 
 /* Components */ 
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav, Alert } from 'react-bootstrap';
 
 /* CSS styles */
 import "./styles.css";
@@ -12,9 +12,11 @@ import { UserContext } from "../../utils/UserContext";
 const Header = () => {
   
     const { login, setLogin } = useContext(UserContext);
-    const [ seconds, setSeconds ] = useState(2700);  //timer set to 45 minutes (45mins x 60sec)
+    const [ seconds, setSeconds ] = useState(10);  //timer set to 45 minutes (45mins x 60sec)
     
-  
+    //sets alert message when logging in or out
+    const [loginAlert, setLoginAlert] = useState(0);
+    const [loginAlertSeconds, setLoginAlertSeconds] = useState(3);
 
     const loginUser = (event) => {
       //using ternary operator
@@ -25,11 +27,32 @@ const Header = () => {
       const interval = setInterval(() => {
         setSeconds((seconds) => {
           if (seconds === 0) {
-            setSeconds(0)
+            setSeconds(10)
             setLogin(0)  // resets login back to 0 meaning 'not logged in'
             return clearInterval(interval)
           }
           return (seconds -= 1)
+        })
+      }, 1000)
+
+      // set CSS message flash across the screen
+      makeLoginAlert()
+    }
+
+    const makeLoginAlert = () => {
+      // if the alert is set to 0, it is toggled off
+      loginAlert === 0 ? setLoginAlert(1) : setLoginAlert(0);
+
+      //timer function. I only want the alert to show for a few seconds
+      const interval = setInterval(() => {
+        setLoginAlertSeconds((seconds) => {
+          if (seconds === 0) {
+            //reset login alerts back to original state
+            setLoginAlertSeconds(3)
+            setLoginAlert(0)
+            return clearInterval(interval)
+          }
+          return (seconds - 1)
         })
       }, 1000)
     }
@@ -57,9 +80,10 @@ const Header = () => {
             </Nav>
           </Navbar.Collapse>
           </Container>
-        </Navbar>    
-        {/* ####START HERE. START WITH ALERT THAT FLASHES WHEN LOGGED IN: https://www.youtube.com/watch?v=TTFd9csHJtA */}
-        <div>THIS IS A TEST</div>  
+        </Navbar> 
+        {loginAlert === 1 ?
+          <Alert id='test' variant='info'>You are now logged in</Alert> : null
+        }
       </>
     );
   };
