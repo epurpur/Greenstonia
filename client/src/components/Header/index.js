@@ -1,4 +1,4 @@
-import React, { useState, useContext, } from "react";
+import React, { useState, useEffect, useContext, } from "react";
 
 /* Components */ 
 import { Navbar, Container, Nav, Alert } from 'react-bootstrap';
@@ -26,17 +26,20 @@ const Header = () => {
       //login of 1 = user is logged in, else user is not logged in.
       login === 0 ? setLogin(1) : setLogin(0);
 
-      // //timer function
-      const interval = setInterval(() => {
-        setSeconds((seconds) => {
-          if (seconds === 0) {
-            setSeconds(5)
-            setLogin(0)  // resets login back to 0 meaning 'not logged in'
-            return clearInterval(interval)
-          }
-          return (seconds -= 1)
-        })
-      }, 1000)
+
+      // // //timer function
+      // const interval = setInterval(() => {
+      //   setSeconds((seconds) => {
+          
+      //     if (seconds === 0) {
+      //       setSeconds(5)
+      //       //setTimeout(() => setLogin(0), 0);
+      //       setLogin(0)  // resets login back to 0 meaning 'not logged in'
+      //       return clearInterval(interval)
+      //     }
+      //     return (seconds -= 1)
+      //   })
+      // }, 1000)
 
       // set CSS message flash across the screen
       makeLoginAlert()
@@ -113,7 +116,7 @@ const Header = () => {
           <Alert className='alertText' variant='info'>You are now logged in</Alert> : null
         }
         {logoutAlert === 1 ?
-          <Alert className='alertText' variant='error'>You are now logged out</Alert> : null
+          <Alert className='alertText' variant='success'>You are now logged out</Alert> : null
         }
       </>
     );
