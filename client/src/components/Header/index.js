@@ -3,6 +3,7 @@ import React, { useState, useContext, } from "react";
 /* Components */ 
 import { Navbar, Container, Nav, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import LoginModal from "../LoginModal";
 
 /* CSS styles */
 import "./styles.css";
@@ -17,17 +18,19 @@ const Header = () => {
     //sets alert message when logging in or out
     const [loginAlert, setLoginAlert] = useState(0);
     const [logoutAlert, setLogoutAlert] = useState(0);
+    //sets state of Modal for login button
+    const [modal, setModal] = useState(0);
 
     const handleUserLogin = (event) => {
       //login of 1 = user is logged in, else user is not logged in.
       if (login === 0) {
         setLogin(1)
+        setModal(1)  // creates modal popup for login
         makeAlert()
       } else {
         setLogin(0)
         makeAlert()
       }
-
     }
 
     const makeAlert = () => {
@@ -97,6 +100,9 @@ const Header = () => {
           </Navbar.Collapse>
           </Container>
         </Navbar> 
+        {/* render modal on clicking 'login' */}
+        {modal === 1 ? <LoginModal /> : null}
+        {/* render login/logout alert */}
         {loginAlert === 1 ?
           <Alert className='alertText' variant='info'>You are now logged in</Alert> : null
         }
