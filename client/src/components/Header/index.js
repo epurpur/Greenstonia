@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, } from "react";
+import React, { useState, useContext, } from "react";
 
 /* Components */ 
 import { Navbar, Container, Nav, Alert } from 'react-bootstrap';
@@ -13,78 +13,64 @@ import { UserContext } from "../../utils/UserContext";
 const Header = () => {
   
     const { login, setLogin } = useContext(UserContext);
-
+    const [seconds, setSeconds] = useState(3)
     //sets alert message when logging in or out
     const [loginAlert, setLoginAlert] = useState(0);
-    const [loginAlertSeconds, setLoginAlertSeconds] = useState(3);
     const [logoutAlert, setLogoutAlert] = useState(0);
-    const [logoutAlertSeconds, setLogoutAlertSeconds] = useState(3);
 
-    const loginUser = (event) => {
-      //using ternary operator
+    const handleUserLogin = (event) => {
       //login of 1 = user is logged in, else user is not logged in.
-      login === 0 ? setLogin(1) : setLogin(0);
+      if (login === 0) {
+        setLogin(1)
+        makeAlert()
+      } else {
+        setLogin(0)
+        makeAlert()
+      }
 
-
-      // // //timer function
-      // const interval = setInterval(() => {
-      //   setSeconds((seconds) => {
-          
-      //     if (seconds === 0) {
-      //       setSeconds(5)
-      //       //setTimeout(() => setLogin(0), 0);
-      //       setLogin(0)  // resets login back to 0 meaning 'not logged in'
-      //       return clearInterval(interval)
-      //     }
-      //     return (seconds -= 1)
-      //   })
-      // }, 1000)
-
-      // set CSS message flash across the screen
-      makeLoginAlert()
     }
 
-    const makeLoginAlert = () => {
-      // if the alert is set to 0, it is toggled off
-      loginAlert === 0 ? setLoginAlert(1) : setLoginAlert(0);
+    const makeAlert = () => {
+      // makes either login or logout alert on screen just below header bar
 
-      //timer function. I only want the alert to show for a few seconds
-      const interval = setInterval(() => {
-        setLoginAlertSeconds((seconds) => {
-          if (seconds === 0) {
-            //reset login alerts back to original state
-            setLoginAlertSeconds(3)
-            setLoginAlert(0)
-            // logoutUser()    START HERE. FIGURE OUT THE LOGIN/LOGOUT
-            return clearInterval(interval)
-          }
-          return (seconds - 1)
-        })
-      }, 1000)
+      if (login === 0) {
+        // user has just logged in
+        setLogoutAlert(0)  // get rid of logout alert if it exists
+        setLoginAlert(1)
+        
+
+        //timer function. I only want the alert to show for a few seconds
+        const interval = setInterval(() => {
+          setSeconds((seconds) => {
+            if (seconds === 0) {
+              //reset login alerts back to original state
+              setSeconds(3)
+              setLoginAlert(0)
+              return clearInterval(interval)
+            }
+            return (seconds - 1)
+          })
+        }, 1000)
+
+      } else {
+        // user has just logged out
+        setLoginAlert(0)  // get rid of login alert if it exists
+        setLogoutAlert(1)
+
+        //timer function. I only want the alert to show for a few seconds
+        const interval = setInterval(() => {
+          setSeconds((seconds) => {
+            if (seconds === 0) {
+              //reset logout alerts back to original state
+              setSeconds(3)
+              setLogoutAlert(0)
+              return clearInterval(interval)
+            }
+            return (seconds - 1)
+          })
+        }, 1000)
+      }
     }
-
-    const logoutUser = () => {
-      //set login back to 0 (logged out)
-      setLogin(0)
-
-      // if the alert is set to 0, it is toggled off
-      logoutAlert === 0 ? setLoginAlert(1) : setLoginAlert(0);
-
-      //timer function. I only want the alert to show for a few seconds
-      const interval = setInterval(() => {
-        setLoginAlertSeconds((seconds) => {
-          if (seconds === 0) {
-            //reset logout alerts back to original state
-            setLogoutAlertSeconds(3)
-            setLogoutAlert(0)
-            return clearInterval(interval)
-          }
-          return (seconds - 1)
-        })
-      }, 1000)
-    }
-
-
 
 
     return (
@@ -102,9 +88,9 @@ const Header = () => {
             </Nav>
             <Nav>
               {login === 0 ? 
-                <Nav.Link onClick={loginUser}>Login</Nav.Link> 
+                <Nav.Link onClick={handleUserLogin}>Login</Nav.Link> 
                 : 
-                <Nav.Link onClick={() => setLogin(0)}>Logout</Nav.Link>
+                <Nav.Link onClick={handleUserLogin}>Logout</Nav.Link>
               }
                            
             </Nav>
