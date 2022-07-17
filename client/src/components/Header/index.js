@@ -13,7 +13,6 @@ import { UserContext } from "../../utils/UserContext";
 const Header = () => {
   
     const { login, setLogin } = useContext(UserContext);
-    const [ seconds, setSeconds ] = useState(5);  //timer set to 45 minutes (45mins x 60sec)
 
     //sets alert message when logging in or out
     const [loginAlert, setLoginAlert] = useState(0);
@@ -105,7 +104,7 @@ const Header = () => {
               {login === 0 ? 
                 <Nav.Link onClick={loginUser}>Login</Nav.Link> 
                 : 
-                <Nav.Link onClick={logoutUser}>Logout</Nav.Link>
+                <Nav.Link onClick={() => setLogin(0)}>Logout</Nav.Link>
               }
                            
             </Nav>

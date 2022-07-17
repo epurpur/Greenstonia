@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
@@ -29,10 +29,15 @@ const client = new ApolloClient({
 });
 
 function App() {
+
+  const [login, setLogin] = useState(0)
+
+  const providerValue = useMemo(() => ({ login, setLogin}), [login, setLogin])
+
   return (
     // all components need to be inside ApolloProvider tag. Any component inside this tag can now make requests to graphql
     <ApolloProvider client={client}>
-      <UserProvider>
+      <UserProvider value={providerValue}>  {/* UserContext login value - global state*/}
         <Router>
           <div className="App">
             {/* Establishing routes to all endpoints */}
