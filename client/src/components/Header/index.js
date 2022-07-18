@@ -18,8 +18,11 @@ const Header = () => {
     //sets alert message when logging in or out
     const [loginAlert, setLoginAlert] = useState(0);
     const [logoutAlert, setLogoutAlert] = useState(0);
+
     //sets state of Modal for login button
     const [showModal, setShowModal] = useState(false);
+    const [loginError, setLoginError] = useState(false);
+    // opens and closes modal
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
     //handles input in Login modal
@@ -30,7 +33,6 @@ const Header = () => {
         ...formState,
         [name]: value
       })
-      console.log('name:', name, 'value:', value)
     }
 
 
@@ -38,9 +40,18 @@ const Header = () => {
     const handleUserLogin = (event) => {
       //login of 1 = user is logged in, else user is not logged in.
       if (login === 0) {
-        setLogin(1)
-        makeAlert()
-        handleCloseModal() // remove modal
+        // first check for valid login credentials
+        // username should be 'admin' and password 'greenstonia' (all lower case)
+        if (formState.username === 'admin' && formState.password === 'greenstonia') {
+          setFormState({username: '', password: ''}) // set formState of user back to empty quotes
+          setLogin(1)  // user is logged in
+          makeAlert() // make login alert
+          handleCloseModal() // remove modal
+        } else {
+          // make error message to notify user of incorrect credentials
+          makeLoginError()
+        }
+
       } else {
         setLogin(0)
         makeAlert()
@@ -89,6 +100,24 @@ const Header = () => {
       }
     }
 
+    const makeLoginError = () => {
+      // set loginError to true
+      setLoginError(true)
+
+      // flash login alert for 3 seconds
+      const interval = setInterval(() => {
+        setSeconds((seconds) => {
+          if (seconds === 0) {
+            //reset login alerts back to original state
+            setSeconds(3)
+            setLoginError(false)
+            return clearInterval(interval)
+          }
+          return (seconds - 1)
+        })
+      }, 1000)
+    }
+
 
     return (
       <>
@@ -115,15 +144,18 @@ const Header = () => {
           </Container>
         </Navbar> 
         <Modal id='loginModalForm' show={showModal} onHide={handleCloseModal}>
-          <Modal.Header closeButton>
+          {!loginError ? <Modal.Header closeButton>
             <Modal.Title>Login</Modal.Title>
-          </Modal.Header>
+          </Modal.Header> 
+          : 
+          <div id="loginError">Incorrect Username or Password</div>
+          }
             <Form>
               <Form.Group className="m-3">
-                <Form.Label>Email:</Form.Label>
+                <Form.Label>Username:</Form.Label>
                 <Form.Control 
-                    name="email"
-                    value={formState.email || ''}
+                    name="username"
+                    value={formState.username || ''}  //sets initial state to empty string
                     onChange={handleChange}
                     required
                 />
@@ -132,8 +164,9 @@ const Header = () => {
                 <Form.Label>Password:</Form.Label>
                 <Form.Control 
                     name="password"
-                    value={formState.password || ''}
+                    value={formState.password || ''} //sets initial state to empty string
                     onChange={handleChange}
+                    type="password"
                     required
                 />
               </Form.Group>
@@ -141,7 +174,7 @@ const Header = () => {
           <Modal.Footer>
             <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
             {/* <Button variant="primary" onClick={handleUserLogin}>Login</Button> */}
-            <Button className="btnFormSend" variat="outline-success" onClick={handleUserLogin}>Login</Button>
+            <Button className="btnFormSend" variant="success" onClick={handleUserLogin}>Login</Button>
           </Modal.Footer>
         </Modal>
         {/* render login/logout alert */}
