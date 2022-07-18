@@ -12,12 +12,13 @@ import "./styles.css";
 import { UserContext } from "../../utils/UserContext";
 
 const Header = () => {
-  
+    //global user context variable of login state
     const { login, setLogin } = useContext(UserContext);
-    const [seconds, setSeconds] = useState(3)
+    //seconds count used for various login timers
+    const [seconds, setSeconds] = useState(3) // 3 seconds
     //sets alert message when logging in or out
-    const [loginAlert, setLoginAlert] = useState(0);
-    const [logoutAlert, setLogoutAlert] = useState(0);
+    const [loginAlert, setLoginAlert] = useState(false);
+    const [logoutAlert, setLogoutAlert] = useState(false);
 
     //sets state of Modal for login button
     const [showModal, setShowModal] = useState(false);
@@ -38,13 +39,13 @@ const Header = () => {
 
 
     const handleUserLogin = (event) => {
-      //login of 1 = user is logged in, else user is not logged in.
-      if (login === 0) {
+      //login of true = user is logged in, else user is not logged in.
+      if (login === false) {
         // first check for valid login credentials
         // username should be 'admin' and password 'greenstonia' (all lower case)
         if (formState.username === 'admin' && formState.password === 'greenstonia') {
           setFormState({username: '', password: ''}) // set formState of user back to empty quotes
-          setLogin(1)  // user is logged in
+          setLogin(true)  // user is logged in
           makeAlert() // make login alert
           handleCloseModal() // remove modal
         } else {
@@ -53,7 +54,7 @@ const Header = () => {
         }
 
       } else {
-        setLogin(0)
+        setLogin(false)
         makeAlert()
       }
     }
@@ -61,10 +62,10 @@ const Header = () => {
     const makeAlert = () => {
       // makes either login or logout alert on screen just below header bar
 
-      if (login === 0) {
+      if (login === false) {
         // user has just logged in
-        setLogoutAlert(0)  // get rid of logout alert if it exists
-        setLoginAlert(1)
+        setLogoutAlert(false)  // get rid of logout alert if it exists
+        setLoginAlert(true)
         
 
         //timer function. I only want the alert to show for a few seconds
@@ -73,7 +74,7 @@ const Header = () => {
             if (seconds === 0) {
               //reset login alerts back to original state
               setSeconds(3)
-              setLoginAlert(0)
+              setLoginAlert(false)
               return clearInterval(interval)
             }
             return (seconds - 1)
@@ -82,8 +83,8 @@ const Header = () => {
 
       } else {
         // user has just logged out
-        setLoginAlert(0)  // get rid of login alert if it exists
-        setLogoutAlert(1)
+        setLoginAlert(false)  // get rid of login alert if it exists
+        setLogoutAlert(true)
 
         //timer function. I only want the alert to show for a few seconds
         const interval = setInterval(() => {
@@ -91,7 +92,7 @@ const Header = () => {
             if (seconds === 0) {
               //reset logout alerts back to original state
               setSeconds(3)
-              setLogoutAlert(0)
+              setLogoutAlert(false)
               return clearInterval(interval)
             }
             return (seconds - 1)
@@ -101,6 +102,7 @@ const Header = () => {
     }
 
     const makeLoginError = () => {
+      // flash error across modal screen for incorrect login credentials
       // set loginError to true
       setLoginError(true)
 
@@ -133,7 +135,7 @@ const Header = () => {
               <Nav.Link>{login}</Nav.Link>
             </Nav>
             <Nav>
-              {login === 0 ? 
+              {login === false ? 
                 <Nav.Link onClick={handleShowModal}>Login</Nav.Link> 
                 : 
                 <Nav.Link onClick={handleUserLogin}>Logout</Nav.Link>
@@ -178,10 +180,10 @@ const Header = () => {
           </Modal.Footer>
         </Modal>
         {/* render login/logout alert */}
-        {loginAlert === 1 ?
+        {loginAlert === true ?
           <Alert className='alertText' variant='info'>You are now logged in</Alert> : null
         }
-        {logoutAlert === 1 ?
+        {logoutAlert === true ?
           <Alert className='alertText' variant='success'>You are now logged out</Alert> : null
         }
       </>

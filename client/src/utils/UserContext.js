@@ -4,7 +4,7 @@ export const UserContext = React.createContext();
 
 
 const UserProvider = (props) => {
-  const [login, setLogin] = useState(0);
+  const [login, setLogin] = useState(false);
 
   return (
     //passing in values from login state to use elsewhere in app
