@@ -3,7 +3,6 @@ import React, { useState, useContext, } from "react";
 /* Components */ 
 import { Navbar, Container, Nav, Alert, Modal, Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import LoginModal from "../LoginModal";
 
 /* CSS styles */
 import "./styles.css";
@@ -146,14 +145,14 @@ const Header = () => {
           </Container>
         </Navbar> 
         <Modal id='loginModalForm' show={showModal} onHide={handleCloseModal}>
-          {!loginError ? <Modal.Header closeButton>
-            <Modal.Title>Login</Modal.Title>
+          {!loginError ? <Modal.Header id='loginModalHeader'>
+            <Modal.Title id="loginHeaderText">Login</Modal.Title>
           </Modal.Header> 
           : 
           <div id="loginError">Incorrect Username or Password</div>
           }
             <Form>
-              <Form.Group className="m-3">
+              <Form.Group className="m-3 loginModalText">
                 <Form.Label>Username:</Form.Label>
                 <Form.Control 
                     name="username"
@@ -162,7 +161,7 @@ const Header = () => {
                     required
                 />
               </Form.Group>
-              <Form.Group className="m-3">
+              <Form.Group className="m-3 loginModalText">
                 <Form.Label>Password:</Form.Label>
                 <Form.Control 
                     name="password"
@@ -173,10 +172,10 @@ const Header = () => {
                 />
               </Form.Group>
             </Form>
-          <Modal.Footer>
+          <Modal.Footer id='loginModalFooter'>
             <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
             {/* <Button variant="primary" onClick={handleUserLogin}>Login</Button> */}
-            <Button className="btnFormSend" variant="success" onClick={handleUserLogin}>Login</Button>
+            <Button className="btnFormSend" id="loginBtnText" onClick={handleUserLogin}>Login</Button>
           </Modal.Footer>
         </Modal>
         {/* render login/logout alert */}

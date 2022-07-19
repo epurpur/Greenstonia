@@ -21,6 +21,25 @@
     text-align: center;
 }
 
+#loginModalForm {
+    font-family: var(--font-main);
+    border: 3px solid var(--text-main);
+    border-radius: 8px;
+}
+
+#loginHeaderText, .loginModalText{
+    color: var(--text-main);
+}
+
+#loginModalHeader, Form, #loginModalFooter {
+    background-color: black;
+}
+
+#loginBtnText{
+    color: rgb(181, 227, 155);
+    background-color: black;
+}
+
 #loginError {
     background-color: red;
     text-align: center;
