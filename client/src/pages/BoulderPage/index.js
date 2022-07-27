@@ -62,7 +62,7 @@ const BoulderPage = () => {
                 <div>
 
                 </div>
-                <ImageCards />
+                <ImageCards imageInfo={'placeholder'}/>
 
             </div>
             <Footer />
