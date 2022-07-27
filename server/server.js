@@ -57,9 +57,10 @@ app.post('/upload', function(req, res) {
           return res.sendStatus(500);
         }
 
-        console.log('Image saved as ' + randomFilename);
+        console.log('Image saved as:' + randomFilename);
 
-        return res.send(randomFilename);
+        // sends randomFilename back to client as response
+        return res.send(randomFilename);  
       }
   );
 });

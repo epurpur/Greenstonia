@@ -48,10 +48,10 @@ const UploadForm = () => {
         axios.post(uploadUrl, formData, config).then((response) => {
             setFile(null);
             setSuccessMessage('Image saved with filename ' + response.data);
-        });
 
-        //also need to store filename in DB for each boulder/route/etc
-        //need to do put route to do this (or equivalent in graphql apollo)
+            // here, need to store filename of image with each image
+            // need to look up how to update area, route, boulder, etc with image name
+        });
     }
 
     return (

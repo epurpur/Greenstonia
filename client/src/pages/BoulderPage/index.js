@@ -6,6 +6,7 @@ import { QUERY_ROUTESBYBOULDER } from '../../utils/queries';
 /* Components */
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import ImageCards from '../../components/ImageCards';
 
 /* CSS styles */
 import "./styles.css";
@@ -61,9 +62,7 @@ const BoulderPage = () => {
                 <div>
 
                 </div>
-                <div id="imgBox">
-                    Boulder Images go here
-                </div>
+                <ImageCards />
 
             </div>
             <Footer />

@@ -1,4 +1,4 @@
-import React, { useState, useContext, } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 /* Components */ 
 import { Navbar, Container, Nav, Alert, Modal, Button, Form } from 'react-bootstrap';
@@ -34,8 +34,6 @@ const Header = () => {
         [name]: value
       })
     }
-
-
 
     const handleUserLogin = (event) => {
       //login of true = user is logged in, else user is not logged in.
