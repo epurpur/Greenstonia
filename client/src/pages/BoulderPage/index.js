@@ -59,10 +59,9 @@ const BoulderPage = () => {
                             )}
                         </div>
                 </div>
-                <div>
-
+                <div id="imageCardsHolder">
+                    <ImageCards imageInfo={'placeholder'}/>
                 </div>
-                <ImageCards imageInfo={'placeholder'}/>
 
             </div>
             <Footer />

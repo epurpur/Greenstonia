@@ -21,14 +21,9 @@ const ImageCards = (props) => {
 
     return (
       <>
-        <div>ImageCards</div>
-        <div>
-            {imageURLs.map((url) => (
-                <p>{url}</p>
-                // <img src={`${url}.png`}></img>
-            ))}
-        </div>
-        
+        {imageURLs.map((url) => (
+          <img src={require(`../../uploadedImages/${url}`).default} className='imageCards'></img>
+        ))}
       </>
   )
 }
