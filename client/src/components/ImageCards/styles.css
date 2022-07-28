@@ -1,6 +1,7 @@
-
-
 .imageCards {
     width: 35%;
     height: 150px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px #191919;
 }

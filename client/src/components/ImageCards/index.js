@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-/* Test import images */
+/* Components */
+import { Modal } from 'react-bootstrap';
 
 /* CSS styles */
 import "./styles.css";
 
 const ImageCards = (props) => {
+
+    const [showImageModal, setShowImageModal] = useState(false)
 
     const importAll = require =>
     require.keys().reduce((acc, next) => {
@@ -21,9 +24,13 @@ const ImageCards = (props) => {
 
     return (
       <>
+        {imageURLs.length == 0 ? 'no images available' : ''}  
         {imageURLs.map((url) => (
           <img src={require(`../../uploadedImages/${url}`).default} className='imageCards'></img>
         ))}
+        <Modal show={showImageModal} onHide={'n/a'}>
+          <Modal.Title> IMAGE MODAL </Modal.Title>
+        </Modal>
       </>
   )
 }
