@@ -31,14 +31,11 @@ const ImageCards = (props) => {
         {imageURLs.map((url) => (
           <>
             <Button className='modalButton' onClick={() => handleShowImageModal(url)}><img src={require(`../../uploadedImages/${url}`).default} className='imageCards'></img></Button>
-            <Modal show={showImageModal === url} onHide={handleCloseImageModal}>
+            <Modal show={showImageModal === url} onHide={handleCloseImageModal} centered>
               <img src={require(`../../uploadedImages/${url}`).default}></img>
             </Modal>
           </>
         ))}
-
-
-
       </>
   )
 }
