@@ -21,14 +21,16 @@ const SingleRoutePage = () => {
     return (
         <>
             <Header />
-            <p id="breadcrumb">Go Back: <Link to={{pathname: `/boulder/${singleRouteData.boulderName}`, state: {key: singleRouteData.boulderID, boulderID: singleRouteData.boulderID, boulderName: singleRouteData.boulderName, areaName: singleRouteData.areaName }}}>{singleRouteData.boulderName}</Link></p>
-            <h2> {singleRouteData.routeName} </h2>
-            <div> Grade: {singleRouteData.routeGrade} </div>
-            <div> Quality: {singleRouteData.routeQuality} stars </div>
-            <div> First Ascent: {singleRouteData.firstAscent} </div>
-            <div> Description: {singleRouteData.routeDescription} </div>
-            <div id="singleRoutePhoto"> Photo goes here </div>
-            <div id="singleRouteVideo"> Video goes here </div>
+                <div id='routeInfoHolder'>
+                    <p id="breadcrumb">Go Back: <Link to={{pathname: `/boulder/${singleRouteData.boulderName}`, state: {key: singleRouteData.boulderID, boulderID: singleRouteData.boulderID, boulderName: singleRouteData.boulderName, areaName: singleRouteData.areaName }}}>{singleRouteData.boulderName}</Link></p>
+                    <h2> {singleRouteData.routeName} </h2>
+                    <div> Grade: {singleRouteData.routeGrade} </div>
+                    <div> Quality: {singleRouteData.routeQuality} stars </div>
+                    <div> First Ascent: {singleRouteData.firstAscent} </div>
+                    <div> Description: {singleRouteData.routeDescription} </div>
+                    <div id="singleRoutePhoto"> Photo goes here </div>
+                    <div id="singleRouteVideo"> Video goes here </div>
+                </div>
             <Footer />
         </>
     )

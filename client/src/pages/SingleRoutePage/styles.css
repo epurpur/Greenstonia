@@ -1,6 +1,13 @@
-#singleRoutePhoto, #singleRouteVideo {
-    height: 100px;
-    margin: 10px;
+#routeInfoHolder {
+    margin: 0 10px 0 10px;
+}
+
+#singleRoutePhoto {
+    height: 200px;
+    border: 1px solid black;
+}
+
+#singleRouteVideo {
     border: 1px solid black;
 }
 
