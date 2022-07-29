@@ -8,10 +8,10 @@ import "./styles.css";
 
 const ImageCards = (props) => {
 
-    // controls for image modals
-    const [showImageModal, setShowImageModal] = useState(false);
-    const handleCloseImageModal = () => setShowImageModal(false);
-    const handleShowImageModal = () => setShowImageModal(true);
+    // controls for image modals. default to undefined so all images are hidden
+    const [showImageModal, setShowImageModal] = useState();
+    const handleCloseImageModal = () => setShowImageModal(undefined);
+    const handleShowImageModal = (url) => setShowImageModal(url);
 
     const importAll = require =>
     require.keys().reduce((acc, next) => {
@@ -30,8 +30,8 @@ const ImageCards = (props) => {
         {imageURLs.length == 0 ? 'no images available' : ''}  
         {imageURLs.map((url) => (
           <>
-            <Button className='modalButton' onClick={handleShowImageModal}><img src={require(`../../uploadedImages/${url}`).default} className='imageCards'></img></Button>
-            <Modal show={showImageModal} onHide={handleCloseImageModal}>
+            <Button className='modalButton' onClick={() => handleShowImageModal(url)}><img src={require(`../../uploadedImages/${url}`).default} className='imageCards'></img></Button>
+            <Modal show={showImageModal === url} onHide={handleCloseImageModal}>
               <img src={require(`../../uploadedImages/${url}`).default}></img>
             </Modal>
           </>
