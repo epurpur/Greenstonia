@@ -15,6 +15,7 @@
 
 #routeCardHolder {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .routeCard {
@@ -23,7 +24,12 @@
     border: 1px solid black;
     border-radius: 10px;
     color: var(--background);
-    background-color: #212529;
+    background-color: black;
+}
+
+.routeCard:hover {
+    background-color: var(--background);
+    color: black;
 }
 
 #imageCardsHolder {
