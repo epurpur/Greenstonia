@@ -56,8 +56,8 @@ const resolvers = {
 
             return boulder;
         },
-        addRoute: async (parent, {routeName, routeDescription, firstAscent, routeGrade, routeQuality, boulderID}) => {
-            const route = await Route.create({ routeName, routeDescription, firstAscent, routeGrade, routeQuality, boulderID });
+        addRoute: async (parent, {routeName, routeDescription, firstAscent, routeGrade, routeQuality, routeImgUrl, routeYoutubeEmbedURL, boulderID}) => {
+            const route = await Route.create({ routeName, routeDescription, firstAscent, routeGrade, routeQuality, routeImgUrl, routeYoutubeEmbedURL, boulderID });
 
             await Boulder.findOneAndUpdate(
               { _id: boulderID },

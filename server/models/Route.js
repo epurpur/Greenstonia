@@ -19,6 +19,12 @@ const routeSchema = new Schema({
   routeQuality: {
     type: Number,
   },
+  routeImgURL: [{
+    type: String
+  }],
+  routeYoutubeEmbedURL: {
+    type: String
+  },
   boulder: {
     type: Schema.Types.ObjectId,
     ref: 'Boulder'

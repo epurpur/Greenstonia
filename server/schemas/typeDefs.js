@@ -31,6 +31,8 @@ const typeDefs = gql`
       firstAscent: String
       routeGrade: String!
       routeQuality: Int
+      routeImgURL: [String]
+      routeYoutubeEmbedURL: String
       boulderID: Boulder!
     }
 
@@ -58,7 +60,7 @@ const typeDefs = gql`
       login(username: String!, password: String!): Auth
       addArea(areaName: String!, areaDescription: String!, parkingDescription: String!, approachDescription: String!, latitude: String, longitude: String): Area
       addBoulder(boulderName: String!, boulderDescription: String!, areaID: String!, latitude: String, longitude: String, boulderImgURL: String): Boulder
-      addRoute(routeName: String!, routeDescription: String!, firstAscent: String, routeGrade: String!, routeQuality: Int, boulderID: String!): Route
+      addRoute(routeName: String!, routeDescription: String!, firstAscent: String, routeGrade: String!, routeQuality: Int, routeImgURL: [String], routeYoutubeEmbedURL: String, boulderID: String!): Route
       addUser(username: String!, password: String!): Auth
     } 
 `;
