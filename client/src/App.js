@@ -30,11 +30,11 @@ const client = new ApolloClient({
 
 function App() {
 
-  const [login, setLogin] = useState(0)
+  const [login, setLogin] = useState(false)
 
   const providerValue = useMemo(() => ({ login, setLogin}), [login, setLogin])
-
   return (
+
     // all components need to be inside ApolloProvider tag. Any component inside this tag can now make requests to graphql
     <ApolloProvider client={client}>
       <UserProvider value={providerValue}>  {/* UserContext login value - global state*/}
