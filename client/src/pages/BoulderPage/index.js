@@ -21,6 +21,7 @@ const BoulderPage = () => {
     // make API call to database for routes for this particular boulder, using ID of current boulder
     const { loading, data } = useQuery(QUERY_ROUTESBYBOULDER, {variables: {boulderID: bouldersData.boulderID}});
     const routesByBoulder = data?.routesByBoulder || [];
+    console.log('boulder data', routesByBoulder)
     // separate out just the routes
     const routes = routesByBoulder && routesByBoulder.routes;
     

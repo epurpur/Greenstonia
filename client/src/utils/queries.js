@@ -49,6 +49,7 @@ export const QUERY_ROUTESBYBOULDER = gql`
       _id
       boulderName
       boulderDescription
+      boulderImgURL
       routes{
         _id
         routeName

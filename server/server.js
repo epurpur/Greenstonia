@@ -11,6 +11,7 @@ const fs = require('fs');
 const PORT = process.env.PORT || 3001;
 
 const IMAGE_DIR = './uploaded-images';
+//const IMAGE_DIR = '../client/src/uploadedImages'  //can't create directory inside client folder
 
 const server = new ApolloServer({
   typeDefs,

@@ -15,6 +15,9 @@ const boulderSchema = new Schema({
   longitude: {
       type: String,
   },
+  boulderImgURL: [{
+      type: String,
+  }],
   area: {
     type: Schema.Types.ObjectId,
     ref: 'Area'
