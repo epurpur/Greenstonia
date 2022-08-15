@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 /* Components */
 import Header from "../../components/Header";
@@ -110,7 +111,12 @@ const HistoryPage = () => {
             <section>
                 {/* map over history stories to display cards on screen */}
                 {historyStory.map((story) => 
-                    <img className="imgCard" src={`/images/history_images/${story.imgLink}.png`} alt={`${story.title} screenshot`}></img>
+                    <>
+                        <img className="imgCard" src={`/images/history_images/${story.imgLink}.png`} alt={`${story.title} screenshot`}></img>
+                        <Link to="/home">
+                        
+                        </Link>
+                    </>
                 )}
             </section>
             <Footer />
