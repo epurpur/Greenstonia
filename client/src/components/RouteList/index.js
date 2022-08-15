@@ -25,7 +25,7 @@ const RouteList = (props) => {
                         (
                             // this is a link to Area Page
                             <Link key={area._id} to={{pathname: `/area/${area.areaName}`, state: {key: area._id, areaName: area.areaName }}}>
-                                <p key={area._id} className='areaCard'>{area.areaName}</p>
+                                <p key={area._id} className='labelCard'>{area.areaName}</p>
                             </Link>
                         )
                     )}

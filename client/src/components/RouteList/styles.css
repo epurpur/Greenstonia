@@ -19,11 +19,16 @@
     flex-direction: row;
 }
 
-.areaCard {
+.labelCard {
     margin: 5px;
     padding: 5px;
     border: 1px solid black;
     border-radius: 10px;
     color: var(--background);
     background-color: #212529;
+}
+
+.labelCard:hover {
+    background-color: var(--background);
+    color: black;
 }

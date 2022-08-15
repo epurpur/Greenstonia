@@ -54,7 +54,7 @@ const BoulderPage = () => {
                                                                                                                         boulderID: bouldersData.boulderID,
                                                                                                                         boulderName: bouldersData.boulderName,
                                                                                                                         areaName: bouldersData.areaName}}}>
-                                        <p key={route._id} className='routeCard'>{route.routeName}</p>
+                                        <p key={route._id} className='labelCard'>{route.routeName}</p>
                                     </Link>
                                 )
                             )}

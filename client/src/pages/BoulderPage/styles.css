@@ -18,19 +18,6 @@
     flex-wrap: wrap;
 }
 
-.routeCard {
-    margin: 5px;
-    padding: 5px;
-    border: 1px solid black;
-    border-radius: 10px;
-    color: var(--background);
-    background-color: black;
-}
-
-.routeCard:hover {
-    background-color: var(--background);
-    color: black;
-}
 
 #imageCardsHolder {
     width: 50%;

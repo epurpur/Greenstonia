@@ -52,7 +52,7 @@ const AreasPage = () => {
                                                                                                                     longitude: boulder.longitude, 
                                                                                                                     areaId: areaData.key, 
                                                                                                                     areaName: areaData.areaName }}}>
-                                        <p key={boulder._id} className='boulderCard'>{boulder.boulderName}</p>
+                                        <p key={boulder._id} className='labelCard'>{boulder.boulderName}</p>
                                     </Link>
                                 )
                             )}

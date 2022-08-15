@@ -28,12 +28,3 @@
 #boulderCardHolder {
     display: flex;
 }
-
-.boulderCard {
-    margin: 5px;
-    padding: 5px;
-    border: 1px solid black;
-    border-radius: 10px;
-    color: var(--background);
-    background-color: #212529;
-}
