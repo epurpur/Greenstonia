@@ -1,0 +1,12 @@
+section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.imgCard {
+    border: 1px solid black;
+    width: 30%;
+    height: 350px;
+    margin: 10px;
+    border-radius: 50px;
+}
