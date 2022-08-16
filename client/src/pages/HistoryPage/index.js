@@ -89,32 +89,32 @@ const HistoryPage = () => {
             imgLink: 'tommymeriwether'
         },
         {
-            id: 12,
-            title: 'Mike Farnsworth story',
-            active: true,
-            info: 'Mike Farnsworth Story',
-            imgLink: 'mikefarnsworth'
-        },
-        {
             id: 13,
             title: 'Tyler Hogan story',
             active: true,
             info: 'Tyler Hogan Story',
             imgLink: 'tylerhogan'
         },
+        {
+            id: 13,
+            title: 'Mike Farnsworth story',
+            active: true,
+            info: 'Mike Farnsworth story',
+            imgLink: 'mikefarnsworth'
+        },
     ])
 
     return (
         <>
             <Header />
-            <h4>Choose a card to see a story in the history of greenstone bouldering</h4>
-            <section>
+            <h4 id="history">Choose a card to see a story in the history of greenstone bouldering</h4>
+            <section id="historySection">
                 {/* map over history stories to display cards on screen */}
                 {historyStory.map((story) => 
                     <>
-                        <img className="imgCard" src={`/images/history_images/${story.imgLink}.png`} alt={`${story.title} screenshot`}></img>
-                        <Link to="/home">
-                        
+                        <Link to="/home" className="imgCard">
+                            <img src={`/images/history_images/${story.imgLink}.png`} alt={`${story.title} screenshot`} className="imgCardImg"></img>
+                            <div className="overlay"> {story.title} </div>
                         </Link>
                     </>
                 )}
