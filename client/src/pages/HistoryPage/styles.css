@@ -1,3 +1,10 @@
+
+:root {
+    /* Colors & Sizes */
+    --text-main: rgb(181, 227, 155);
+    --font-main: 'Permanent Marker', cursive;
+}
+
 #historyTitle {
     text-align: center;
 }
@@ -9,11 +16,25 @@
 }
 
 .imgCard {
+    background-color: black;
     width: 400px;
     height: 400px;
-    border: 1px solid black;
-    margin: 10px;
+    margin: 25px;
     border-radius: 25px;
+}
+
+.imgCard:hover {
+    opacity: 50%;
+    transition: 0.5s;
+}
+
+.textOverlay {
+    font-family: var(--font-main);
+    color: var(--text-main);
+    font-size: 20px;
+    text-align: center;
+    border-radius: 25px;
+    margin: 5px;
 }
 
 .imgCardImg {
@@ -22,18 +43,8 @@
     border-radius: 25px;
 }
 
-.imgCardImg:hover {
-    opacity: 25%;
-    transition: 0.5s;
-}
 
-.overlay {
-    height: 100%;
-    width: 100%;
-    margin-top: -50%;
-    text-align: center;
-}
 
-.overlay:hover {
-    opacity: 100%;
-}
+
+
+
