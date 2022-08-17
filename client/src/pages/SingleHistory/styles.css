@@ -1,0 +1,20 @@
+:root {
+    /* Colors & Sizes */
+    --text-main: rgb(181, 227, 155);
+    --font-main: 'Permanent Marker', cursive;
+}
+
+#titleHolder {
+    background-color: black;
+    text-align: center;
+}
+
+#singleHistoryTitle {
+    color: var(--text-main);
+    font-family: var(--font-main);
+}
+
+#singleHistoryAuthor {
+    color: var(--text-main);
+    font-family: var(--font-main);
+}
