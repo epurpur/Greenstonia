@@ -113,9 +113,12 @@ function App() {
         active: true,
         info: `<p id="mainTextContent">I moved to Charlottesville in 2017 and right away started to check out the existing spots on the Parkway. The one that caught my eye immediately was the 12.2 boulder. At that time, the lower hang and drops had been climbed and Elliot Gaunt had been the first to top out the boulder via 'Blue Ridge Beauty'. I was immediately hooked and spent a lot of time the next year repeating both the hang and drops and also some of Elliot's lines such as 'What Could Have Been' and 'Bring Your Own Oxygen'. This was a real learning experience for me as I used ropes to clean and rehearse the topouts, which I had never done before in bouldering. In the process of repeating the existing routes, I couldn't help but notice there were still quite a few lines left to be done!
         <br></br>
-        The first new line I set to work on became 'Eye of the Whistle Pig'. Elliot's lines took the obvious route up the middle of the face, but the left side had yet to be climbed. After cleaning and figuring out the line, I climbed it alone on a wet and humid October day in 2019. Check the first ascent video below.
+        The first new line I set to work on became 'Eye of the Whistle Pig'. Elliot's lines took the obvious route up the middle of the face, but the left side had yet to be climbed. After cleaning and figuring out the line, I climbed it alone on a wet and humid October day in 2019. I probably should have waited for better conditions but I was too excited to get it done! Check the first ascent video below.
         <br></br>
-        Another
+        <iframe width="653" height="400" src="https://www.youtube.com/embed/S1AJamHVR2s" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+
+        
+        
         </p>`,
         imgLink: 'erichpurpur',
         author: 'Erich Purpur'
