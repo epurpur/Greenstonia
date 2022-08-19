@@ -18,3 +18,8 @@
     color: var(--text-main);
     font-family: var(--font-main);
 }
+
+#mainTextContent {
+    padding: 20px;
+    font-size: 20px;
+}

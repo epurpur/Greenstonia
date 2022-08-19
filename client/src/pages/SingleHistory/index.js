@@ -16,8 +16,8 @@ const SingleHistory = ( {title, info, imgLink, author} ) => {
         <h1 id='singleHistoryTitle'>{title}</h1>
         <h3 id='singleHistoryAuthor'>by: {author} </h3>
       </div>
-      <section>
-        <p>{info}</p>
+      <section id="mainTextContent">
+        <p dangerouslySetInnerHTML={{__html: info}}></p>
       </section>
       <Footer />
     </>

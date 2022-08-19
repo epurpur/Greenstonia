@@ -90,9 +90,12 @@ function App() {
     },
     {
         id: 8,
-        title: 'Parker Smith story',
+        title: 'A Good Day to Die',
         active: true,
-        info: 'Parker Smith Story',
+        info: `<p id="mainTextContent">In the back of the Humpback Rocks Picnic Area is a trail that leads up to an overlook. Under that overlook are some rocks. Under those rocks is a roadcut for the Parkway. Andrew Cassidy and I were bouldering under the overlook one day while establishing problems such as Blue Suede, Wolf God and Jackie Chan's Greatest Kick when suddenly we hear a commotion underneath us from the parkway. We both rush over to the edge to find 3 or 4 kids standing in the road yelling up at another kid, now 25ft off the deck on the roadcut. Cars are continuing by, the kids are yelling, and Andrew and I both go in to "Yer Gonna Die!" mode. Andrew takes off running for the car to get a rope and I stay behind in an attempt to coach this kid up or down, I do not know really. 
+        He had found his way up the easier blocky terrain but had now been stymied by a short vertical and relatively featureless section of rock. He was in a good stance and had what appeared to be a good jug to hold onto (this is a greenstone roadcut) and we were discussing the various merits of left or right or toward the tree or towards me or... Well the young man decided he had grown tired of his perch and did what any other invincible teenager in his situation would do. He simply hand foot matched (in New Balances) the jug and pressed it out for the send! As he strode by I surely stammered something at him along the lines of "That was crazy!" or "What were you thinking?" to which he coolly replied "It's not my first time rock climbing." and took off back to his friends like a total legend.
+        <br></br>
+        This must be one of the most badass ascents in Parkway history: an unreported, ground up, on-sight, free solo, first ascent! (Likely un-repeated as well) I was happy that this was not his first time rock climbing, but even happier that it was not his last. I hope that he will read this and has continued smashing rigs, hopefully with a wider safety margin. Climb on!</p>`,
         imgLink: 'parkersmith',
         author: 'Parker Smith'
     },
@@ -106,9 +109,14 @@ function App() {
     },
     {
         id: 10,
-        title: 'Filling in the lines',
+        title: 'Blank Canvas',
         active: true,
-        info: 'Story of some more of the FAs on the 12.2 boulder',
+        info: `<p id="mainTextContent">I moved to Charlottesville in 2017 and right away started to check out the existing spots on the Parkway. The one that caught my eye immediately was the 12.2 boulder. At that time, the lower hang and drops had been climbed and Elliot Gaunt had been the first to top out the boulder via 'Blue Ridge Beauty'. I was immediately hooked and spent a lot of time the next year repeating both the hang and drops and also some of Elliot's lines such as 'What Could Have Been' and 'Bring Your Own Oxygen'. This was a real learning experience for me as I used ropes to clean and rehearse the topouts, which I had never done before in bouldering. In the process of repeating the existing routes, I couldn't help but notice there were still quite a few lines left to be done!
+        <br></br>
+        The first new line I set to work on became 'Eye of the Whistle Pig'. Elliot's lines took the obvious route up the middle of the face, but the left side had yet to be climbed. After cleaning and figuring out the line, I climbed it alone on a wet and humid October day in 2019. Check the first ascent video below.
+        <br></br>
+        Another
+        </p>`,
         imgLink: 'erichpurpur',
         author: 'Erich Purpur'
     },
