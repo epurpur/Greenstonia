@@ -113,12 +113,37 @@ function App() {
         active: true,
         info: `<p id="mainTextContent">I moved to Charlottesville in 2017 and right away started to check out the existing spots on the Parkway. The one that caught my eye immediately was the 12.2 boulder. At that time, the lower hang and drops had been climbed and Elliot Gaunt had been the first to top out the boulder via 'Blue Ridge Beauty'. I was immediately hooked and spent a lot of time the next year repeating both the hang and drops and also some of Elliot's lines such as 'What Could Have Been' and 'Bring Your Own Oxygen'. This was a real learning experience for me as I used ropes to clean and rehearse the topouts, which I had never done before in bouldering. In the process of repeating the existing routes, I couldn't help but notice there were still quite a few lines left to be done!
         <br></br>
-        The first new line I set to work on became 'Eye of the Whistle Pig'. Elliot's lines took the obvious route up the middle of the face, but the left side had yet to be climbed. After cleaning and figuring out the line, I climbed it alone on a wet and humid October day in 2019. I probably should have waited for better conditions but I was too excited to get it done! Check the first ascent video below.
+        Here is my video of "What Could Have Been":
+        <br><br>
+        <iframe className="embedVideo" width="653" height="400" src="https://www.youtube.com/embed/Utsw8W74TwE" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <br><br>
+        And "Bring Your Own Oxygen"
+        <br><br>
+        <iframe className="embedVideo" width="653" height="400" src="https://www.youtube.com/embed/HJPhSMAQeos" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <br><br>
+        The first new line I set to work on became "Eye of the Whistle Pig". Elliot's lines took the obvious route up the middle of the face, but the left side had yet to be climbed. After cleaning and figuring out the line, I climbed it alone on a wet and humid October day in 2019. I probably should have waited for better conditions but I was too excited to get it done! Check the first ascent video below.
         <br></br>
-        <iframe width="653" height="400" src="https://www.youtube.com/embed/S1AJamHVR2s" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen> <iframe/>
+        <iframe className="embedVideo" width="653" height="400" src="https://www.youtube.com/embed/S1AJamHVR2s" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <br><br>
+        After "Eye of the Whistle Pig" I took a short break from the 12.2 boulder for a sport climbing trip to the Red River Gorge. I had the trip of my life, climbing routes way beyond my expectations. Clearly I was in good form! When I returned to Virginia, 12.2 was still on my mind. I had been eyeing the wall to the right of "Razzle Dazzle". It was quite a nice stretch of rock with just a few imperfections that yielded some bad crimps. Over the course of a few weeks with some help from firends to figure out the moves, it was coming together. I was very close to doing it around Thanksgiving that year and with a good weather forecast, I went out the day after Thanksgiving with as many pads as I could fit in my car (7 I think).
+        I was able to do it that day and the line became "Humdinger" and it is my personal favorite on the boulder. I think it climbs really well and is not quite as tall as the others, making it a bit more approachable. Right before I sent it, I fell from the move to the lip of the boulder and it was fine. Unfortunately that day the sun was bright and made it impossible to get a good angle for video, but I filmed it anyway which you can see below:
+        <br><br>
+        <iframe className="embedVideo" width="653" height="400" src="https://www.youtube.com/embed/oLLZeNinSE0" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <br><br>
+        Fast forward a few months to Spring 2020. This was a strange time in the world with the Covid pandemic going on. The parkway was closed in order to keep people from gathering in large groups. However, it was still legal to walk on the road. Instead of being a roadside boulder, 12.2 was now a 1.3 mile walk in from the Three Ridges parking lot. No problem as the views are nice! I had spied yet another line up the middle of the boulder, right of "Eye of the Whistle Pig" but left of "Blue Ridge Beauty". One day, Mike Farnsworth joined me to carry in quite a few pads and luckily there were some other people at the boulder that day. This meant I got to climb with spotters and the most pads I'd had on any of these lines so far! The line became "True Love". It climbs into a distinctive ear shaped flake before going 
+        left to join "Eye of the Whistle Pig". Alas, I didn't get a video which is ironic given that there were other people around that day. "True Love" is maybe the easiest line to the top of the boulder and was named for my love of the 12.2 boulder. The best I can do is to point you to the <a href="https://www.mountainproject.com/route/118778538/true-love" target="_blank">Mountain Project page for this route</a>.
+        <br><br>
+        In Fall 2020 I returned to 12.2 for some cleanup. I had never done "Blue Ridge Beauty" proper, which climbs "BetaMax" into the original topout that Elliot did. It took me longer than expected to re-learn how to do both "BetaMax" (the first half) and the 2nd half topout. Again, the week of Thanksgiving both the weather and my fitness peaked and went for it. My friend Rojeen joined me at the boulder that day and filmed as I went for it, taking a scary fall from the top. My left hand dry-fired off a small crimp. The video did not capture this but I hip-checked the pads and this sent me running out into the road completely unscathed! Luckily I did not fall higher than that or really might have gotten hurt. Though I got lucky that time, the fall shook me mentally and made me seriously think "should I be up there?".
+        I have yet to top out the boulder since then and though I haven't ruled it out, it'll be a calculated attempt if I go for it again. As I currently write this, I am 35 years old and I don't want to take those slams like I used to!
+        <br><br>
+        <iframe className="embedVideo" width="653" height="400" src="https://www.youtube.com/embed/R6fh1g89OK4" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <br><br>
+        In the meantime I had also been messing with another new line, "Largemouth Bass", which is both easier and lower than the other lines that top out and is much more approachable to the average climber. I have no epic tale here other than it was just another unclimbed line on this amazing boulder!
+        <br><br>
+        <iframe className="embedVideo" width="653" height="400" src="https://www.youtube.com/embed/wmqR-xK4Hz8" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <br><br>
+        I hope to write an update to this story one day as there are still new lines left to do on the boulder. The 12.2 boulder has given me a lot of good memories and I am very thankful to have it close to home. I hope these stories motivates someone else to pick up the 12.2 torch and carry it into the future!
 
-        
-        
         </p>`,
         imgLink: 'erichpurpur',
         author: 'Erich Purpur'
