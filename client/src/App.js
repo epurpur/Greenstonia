@@ -115,7 +115,7 @@ function App() {
         <br></br>
         The first new line I set to work on became 'Eye of the Whistle Pig'. Elliot's lines took the obvious route up the middle of the face, but the left side had yet to be climbed. After cleaning and figuring out the line, I climbed it alone on a wet and humid October day in 2019. I probably should have waited for better conditions but I was too excited to get it done! Check the first ascent video below.
         <br></br>
-        <iframe width="653" height="400" src="https://www.youtube.com/embed/S1AJamHVR2s" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+        <iframe width="653" height="400" src="https://www.youtube.com/embed/S1AJamHVR2s" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen> <iframe/>
 
         
         
