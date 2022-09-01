@@ -31,7 +31,7 @@ const typeDefs = gql`
       firstAscent: String
       routeGrade: String!
       routeQuality: Int
-      routeImgURL: [String]
+      routeImgURL: [String!]
       routeYoutubeEmbedURL: String
       boulderID: Boulder!
     }
