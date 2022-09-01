@@ -13,7 +13,7 @@ const SingleRoutePage = () => {
 
     let singleRouteData = useLocation();
     singleRouteData = singleRouteData.state;
-    console.log('SINGLE ROUTE DATA', singleRouteData);
+    console.log('SINGLE ROUTE DATA!!', singleRouteData);
 
     return (
         <>
@@ -31,15 +31,17 @@ const SingleRoutePage = () => {
                     </div>
                     <div style={{"text-decoration":"underline", "font-size":"25px"}}> Route videos </div>
                     <div id="singleRouteVideo">
-                        <iframe 
+                        {singleRouteData.routeYoutubeEmbedURL ? <iframe 
                             width="653" 
                             height="400" 
-                            src="https://www.youtube.com/embed/pWfdPW5mVBI"
+                            src={`https://www.youtube.com/embed/${singleRouteData.routeYoutubeEmbedURL}`}
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                             title={singleRouteData.routeName}
-                        />
+                        ></iframe> 
+                        :
+                        <>No video for this route</>}
                     </div>
                 </div>
             <Footer />

@@ -50,7 +50,9 @@ const BoulderPage = () => {
                                                                                                                         routeDescription: route.routeDescription, 
                                                                                                                         routeGrade: route.routeGrade, 
                                                                                                                         routeName: route.routeName, 
-                                                                                                                        routeQuality: route.routeQuality, 
+                                                                                                                        routeQuality: route.routeQuality,
+                                                                                                                        routeImgURL: route.routeImgURL,
+                                                                                                                        routeYoutubeEmbedURL: route.routeYoutubeEmbedURL,
                                                                                                                         boulderID: bouldersData.boulderID,
                                                                                                                         boulderName: bouldersData.boulderName,
                                                                                                                         areaName: bouldersData.areaName}}}>

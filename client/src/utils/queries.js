@@ -57,6 +57,8 @@ export const QUERY_ROUTESBYBOULDER = gql`
         firstAscent
         routeGrade
         routeQuality
+        routeImgURL
+        routeYoutubeEmbedURL
       }
     }
   }
