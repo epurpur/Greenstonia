@@ -30,25 +30,31 @@ const SingleRoutePage = () => {
                     <div><span>Description: </span>{singleRouteData.routeDescription} </div>
                     <div style={{"text-decoration":"underline", "font-size":"25px"}}> Route Images </div>
                     { singleRouteData.routeImgURL.length > 0 ?
-                    <div id='imageCardsBox'>
-                        <ImageCards imageInfo={'placeholder'}/>
-                    </div>
+                        <div id='imageCardsBox'>
+                            <ImageCards imageInfo={'placeholder'}/>
+                        </div>
                     :
-                    <>No images for this route</>
+                        // no images for this route
+                        <br></br>
                     }
-                    <div style={{"text-decoration":"underline", "font-size":"25px"}}> Route videos </div>
+
+                    <div style={{"text-decoration":"underline", "font-size":"25px"}}> Route Video </div>
                     <div id="singleRouteVideo">
-                        {singleRouteData.routeYoutubeEmbedURL ? <iframe 
-                            width="653" 
-                            height="400" 
-                            src={`https://www.youtube.com/embed/${singleRouteData.routeYoutubeEmbedURL}`}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            title={singleRouteData.routeName}
-                        ></iframe> 
+                        {singleRouteData.routeYoutubeEmbedURL ? 
+                            <iframe 
+                                width="653" 
+                                height="400" 
+                                src={`https://www.youtube.com/embed/${singleRouteData.routeYoutubeEmbedURL}`}
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                title={singleRouteData.routeName}>
+                            </iframe> 
                         :
-                        <>No video for this route</>}
+                            // no video for this route
+                            <br></br>
+                        }
+
                     </div>
                 </div>
             <Footer />
