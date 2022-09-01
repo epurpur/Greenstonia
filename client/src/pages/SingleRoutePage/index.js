@@ -15,6 +15,9 @@ const SingleRoutePage = () => {
     singleRouteData = singleRouteData.state;
     console.log('SINGLE ROUTE DATA!!', singleRouteData);
 
+    console.log('image URLs');
+    console.log(singleRouteData.routeImgURL)
+
     return (
         <>
             <Header />
@@ -26,9 +29,13 @@ const SingleRoutePage = () => {
                     <div><span>First Ascent: </span>{singleRouteData.firstAscent} </div>
                     <div><span>Description: </span>{singleRouteData.routeDescription} </div>
                     <div style={{"text-decoration":"underline", "font-size":"25px"}}> Route Images </div>
+                    { singleRouteData.routeImgURL.length > 0 ?
                     <div id='imageCardsBox'>
                         <ImageCards imageInfo={'placeholder'}/>
                     </div>
+                    :
+                    <>No images for this route</>
+                    }
                     <div style={{"text-decoration":"underline", "font-size":"25px"}}> Route videos </div>
                     <div id="singleRouteVideo">
                         {singleRouteData.routeYoutubeEmbedURL ? <iframe 
