@@ -19,9 +19,10 @@ import SingleHistory from "./pages/SingleHistory";
 
 /* Components */
 
-/* User Context Provider */
+/* User Context Providers */
 /* This is like a global state that wraps around all components/pages */
 import UserProvider from "./utils/UserContext";
+import PageProvider from "./utils/PageContext";
 
 /* Apollo Setup */
 const client = new ApolloClient({
@@ -174,14 +175,20 @@ function App() {
     },
   ])
 
+  // controls login context
   const [login, setLogin] = useState(false)
-
   const providerValue = useMemo(() => ({ login, setLogin}), [login, setLogin])
+
+  // controls page context
+  const [pageName, setPageName] = useState('other');
+  const pageValue = useMemo(() => ({ pageName, setPageName}), [pageName, setPageName])
+  
   return (
 
     // all components need to be inside ApolloProvider tag. Any component inside this tag can now make requests to graphql
     <ApolloProvider client={client}>
       <UserProvider value={providerValue}>  {/* UserContext login value - global state*/}
+      <PageProvider value={pageValue}>
         <Router>
           <div className="App">
             {/* Establishing routes to all endpoints */}
@@ -227,6 +234,7 @@ function App() {
             </Switch>
           </div>
         </Router>
+      </PageProvider>
       </UserProvider>
     </ApolloProvider>
   );

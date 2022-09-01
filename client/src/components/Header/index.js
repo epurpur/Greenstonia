@@ -9,8 +9,13 @@ import "./styles.css";
 
 /* Context */
 import { UserContext } from "../../utils/UserContext";
+import { PageContext } from "../../utils/PageContext";
 
 const Header = () => {
+
+    //global page context variable of page state
+    const { pageName, setPageName } = useContext(PageContext);
+
     //global user context variable of login state
     const { login, setLogin } = useContext(UserContext);
     //seconds count used for various login timers
@@ -137,6 +142,7 @@ const Header = () => {
                 : 
                 <Nav.Link onClick={handleUserLogin}>Logout</Nav.Link>
               }
+              <Nav.Link>{pageName}</Nav.Link>
                            
             </Nav>
           </Navbar.Collapse>
