@@ -18,7 +18,7 @@ const BoulderPage = () => {
 
     // setting user context of page
     const { pageName, setPageName } = useContext(PageContext)
-    setPageName('boulder');
+    setPageName('Boulder');
 
     // data passed in as state from AreasPage component
     // this is used for the current boulder's name and id number which is accessed by bouldersData.state

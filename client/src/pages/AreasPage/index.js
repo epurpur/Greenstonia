@@ -18,7 +18,7 @@ const AreasPage = () => {
     
     // setting user context of page
     const { pageName, setPageName } = useContext(PageContext)
-    setPageName('area');
+    setPageName('Area');
 
     // data passed in as state from RouteList component
     // this is used for the current area's name which is accesses by areaData.areaName

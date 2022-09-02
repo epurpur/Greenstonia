@@ -16,7 +16,7 @@ const SingleRoutePage = () => {
 
     // setting user context of page
     const { pageName, setPageName } = useContext(PageContext)
-    setPageName('route');
+    setPageName('Route');
 
     let singleRouteData = useLocation();
     singleRouteData = singleRouteData.state;
