@@ -187,8 +187,8 @@ function App() {
 
     // all components need to be inside ApolloProvider tag. Any component inside this tag can now make requests to graphql
     <ApolloProvider client={client}>
-      <UserProvider value={providerValue}>  {/* UserContext login value - global state*/}
-      <PageProvider value={pageValue}>
+      <UserProvider value={providerValue}>  {/* UserContext login value - global state */}
+      <PageProvider value={pageValue}>      {/* UserContext page value - global state */}
         <Router>
           <div className="App">
             {/* Establishing routes to all endpoints */}

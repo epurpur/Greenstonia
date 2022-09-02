@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 /* Components */
@@ -8,7 +8,14 @@ import Footer from "../../components/Footer";
 /* CSS styles */
 import "./styles.css";
 
+/* Context */
+import { PageContext } from "../../utils/PageContext";
+
 const HistoryPage = ({historyStory}) => {
+
+    // setting user context of page
+    const { pageName, setPageName } = useContext(PageContext)
+    setPageName('other');
 
     return (
         <>

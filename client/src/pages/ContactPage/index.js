@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from "react-router-dom";
 
 /* Components */
@@ -14,7 +14,15 @@ import github from '../../images/github.png';
 /* CSS styles */
 import "./styles.css";
 
+/* Context */
+import { PageContext } from "../../utils/PageContext";
+
+
 const ContactPage = () => {
+
+    // setting user context of page
+    const { pageName, setPageName } = useContext(PageContext)
+    setPageName('other');
 
     const [contactInfo, setContactInfo] = useState([
         {

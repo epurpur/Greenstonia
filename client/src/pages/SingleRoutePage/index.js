@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLocation } from "react-router-dom";
 
 /* Components */
@@ -9,7 +9,14 @@ import ImageCards from '../../components/ImageCards';
 /* CSS styles */
 import "./styles.css";
 
+/* Context */
+import { PageContext } from "../../utils/PageContext";
+
 const SingleRoutePage = () => {
+
+    // setting user context of page
+    const { pageName, setPageName } = useContext(PageContext)
+    setPageName('route');
 
     let singleRouteData = useLocation();
     singleRouteData = singleRouteData.state;

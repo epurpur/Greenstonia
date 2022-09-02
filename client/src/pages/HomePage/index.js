@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useQuery } from '@apollo/client';
 import { QUERY_AREAS } from '../../utils/queries';
 
@@ -15,10 +15,16 @@ import WeatherComponent from "../../components/WeatherComponent";
 /* CSS styles */
 import "./styles.css";
 
-const HomePage = () => {
-    
-    const [todayWeatherData, settodayWeatherData] = useState(null);
+/* Context */
+import { PageContext } from "../../utils/PageContext";
 
+const HomePage = () => {
+
+    // setting user context of page
+    const { pageName, setPageName } = useContext(PageContext)
+    setPageName('other');
+
+    const [todayWeatherData, settodayWeatherData] = useState(null);
 
     // Make DB call for all Area data
     const { loading, data } = useQuery(QUERY_AREAS);

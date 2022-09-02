@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { useQuery } from '@apollo/client';
 import { QUERY_BOULDERSBYAREA } from '../../utils/queries';
@@ -11,8 +11,15 @@ import BouldersMap from '../../components/BouldersMap';
 /* CSS styles */
 import "./styles.css";
 
+/* Context */
+import { PageContext } from "../../utils/PageContext";
+
 const AreasPage = () => {
     
+    // setting user context of page
+    const { pageName, setPageName } = useContext(PageContext)
+    setPageName('area');
+
     // data passed in as state from RouteList component
     // this is used for the current area's name which is accesses by areaData.areaName
     let areaData = useLocation();

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { useQuery } from '@apollo/client';
 import { QUERY_ROUTESBYBOULDER } from '../../utils/queries';
@@ -11,7 +11,14 @@ import ImageCards from '../../components/ImageCards';
 /* CSS styles */
 import "./styles.css";
 
+/* Context */
+import { PageContext } from "../../utils/PageContext";
+
 const BoulderPage = () => {
+
+    // setting user context of page
+    const { pageName, setPageName } = useContext(PageContext)
+    setPageName('boulder');
 
     // data passed in as state from AreasPage component
     // this is used for the current boulder's name and id number which is accessed by bouldersData.state
