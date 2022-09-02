@@ -21,6 +21,14 @@
     text-align: center;
 }
 
+#editorBtn {
+    color: var(--text-main);
+}
+
+#editorBtn:hover {
+    color: white;
+}
+
 #loginModalForm {
     font-family: var(--font-main);
     border: 3px solid var(--text-main);

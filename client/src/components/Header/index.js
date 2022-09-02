@@ -142,7 +142,7 @@ const Header = () => {
                 : 
                 <Nav.Link onClick={handleUserLogin}>Logout</Nav.Link>
               }
-              <Nav.Link>{pageName}</Nav.Link>
+              <Nav.Link id="editorBtn">Add {pageName}</Nav.Link>
                            
             </Nav>
           </Navbar.Collapse>
