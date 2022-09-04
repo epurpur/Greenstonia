@@ -11,12 +11,17 @@ import "./styles.css";
 
 /* Context */
 import { PageContext } from "../../utils/PageContext";
+import { EditorContext } from '../../utils/EditorContext';
 
 const SingleRoutePage = () => {
 
     // setting user context of page
     const { pageName, setPageName } = useContext(PageContext)
     setPageName('Route');
+
+    // setting editor context of page
+    const { editorInfo, setEditorInfo } = useContext(EditorContext);
+    setEditorInfo('testing from roooooooute page');
 
     let singleRouteData = useLocation();
     singleRouteData = singleRouteData.state;
