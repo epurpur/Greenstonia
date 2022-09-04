@@ -11,6 +11,7 @@ import SearchBar from "../../components/SearchBar";
 import AreasMap from "../../components/AreasMap";
 import RouteList from "../../components/RouteList";
 import WeatherComponent from "../../components/WeatherComponent";
+import About from "../../components/About";
 
 /* CSS styles */
 import "./styles.css";
@@ -64,6 +65,7 @@ const HomePage = () => {
             <section>
                 <AccessAlert />
                 <ConditionsAlert todayWeatherData={todayWeatherData} />     {/* Passing weatherData from API call as props to this component */}
+                <About />
                 <SearchBar />
                 <AreasMap areas={areas} />
                 <RouteList areas={areas} />

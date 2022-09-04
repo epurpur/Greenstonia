@@ -7,7 +7,7 @@ import "./styles.css";
 const SearchBar = () => {
     return (
         <>
-            <div id='searchBar'>Search </div>
+            <div className='headerItem'>Search </div>
         </>
     )
 };
