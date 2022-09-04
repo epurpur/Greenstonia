@@ -24,6 +24,7 @@ import EditorPage from "./pages/EditorPage";
 /* This is like a global state that wraps around all components/pages */
 import UserProvider from "./utils/UserContext";
 import PageProvider from "./utils/PageContext";
+import EditorProvider from "./utils/EditorContext";
 
 /* Apollo Setup */
 const client = new ApolloClient({
@@ -183,6 +184,10 @@ function App() {
   // controls page context
   const [pageName, setPageName] = useState('other');
   const pageValue = useMemo(() => ({ pageName, setPageName}), [pageName, setPageName])
+
+  // controls editor page context
+  const [editorInfo, setEditorInfo] = useState();
+  const editorValue = useMemo(() => ({editorInfo, setEditorInfo}), [editorInfo, setEditorInfo])
   
   return (
 
@@ -190,6 +195,7 @@ function App() {
     <ApolloProvider client={client}>
       <UserProvider value={providerValue}>  {/* UserContext login value - global state */}
       <PageProvider value={pageValue}>      {/* UserContext page value - global state */}
+      <EditorProvider value={editorValue}>  {/* UserContext editor value - global state */}
         <Router>
           <div className="App">
             {/* Establishing routes to all endpoints */}
@@ -238,6 +244,7 @@ function App() {
             </Switch>
           </div>
         </Router>
+      </EditorProvider>
       </PageProvider>
       </UserProvider>
     </ApolloProvider>
