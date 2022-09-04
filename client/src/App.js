@@ -16,6 +16,7 @@ import SingleRoutePage from "./pages/SingleRoutePage";
 import AreasPage from "./pages/AreasPage";
 import UploadForm from "./pages/UploadForm";
 import SingleHistory from "./pages/SingleHistory";
+import EditorPage from "./pages/EditorPage";
 
 /* Components */
 
@@ -214,6 +215,9 @@ function App() {
               </Route>
               <Route exact path="/singleRoute/:routeName">
                 <SingleRoutePage />
+              </Route>
+              <Route exact path="/editorPage">
+                <EditorPage />
               </Route>
               <Route exact path="/uploadForm">
                 <UploadForm />
