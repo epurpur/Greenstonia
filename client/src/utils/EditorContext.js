@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export const EditorContext = React.createContext();
 
 export const EditorProvider = (props) => {
-    const [editorInfo, setEditorInfo] = useState();
+    const [editorInfo, setEditorInfo] = useState({ typeID: '', typeName: ''});
 
     return (
         //passing in values from editorInfo state to use elsewhere in app (specifically to use in editor page)

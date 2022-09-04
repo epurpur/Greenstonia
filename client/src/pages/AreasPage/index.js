@@ -23,7 +23,7 @@ const AreasPage = () => {
 
     // setting context of editor info
     const { editorInfo, setEditorInfo } = useContext(EditorContext);
-    setEditorInfo('testing from area page');
+    setEditorInfo();
 
     // data passed in as state from RouteList component
     // this is used for the current area's name which is accesses by areaData.areaName

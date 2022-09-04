@@ -21,19 +21,21 @@ const BoulderPage = () => {
     const { pageName, setPageName } = useContext(PageContext)
     setPageName('Boulder');
 
-    // setting context of editor info
-    const { editorInfo, setEditorInfo } = useContext(EditorContext);
-    setEditorInfo('test from boulder page!');
-
     // data passed in as state from AreasPage component
     // this is used for the current boulder's name and id number which is accessed by bouldersData.state
     let bouldersData = useLocation();
     bouldersData = bouldersData.state;
+    console.log('BOULDER DATA BEFORE API CALL', bouldersData);
+
+    // setting context of editor info
+    const { editorInfo, setEditorInfo } = useContext(EditorContext);
+    // from bouldersData (above line 27) I need areaID, areaName to pass to editor page
+    console.log('CURRENT STATE OF EDITOR INFO', editorInfo)
 
     // make API call to database for routes for this particular boulder, using ID of current boulder
     const { loading, data } = useQuery(QUERY_ROUTESBYBOULDER, {variables: {boulderID: bouldersData.boulderID}});
     const routesByBoulder = data?.routesByBoulder || [];
-    console.log('boulder data', routesByBoulder)
+    //console.log('boulder data', routesByBoulder)
     // separate out just the routes
     const routes = routesByBoulder && routesByBoulder.routes;
     

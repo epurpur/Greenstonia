@@ -186,7 +186,7 @@ function App() {
   const pageValue = useMemo(() => ({ pageName, setPageName}), [pageName, setPageName])
 
   // controls editor page context
-  const [editorInfo, setEditorInfo] = useState();
+  const [editorInfo, setEditorInfo] = useState({ typeID: '', typeName: ''});
   const editorValue = useMemo(() => ({editorInfo, setEditorInfo}), [editorInfo, setEditorInfo])
   
   return (

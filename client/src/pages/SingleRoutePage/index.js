@@ -21,6 +21,7 @@ const SingleRoutePage = () => {
 
     // setting editor context of page
     const { editorInfo, setEditorInfo } = useContext(EditorContext);
+    // from bouldersData (above line 27) I need areaID, areaName to pass to editor page
     setEditorInfo('testing from roooooooute page');
 
     let singleRouteData = useLocation();
