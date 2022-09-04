@@ -142,7 +142,7 @@ const Header = () => {
                 : 
                 <>
                   <Nav.Link onClick={handleUserLogin}>Logout</Nav.Link>
-                  <Nav.Link><Link to='/editorPage' id="editorBtn"> Add {pageName}</Link> </Nav.Link>
+                  <Nav.Link><Link key={Math.floor(Math.random() * 10000)} to={{pathname:'/editorPage', state: {testInfo: 'testingInfo!'}}} id="editorBtn"> Add {pageName}</Link> </Nav.Link>
                 </>
               }
             </Nav>
