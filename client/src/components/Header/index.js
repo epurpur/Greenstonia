@@ -140,10 +140,11 @@ const Header = () => {
               {login === false ? 
                 <Nav.Link onClick={handleShowModal}>Login</Nav.Link> 
                 : 
-                <Nav.Link onClick={handleUserLogin}>Logout</Nav.Link>
+                <>
+                  <Nav.Link onClick={handleUserLogin}>Logout</Nav.Link>
+                  <Nav.Link><Link to='/editorPage' id="editorBtn"> Add {pageName}</Link> </Nav.Link>
+                </>
               }
-              <Nav.Link id="editorBtn">Add {pageName}</Nav.Link>
-                           
             </Nav>
           </Navbar.Collapse>
           </Container>
