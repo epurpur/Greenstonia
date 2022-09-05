@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { useQuery } from '@apollo/client';
 import { QUERY_ROUTESBYBOULDER } from '../../utils/queries';
@@ -29,8 +29,16 @@ const BoulderPage = () => {
 
     // setting context of editor info
     const { editorInfo, setEditorInfo } = useContext(EditorContext);
-    // from bouldersData (above line 27) I need areaID, areaName to pass to editor page
-    console.log('CURRENT STATE OF EDITOR INFO', editorInfo)
+    // using useEffect to pass in id and name of area for creating new boulder
+    useEffect(() => {
+        // testChange()
+        setEditorInfo({
+            ...editorInfo,
+            ['typeID']: bouldersData.areaId,
+            ['typeName']: bouldersData.areaName
+        })
+    }, []);    
+
 
     // make API call to database for routes for this particular boulder, using ID of current boulder
     const { loading, data } = useQuery(QUERY_ROUTESBYBOULDER, {variables: {boulderID: bouldersData.boulderID}});

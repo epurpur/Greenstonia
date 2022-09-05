@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
 
 /* Components */
@@ -15,21 +15,29 @@ import { EditorContext } from '../../utils/EditorContext';
 
 const SingleRoutePage = () => {
 
-    // setting user context of page
-    const { pageName, setPageName } = useContext(PageContext)
-    setPageName('Route');
-
-    // setting editor context of page
-    const { editorInfo, setEditorInfo } = useContext(EditorContext);
-    // from bouldersData (above line 27) I need areaID, areaName to pass to editor page
-    setEditorInfo('testing from roooooooute page');
-
     let singleRouteData = useLocation();
     singleRouteData = singleRouteData.state;
     console.log('SINGLE ROUTE DATA!!', singleRouteData);
 
     console.log('image URLs');
     console.log(singleRouteData.routeImgURL)
+
+    // setting user context of page
+    const { pageName, setPageName } = useContext(PageContext)
+    setPageName('Route');
+
+    // setting editor context of page
+    const { editorInfo, setEditorInfo } = useContext(EditorContext);
+    // using useEffect to pass in id and name of boulder for creating new route
+    useEffect(() => {
+        // testChange()
+        setEditorInfo({
+            ...editorInfo,
+            ['typeID']: singleRouteData.boulderID,
+            ['typeName']: singleRouteData.boulderName
+        })
+    }, []); 
+
 
     return (
         <>

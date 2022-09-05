@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { useQuery } from '@apollo/client';
 import { QUERY_BOULDERSBYAREA } from '../../utils/queries';
@@ -17,19 +17,18 @@ import { EditorContext } from "../../utils/EditorContext";
 
 const AreasPage = () => {
     
+    // data passed in as state from RouteList component
+    // this is used for the current area's name which is accesses by areaData.areaName
+    let areaData = useLocation();
+    areaData = areaData.state;
+    console.log('AREA DATA', areaData);
+
     // setting user context of page
     const { pageName, setPageName } = useContext(PageContext);
     setPageName('Area');
 
     // setting context of editor info
     const { editorInfo, setEditorInfo } = useContext(EditorContext);
-    setEditorInfo();
-
-    // data passed in as state from RouteList component
-    // this is used for the current area's name which is accesses by areaData.areaName
-    let areaData = useLocation();
-    areaData = areaData.state;
-    console.log('AREA DATA', areaData);
     
     // making API call to database for boulders by area query, using area name of current area
     const { loading, data } = useQuery(QUERY_BOULDERSBYAREA, {variables: {areaName: areaData.areaName}});
