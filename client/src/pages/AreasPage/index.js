@@ -29,7 +29,16 @@ const AreasPage = () => {
 
     // setting context of editor info
     const { editorInfo, setEditorInfo } = useContext(EditorContext);
-    
+    // using useEffect to pass in placeholder id and name of area for creating new route
+    useEffect(() => {
+        // testChange()
+        setEditorInfo({
+            ...editorInfo,
+            ['typeID']: 'placeholder',
+            ['typeName']: areaData.areaName
+        })
+    }, []); 
+
     // making API call to database for boulders by area query, using area name of current area
     const { loading, data } = useQuery(QUERY_BOULDERSBYAREA, {variables: {areaName: areaData.areaName}});
     const bouldersByArea = data?.bouldersByArea || [];
