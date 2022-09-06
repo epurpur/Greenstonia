@@ -19,13 +19,13 @@ const EditorPage = () => {
     // global user context variable of editor info state
     const { editorInfo, setEditorInfo } = useContext(EditorContext);
     const { pageName, setPageName } = useContext(PageContext);
+    setPageName('other');
     console.log('EDITOR CONTEXT INFO', editorInfo);
     console.log('PAGE CONTEXT', pageName)
 
     return (
         <>
             <Header />
-                <p id="breadcrumb">Go Back: <Link to='/home'>Home Page</Link></p> 
                 {pageName === 'Area' &&
                 /* data needed to create new area: areaName, areaDescription, parkingDescription, approachDescription, latitude, longitude  */
                  <>

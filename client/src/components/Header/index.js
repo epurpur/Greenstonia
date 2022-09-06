@@ -142,8 +142,14 @@ const Header = () => {
                 : 
                 <>
                   <Nav.Link onClick={handleUserLogin}>Logout</Nav.Link>
-                  <Nav.Link><Link to='/editorPage' id="editorBtn"> Add {pageName}</Link> </Nav.Link>
-                  <Nav.Link id="editorBtn"> Delete {pageName} </Nav.Link>
+                {/* Don't want to show 'Add' or 'Delete' buttons if user is on 'other' page */}
+                  {pageName !== 'other' &&
+                    <>
+                      <Nav.Link><Link to='/editorPage' id="editorBtn"> Add {pageName}</Link> </Nav.Link>
+                      <Nav.Link id="editorBtn"> Delete {pageName} </Nav.Link>
+                    </>
+                  
+                  }
                 </>
               }
             </Nav>
