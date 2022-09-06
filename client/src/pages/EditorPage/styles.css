@@ -1,0 +1,27 @@
+:root {
+    /* Colors & Sizes */
+    --text-main: rgb(181, 227, 155);
+    --font-main: 'Permanent Marker', cursive;
+}
+
+#editorFormHolder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#editorForm {
+    border-radius: 10px;
+    width: 50%;
+}
+
+.formLabel {
+    font-family: var(--font-main);
+}
+
+#btnFormSubmit {
+    margin: 0 0 10px 45%;
+    background-color: var(--text-main);
+    color: black;
+}

@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 /* Components */
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import { Form, Button } from 'react-bootstrap';
 
-/* Styles */
+/* CSS styles */
+import "./styles.css";
+
 
 /* Context */
 import { EditorContext } from '../../utils/EditorContext';
@@ -22,16 +25,62 @@ const EditorPage = () => {
     return (
         <>
             <Header />
-            <div id='editorFormHolder'>
-                {/* FIX BREADCRUMB HERE!!! START HERE */}
                 <p id="breadcrumb">Go Back: <Link to='/home'>Home Page</Link></p> 
-
-                <p>Current Info</p>
-
-                {
+                {pageName === 'Area' &&
                 /* data needed to create new area: areaName, areaDescription, parkingDescription, approachDescription, latitude, longitude  */
-                pageName === 'Area' && <>Create new area</>
-                
+                 <>
+                    <div id='editorFormHolder'>
+                        <h4>Create New Area</h4>
+                        <Form id="editorForm">
+                            <Form.Group className="m-3 loginModalText">
+                                <Form.Label className='formLabel'>Area Name</Form.Label>
+                                <Form.Control 
+                                    name="username"
+                                    required
+                                />
+                            </Form.Group>
+                            <Form.Group className="m-3 loginModalText">
+                                <Form.Label className='formLabel'>Area Description</Form.Label>
+                                <Form.Control 
+                                    name="password"
+                                    required
+                                />
+                            </Form.Group>
+                            <Form.Group className="m-3 loginModalText">
+                                <Form.Label className='formLabel'>Parking Description</Form.Label>
+                                <Form.Control 
+                                    name="password"
+                                    required
+                                />
+                            </Form.Group>
+                            <Form.Group className="m-3 loginModalText">
+                                <Form.Label className='formLabel'>Approach Description</Form.Label>
+                                <Form.Control 
+                                    name="password"
+                                    required
+                                />
+                            </Form.Group>
+                            <Form.Group className="m-3 loginModalText">
+                                <Form.Label className='formLabel'>Latitude</Form.Label>
+                                <Form.Control 
+                                    name="password"
+                                    required
+                                />
+                            </Form.Group>
+                            <Form.Group className="m-3 loginModalText">
+                                <Form.Label className='formLabel'>Longitude</Form.Label>
+                                <Form.Control 
+                                    name="password"
+                                    required
+                                />
+                            </Form.Group>
+                            <Button id="btnFormSubmit" variant="primary" type="submit">
+                                Submit
+                            </Button>
+                        </Form>
+                    </div>
+                    <br></br>
+                 </>
                 }
 
                 {
@@ -46,7 +95,7 @@ const EditorPage = () => {
                 
                 }
 
-            </div>
+            
 
             <Footer />
         </>
