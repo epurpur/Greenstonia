@@ -19,8 +19,77 @@ const EditorPage = () => {
     // global user context variable of editor info state
     const { editorInfo, setEditorInfo } = useContext(EditorContext);
     const { pageName, setPageName } = useContext(PageContext);
-    console.log('EDITOR CONTEXT INFO', editorInfo);
-    console.log('PAGE CONTEXT', pageName)
+    //console.log('EDITOR CONTEXT INFO', editorInfo);
+    //console.log('PAGE CONTEXT', pageName)
+
+
+    // controls state of information entered into area form
+    const [areaFormState, setAreaFormState] = useState({
+        areaName: '',
+        areaDescription: '',
+        parkingDescription: '',
+        approachDescription: '',
+        latitude: '',
+        longitude: ''
+    });
+
+    const handleAreaFormChange = (event) => {
+        // handles changing form values of new area form
+        const {name, value} = event.target;
+        setAreaFormState({
+            ...areaFormState,
+            [name]: value
+        })
+
+        //console.log('AREA FORM STATE', areaFormState)
+    }
+
+    // controls state of information entered into boulder form
+    const [boulderFormState, setBoulderFormState] = useState({
+        boulderName: '',
+        boulderDescription: '',
+        latitude: '',
+        longitude: '',
+        boulderImgURL: '',
+        areaID: editorInfo.typeID,
+        areaName: editorInfo.typeName
+    });
+
+    const handleBoulderFormChange = (event) => {
+        // handles changing form values of new boulder form
+        const {name, value} = event.target;
+        setBoulderFormState({
+            ...boulderFormState,
+            [name]: value
+        })
+
+        //console.log('BOULDER FORM STATE', boulderFormState)
+    };
+
+    // controls state of information entered into route form
+    const [routeFormState, setRouteFormState] = useState({
+        routeName: '',
+        routeDescription: '',
+        firstAscent: '',
+        routeGrade: '',
+        routeQuality: '',
+        routeImgURL: '',
+        routeYoutubeEmbedURL: '',
+        boulderID: editorInfo.typeID,
+        boulderName: editorInfo.typeName
+    });
+
+    const handleRouteFormChange = (event) => {
+        //handles changing form values of new route form
+        const {name, value} = event.target;
+        setRouteFormState({
+            ...routeFormState,
+            [name]: value
+        })
+    };
+
+
+
 
     return (
         <>
@@ -34,42 +103,54 @@ const EditorPage = () => {
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Area Name</Form.Label>
                                 <Form.Control 
-                                    name="username"
+                                    name="areaName"
+                                    value={areaFormState.areaName || ''}
+                                    onChange={handleAreaFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Area Description</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="areaDescription"
+                                    value={areaFormState.areaDescription || ''}
+                                    onChange={handleAreaFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Parking Description</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="parkingDescription"
+                                    value={areaFormState.parkingDescription || ''}
+                                    onChange={handleAreaFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Approach Description</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="approachDescription"
+                                    value={areaFormState.approachDescription || ''}
+                                    onChange={handleAreaFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Latitude</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="latitude"
+                                    value={areaFormState.latitude}
+                                    onChange={handleAreaFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Longitude</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="longitude"
+                                    value={areaFormState.longitude}
+                                    onChange={handleAreaFormChange}
                                     required
                                 />
                             </Form.Group>
@@ -92,35 +173,45 @@ const EditorPage = () => {
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Boulder Name</Form.Label>
                                 <Form.Control 
-                                    name="username"
+                                    name="boulderName"
+                                    value={boulderFormState.boulderName || ''}
+                                    onChange={handleBoulderFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Boulder Description</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="boulderDescription"
+                                    value={boulderFormState.boulderDescription || ''}
+                                    onChange={handleBoulderFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Latitude</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="latitude"
+                                    value={boulderFormState.latitude || ''}
+                                    onChange={handleBoulderFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Longitude</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="longitude"
+                                    value={boulderFormState.longitude || ''}
+                                    onChange={handleBoulderFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Boulder Image URL</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="boulderImgURL"
+                                    value={boulderFormState.boulderImgURL || ''}
+                                    onChange={handleBoulderFormChange}
                                     required
                                 />
                             </Form.Group>
@@ -144,49 +235,63 @@ const EditorPage = () => {
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Route Name</Form.Label>
                                 <Form.Control 
-                                    name="username"
+                                    name="routeName"
+                                    value={routeFormState.routeName}
+                                    onChange={handleRouteFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Route Description</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="routeDescription"
+                                    value={routeFormState.routeDescription}
+                                    onChange={handleRouteFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>First Ascent</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="firstAscent"
+                                    value={routeFormState.firstAscent}
+                                    onChange={handleRouteFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Route Grade</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="routeGrade"
+                                    value={routeFormState.routeGrade}
+                                    onChange={handleRouteFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Route Quality</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="routeQuality"
+                                    value={routeFormState.routeQuality}
+                                    onChange={handleRouteFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Route Image URL</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="routeImgURL"
+                                    value={routeFormState.routeImgURL}
+                                    onChange={handleRouteFormChange}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
                                 <Form.Label className='formLabel'>Route Youtube Embed Link</Form.Label>
                                 <Form.Control 
-                                    name="password"
+                                    name="routeYoutubeEmbedURL"
+                                    value={routeFormState.routeYoutubeEmbedURL}
+                                    onChange={handleRouteFormChange}
                                     required
                                 />
                             </Form.Group>
