@@ -9,6 +9,7 @@ import "./styles.css";
 
 /* Context */
 import { PageContext } from "../../utils/PageContext";
+import { CurrentlyEditingContext } from '../../utils/CurrentlyEditing';
 
 //use destructuring to get elements of each story
 const SingleHistory = ( {title, info, imgLink, author} ) => {
@@ -16,6 +17,10 @@ const SingleHistory = ( {title, info, imgLink, author} ) => {
   // setting user context of page
   const { pageName, setPageName } = useContext(PageContext)
   setPageName('other');
+
+  // setting currently editing context of page
+  const { currentlyEditing, setCurrentlyEditing } = useContext(CurrentlyEditingContext);
+  setCurrentlyEditing(false);
 
   return (
     <>

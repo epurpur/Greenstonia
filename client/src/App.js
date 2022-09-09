@@ -25,6 +25,7 @@ import EditorPage from "./pages/EditorPage";
 import UserProvider from "./utils/UserContext";
 import PageProvider from "./utils/PageContext";
 import EditorProvider from "./utils/EditorContext";
+import CurrentlyEditingProvider from "./utils/CurrentlyEditing";
 
 /* Apollo Setup */
 const client = new ApolloClient({
@@ -69,14 +70,6 @@ function App() {
     },
     {
         id: 5,
-        title: 'The skyline drive rennaisance',
-        active: true,
-        info: 'Matt Fanning Story',
-        imgLink: 'mattfanning',
-        author: 'Matt Fanning'
-    },
-    {
-        id: 6,
         title: 'Life After Greenstone',
         active: true,
         info: 'dave cohen story of life after greenstone',
@@ -84,7 +77,7 @@ function App() {
         author: 'Dave Cohen'
     },
     {
-        id: 7,
+        id: 6,
         title: 'Mycotic Break',
         active: true,
         info: 'Andrew Cassidy story of Mycotic Break',
@@ -92,7 +85,7 @@ function App() {
         author: 'Andrew Cassidy'
     },
     {
-        id: 8,
+        id: 7,
         title: 'A Good Day to Die',
         active: true,
         info: `<p id="mainTextContent">In the back of the Humpback Rocks Picnic Area is a trail that leads up to an overlook. Under that overlook are some rocks. Under those rocks is a roadcut for the Parkway. Andrew Cassidy and I were bouldering under the overlook one day while establishing problems such as Blue Suede, Wolf God and Jackie Chan's Greatest Kick when suddenly we hear a commotion underneath us from the parkway. We both rush over to the edge to find 3 or 4 kids standing in the road yelling up at another kid, now 25ft off the deck on the roadcut. Cars are continuing by, the kids are yelling, and Andrew and I both go in to "Yer Gonna Die!" mode. Andrew takes off running for the car to get a rope and I stay behind in an attempt to coach this kid up or down, I do not know really. 
@@ -103,7 +96,7 @@ function App() {
         author: 'Parker Smith'
     },
     {
-        id: 9,
+        id: 8,
         title: 'Super Duper Snake',
         active: true,
         info: 'Ross Elliot FA of Super Duper Snake',
@@ -111,7 +104,7 @@ function App() {
         author: 'Ross Elliott'
     },
     {
-        id: 10,
+        id: 9,
         title: 'Blank Canvas',
         active: true,
         info: `<p id="mainTextContent">I moved to Charlottesville in 2017 and right away started to check out the existing spots on the Parkway. The one that caught my eye immediately was the 12.2 boulder. At that time, the lower hang and drops had been climbed and Elliot Gaunt had been the first to top out the boulder via 'Blue Ridge Beauty'. I was immediately hooked and spent a lot of time the next year repeating both the hang and drops and also some of Elliot's lines such as 'What Could Have Been' and 'Bring Your Own Oxygen'. This was a real learning experience for me as I used ropes to clean and rehearse the topouts, which I had never done before in bouldering. In the process of repeating the existing routes, I couldn't help but notice there were still quite a few lines left to be done!
@@ -152,7 +145,7 @@ function App() {
         author: 'Erich Purpur'
     },
     {
-        id: 11,
+        id: 10,
         title: 'Lockdown bushwhacking',
         active: true,
         info: 'Peter Malander story',
@@ -160,7 +153,7 @@ function App() {
         author: 'Peter Malander'
     },
     {
-        id: 13,
+        id: 11,
         title: 'Tyler Hogan story',
         active: true,
         info: 'Tyler Hogan Story',
@@ -168,7 +161,7 @@ function App() {
         author: 'Tyler Hogan'
     },
     {
-        id: 13,
+        id: 12,
         title: 'Mike Farnsworth story',
         active: true,
         info: 'Mike Farnsworth story',
@@ -178,17 +171,21 @@ function App() {
   ])
 
   // controls login context
-  const [login, setLogin] = useState(false)
-  const providerValue = useMemo(() => ({ login, setLogin}), [login, setLogin])
+  const [login, setLogin] = useState(false);
+  const providerValue = useMemo(() => ({ login, setLogin}), [login, setLogin]);
 
   // controls page context
   const [pageName, setPageName] = useState('other');
-  const pageValue = useMemo(() => ({ pageName, setPageName}), [pageName, setPageName])
+  const pageValue = useMemo(() => ({ pageName, setPageName}), [pageName, setPageName]);
 
   // controls editor page context
   const [editorInfo, setEditorInfo] = useState({ typeID: '', typeName: ''});
-  const editorValue = useMemo(() => ({editorInfo, setEditorInfo}), [editorInfo, setEditorInfo])
+  const editorValue = useMemo(() => ({editorInfo, setEditorInfo}), [editorInfo, setEditorInfo]);
   
+  // controls currently editing page context
+  const [currentlyEditing, setCurrentlyEditing] = useState(false);
+  const currentlyEditingValue = useMemo(() => ({currentlyEditing, setCurrentlyEditing}), [currentlyEditing, setCurrentlyEditing]);
+
   return (
 
     // all components need to be inside ApolloProvider tag. Any component inside this tag can now make requests to graphql
@@ -196,6 +193,7 @@ function App() {
       <UserProvider value={providerValue}>  {/* UserContext login value - global state */}
       <PageProvider value={pageValue}>      {/* UserContext page value - global state */}
       <EditorProvider value={editorValue}>  {/* UserContext editor value - global state */}
+      <CurrentlyEditingProvider value={currentlyEditingValue}> {/* UserContext currently editing value - global state */}
         <Router>
           <div className="App">
             {/* Establishing routes to all endpoints */}
@@ -244,6 +242,7 @@ function App() {
             </Switch>
           </div>
         </Router>
+      </CurrentlyEditingProvider>
       </EditorProvider>
       </PageProvider>
       </UserProvider>

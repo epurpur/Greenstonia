@@ -18,6 +18,7 @@ import "./styles.css";
 
 /* Context */
 import { PageContext } from "../../utils/PageContext";
+import { CurrentlyEditingContext } from "../../utils/CurrentlyEditing";
 
 const HomePage = () => {
 
@@ -25,6 +26,11 @@ const HomePage = () => {
     const { pageName, setPageName } = useContext(PageContext)
     setPageName('other');
 
+    // setting currently editing context of page
+    const { currentlyEditing, setCurrentlyEditing } = useContext(CurrentlyEditingContext);
+    setCurrentlyEditing(false);
+
+    // set state of today's weather for weather dashboard
     const [todayWeatherData, settodayWeatherData] = useState(null);
 
     // Make DB call for all Area data

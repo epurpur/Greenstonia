@@ -12,6 +12,7 @@ import "./styles.css";
 /* Context */
 import { PageContext } from "../../utils/PageContext";
 import { EditorContext } from '../../utils/EditorContext';
+import { CurrentlyEditingContext } from '../../utils/CurrentlyEditing';
 
 const SingleRoutePage = () => {
 
@@ -25,6 +26,10 @@ const SingleRoutePage = () => {
     // setting user context of page
     const { pageName, setPageName } = useContext(PageContext)
     setPageName('Route');
+
+    // setting currently editing context of page
+    const { currentlyEditing, setCurrentlyEditing } = useContext(CurrentlyEditingContext);
+    setCurrentlyEditing(false);
 
     // setting editor context of page
     const { editorInfo, setEditorInfo } = useContext(EditorContext);

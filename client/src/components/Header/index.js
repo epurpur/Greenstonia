@@ -10,8 +10,12 @@ import "./styles.css";
 /* Context */
 import { UserContext } from "../../utils/UserContext";
 import { PageContext } from "../../utils/PageContext";
+import { CurrentlyEditingContext } from "../../utils/CurrentlyEditing";
 
 const Header = () => {
+
+    //global context to determine if user is currently editing (creating new area, boulder, route)
+    const { currentlyEditing, setCurrentlyEditing } = useContext(CurrentlyEditingContext);
 
     //global page context variable of page state
     const { pageName, setPageName } = useContext(PageContext);
@@ -143,7 +147,7 @@ const Header = () => {
                 <>
                   <Nav.Link onClick={handleUserLogin}>Logout</Nav.Link>
                 {/* Don't want to show 'Add' or 'Delete' buttons if user is on 'other' page */}
-                  {pageName !== 'other' &&
+                  {pageName !== 'other' && currentlyEditing === false &&
                     <>
                       <Nav.Link><Link to='/editorPage' id="editorBtn"> Add {pageName}</Link> </Nav.Link>
                       <Nav.Link id="editorBtn"> Delete {pageName} </Nav.Link>

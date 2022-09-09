@@ -14,6 +14,7 @@ import "./styles.css";
 /* Context */
 import { PageContext } from "../../utils/PageContext";
 import { EditorContext } from '../../utils/EditorContext';
+import { CurrentlyEditingContext } from '../../utils/CurrentlyEditing';
 
 const BoulderPage = () => {
 
@@ -26,6 +27,10 @@ const BoulderPage = () => {
     let bouldersData = useLocation();
     bouldersData = bouldersData.state;
     console.log('BOULDER DATA BEFORE API CALL', bouldersData);
+
+    // setting currently editing context of page
+    const { currentlyEditing, setCurrentlyEditing } = useContext(CurrentlyEditingContext);
+    setCurrentlyEditing(false);
 
     // setting context of editor info
     const { editorInfo, setEditorInfo } = useContext(EditorContext);

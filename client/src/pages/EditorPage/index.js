@@ -13,15 +13,19 @@ import "./styles.css";
 /* Context */
 import { EditorContext } from '../../utils/EditorContext';
 import { PageContext } from '../../utils/PageContext';
+import { CurrentlyEditingContext } from '../../utils/CurrentlyEditing';
 
 const EditorPage = () => {
 
     // global user context variable of editor info state
     const { editorInfo, setEditorInfo } = useContext(EditorContext);
     const { pageName, setPageName } = useContext(PageContext);
+    const { currentlyEditing, setCurrentlyEditing } = useContext(CurrentlyEditingContext);
     //console.log('EDITOR CONTEXT INFO', editorInfo);
     //console.log('PAGE CONTEXT', pageName)
 
+    // set state of currently editing to true. This hides the 'add' and 'delete' buttons in the header
+    setCurrentlyEditing(true);
 
     // controls state of information entered into area form
     const [areaFormState, setAreaFormState] = useState({
@@ -94,7 +98,7 @@ const EditorPage = () => {
     return (
         <>
             <Header />
-                {pageName === 'Area' &&
+                {pageName === 'Area' && 1===1 &&
                 /* data needed to create new area: areaName, areaDescription, parkingDescription, approachDescription, latitude, longitude  */
                  <>
                     <div id='editorFormHolder'>

@@ -10,12 +10,17 @@ import "./styles.css";
 
 /* Context */
 import { PageContext } from "../../utils/PageContext";
+import { CurrentlyEditingContext } from '../../utils/CurrentlyEditing';
 
 const HistoryPage = ({historyStory}) => {
 
     // setting user context of page
     const { pageName, setPageName } = useContext(PageContext)
     setPageName('other');
+
+    // setting currently editing context of page
+    const { currentlyEditing, setCurrentlyEditing } = useContext(CurrentlyEditingContext);
+    setCurrentlyEditing(false);
 
     return (
         <>

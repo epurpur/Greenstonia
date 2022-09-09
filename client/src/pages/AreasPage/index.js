@@ -14,6 +14,7 @@ import "./styles.css";
 /* Context */
 import { PageContext } from "../../utils/PageContext";
 import { EditorContext } from "../../utils/EditorContext";
+import { CurrentlyEditingContext } from '../../utils/CurrentlyEditing';
 
 const AreasPage = () => {
     
@@ -26,6 +27,10 @@ const AreasPage = () => {
     // setting user context of page
     const { pageName, setPageName } = useContext(PageContext);
     setPageName('Area');
+
+    // setting currently editing context of page
+    const { currentlyEditing, setCurrentlyEditing } = useContext(CurrentlyEditingContext);
+    setCurrentlyEditing(false);
 
     // setting context of editor info
     const { editorInfo, setEditorInfo } = useContext(EditorContext);
