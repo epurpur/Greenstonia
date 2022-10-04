@@ -165,8 +165,9 @@ const EditorPage = () => {
                                 />
                             </Form.Group>
                             <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleClick}>
-                                Submit
+                                <Link to="/home" id="editorSubmitBtn">Submit</Link>
                             </Button>
+
                         </Form>
                     </div>
                     <br></br>
@@ -226,8 +227,9 @@ const EditorPage = () => {
                                 />
                             </Form.Group>
                             <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleClick}>
-                                Submit
+                                <Link to="/home" id="editorSubmitBtn">Submit</Link>
                             </Button>
+
                         </Form>
                     </div>
                     <br></br>
@@ -306,8 +308,9 @@ const EditorPage = () => {
                                 />
                             </Form.Group>
                             <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleClick}>
-                                Submit
+                                <Link to="/home" id="editorSubmitBtn">Submit</Link>
                             </Button>
+
                         </Form>
                     </div>
                     <br></br>

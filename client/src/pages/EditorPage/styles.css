@@ -23,5 +23,8 @@
 #btnFormSubmit {
     margin: 0 0 10px 45%;
     background-color: var(--text-main);
-    color: black;
+}
+
+#editorSubmitBtn {
+    color: black
 }
