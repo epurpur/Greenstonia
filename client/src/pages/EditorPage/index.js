@@ -90,7 +90,13 @@ const EditorPage = () => {
             ...routeFormState,
             [name]: value
         })
+
+        //console.log('ROUTE FORM STATE', routeFormState)
     };
+
+    const handleClick = (event) => {
+        console.log('Button Click')
+    }
 
 
 
@@ -98,7 +104,7 @@ const EditorPage = () => {
     return (
         <>
             <Header />
-                {pageName === 'Area' && 1===1 &&
+                {pageName === 'Area' &&
                 /* data needed to create new area: areaName, areaDescription, parkingDescription, approachDescription, latitude, longitude  */
                  <>
                     <div id='editorFormHolder'>
@@ -158,7 +164,7 @@ const EditorPage = () => {
                                     required
                                 />
                             </Form.Group>
-                            <Button id="btnFormSubmit" variant="primary" type="submit">
+                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleClick}>
                                 Submit
                             </Button>
                         </Form>
@@ -219,7 +225,7 @@ const EditorPage = () => {
                                     required
                                 />
                             </Form.Group>
-                            <Button id="btnFormSubmit" variant="primary" type="submit">
+                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleClick}>
                                 Submit
                             </Button>
                         </Form>
@@ -299,7 +305,7 @@ const EditorPage = () => {
                                     required
                                 />
                             </Form.Group>
-                            <Button id="btnFormSubmit" variant="primary" type="submit">
+                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleClick}>
                                 Submit
                             </Button>
                         </Form>
