@@ -88,6 +88,7 @@ const AreasPage = () => {
                     <p id="boulderMapTitle">Search boulders by map</p>
                     <div>
                         {/* Need to wait for bouldersSorted to exist before rendering boulders map */}
+                        {/* Or if no boulders exist, need to catch this and deliver basically no information to boulders map component */}
                         {bouldersSorted &&
                             <BouldersMap bouldersData={bouldersSorted} areaData={areaData}/>
                         }
