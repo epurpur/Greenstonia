@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
 
 /* Components */
 import Header from '../../components/Header';
@@ -9,6 +10,8 @@ import { Form, Button } from 'react-bootstrap';
 /* CSS styles */
 import "./styles.css";
 
+/* Mutations */
+import { ADD_AREA, ADD_BOULDER, ADD_ROUTE } from '../../utils/mutations';
 
 /* Context */
 import { EditorContext } from '../../utils/EditorContext';
@@ -16,6 +19,10 @@ import { PageContext } from '../../utils/PageContext';
 import { CurrentlyEditingContext } from '../../utils/CurrentlyEditing';
 
 const EditorPage = () => {
+
+    //invoke usemutation hook to allow adding new area, new boulder, new route
+    const [addArea, {error, data}] = useMutation(ADD_AREA);
+
 
     // global user context variable of editor info state
     const { editorInfo, setEditorInfo } = useContext(EditorContext);
@@ -48,6 +55,19 @@ const EditorPage = () => {
         //console.log('AREA FORM STATE', areaFormState)
     }
 
+    const handleAreaFormSubmit = async (event) => {
+        // submits areaFormState to make new record in database
+        console.log('use info upon submission: ', areaFormState);
+
+        try {
+            const { data } = await addArea({
+                variables: {...areaFormState}
+            })
+        } catch (error) {
+            console.log('Error! ', error);
+        }
+    }
+
     // controls state of information entered into boulder form
     const [boulderFormState, setBoulderFormState] = useState({
         boulderName: '',
@@ -69,6 +89,11 @@ const EditorPage = () => {
 
         //console.log('BOULDER FORM STATE', boulderFormState)
     };
+
+    const handleBoulderFormSubmit = (event) => {
+        //submits boulderFormState to make new record in database
+        console.log('boulder info upon submission', boulderFormState);
+    }
 
     // controls state of information entered into route form
     const [routeFormState, setRouteFormState] = useState({
@@ -94,10 +119,10 @@ const EditorPage = () => {
         //console.log('ROUTE FORM STATE', routeFormState)
     };
 
-    const handleClick = (event) => {
-        console.log('Button Click')
+    const handleRouteFormSubmit = (event) => {
+        //submits routeFormState to make new record in database
+        console.log('route info upon submission', routeFormState);
     }
-
 
 
 
@@ -164,7 +189,7 @@ const EditorPage = () => {
                                     required
                                 />
                             </Form.Group>
-                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleClick}>
+                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleAreaFormSubmit}>
                                 <Link to="/home" id="editorSubmitBtn">Submit</Link>
                             </Button>
 
@@ -226,7 +251,7 @@ const EditorPage = () => {
                                     required
                                 />
                             </Form.Group>
-                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleClick}>
+                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={()=> console.log('placeholder')}>
                                 <Link to="/home" id="editorSubmitBtn">Submit</Link>
                             </Button>
 
@@ -307,7 +332,7 @@ const EditorPage = () => {
                                     required
                                 />
                             </Form.Group>
-                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleClick}>
+                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={() => console.log('placeholder')}>
                                 <Link to="/home" id="editorSubmitBtn">Submit</Link>
                             </Button>
 
