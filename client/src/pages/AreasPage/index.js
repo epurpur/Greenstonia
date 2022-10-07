@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_BOULDERSBYAREA } from '../../utils/queries';
 
 /* Components */
+import { MapContainer, TileLayer } from 'react-leaflet';
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import BouldersMap from '../../components/BouldersMap';
@@ -47,14 +48,19 @@ const AreasPage = () => {
     // making API call to database for boulders by area query, using area name of current area
     const { loading, data } = useQuery(QUERY_BOULDERSBYAREA, {variables: {areaName: areaData.areaName}});
     const bouldersByArea = data?.bouldersByArea || [];
+    console.log('boulders by area: ', bouldersByArea)
     // separate out just the boulders
     const boulders = bouldersByArea && bouldersByArea.boulders;
+    console.log('just the boulders', boulders)
     
     // need to wait for API call for boulders array to exist
     // sort climbing areas alphabetically by name
     // need to make copy of bouldersByArea array to do this
     const arrayForSort = boulders && [...boulders]
     const bouldersSorted = arrayForSort && arrayForSort.sort((a, b) => a.boulderName < b.boulderName ? -1 : (a.boulderName > b.boulderName ? 1 : 0))
+    //console.log('boulders sorted: ', bouldersSorted)
+
+    const testVar = []
 
     return( 
         <> 
@@ -66,6 +72,8 @@ const AreasPage = () => {
                     <p>Area Description: {bouldersByArea && bouldersByArea.areaDescription} </p>
                     <p>Parking Description: {bouldersByArea && bouldersByArea.parkingDescription} </p>
                     <div>Search Boulders by Name</div>
+                    {/* If there is at least one boulder in the area, then display a card for each boulder. */}
+                    { bouldersSorted && bouldersSorted.length > 0 ?
                         <div id="boulderCardHolder">
                             {bouldersSorted && bouldersSorted.map((boulder) =>
                             //create card for each boulder in the area
@@ -83,14 +91,23 @@ const AreasPage = () => {
                                 )
                             )}
                         </div>
+                    :
+                        <div id="boulderCardHolder"><b> No boulders yet in this area! </b></div>
+                    }
                 </div>
                 <div id="boulderMap">
                     <p id="boulderMapTitle">Search boulders by map</p>
                     <div>
                         {/* Need to wait for bouldersSorted to exist before rendering boulders map */}
-                        {/* Or if no boulders exist, need to catch this and deliver basically no information to boulders map component */}
-                        {bouldersSorted &&
+                        {/* Or if no boulders exist, need to catch this and render empty map instead */}
+                        {bouldersSorted && bouldersSorted.length > 0 ?
                             <BouldersMap bouldersData={bouldersSorted} areaData={areaData}/>
+                            :
+                            // Render empty map if no boulders in area
+                            <MapContainer center={[37.95, -78.98]} zoom={11.25} scrollWheelZoom={false}>
+                            {/* Google Maps basemap as TileLayer */}
+                                <TileLayer url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"/>
+                            </MapContainer>
                         }
                     </div>
                 </div>

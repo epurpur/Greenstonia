@@ -12,8 +12,8 @@ const BouldersMap = (props) => {
     let bouldersData = props.bouldersData;
     let areaData = props.areaData
 
-    console.log('BOULDERS MAP', props.areaData)
-    console.log('BOULDERS MAP', props.bouldersData)
+    //console.log('BOULDERS MAP', props.areaData)
+    //console.log('BOULDERS MAP', props.bouldersData)
 
     return (
         <>
