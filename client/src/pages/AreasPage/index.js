@@ -48,10 +48,9 @@ const AreasPage = () => {
     // making API call to database for boulders by area query, using area name of current area
     const { loading, data } = useQuery(QUERY_BOULDERSBYAREA, {variables: {areaName: areaData.areaName}});
     const bouldersByArea = data?.bouldersByArea || [];
-    console.log('boulders by area: ', bouldersByArea)
+
     // separate out just the boulders
     const boulders = bouldersByArea && bouldersByArea.boulders;
-    console.log('just the boulders', boulders)
     
     // need to wait for API call for boulders array to exist
     // sort climbing areas alphabetically by name

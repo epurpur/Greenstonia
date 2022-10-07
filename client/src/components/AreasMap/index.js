@@ -15,6 +15,8 @@ const AreasMap = (props) => {
     return (
         <>
             <div id='mapTitleText'>Search Areas by Map</div>
+            {areas.length > 0 ?
+            // if there are areas in the database, show map with markers of areas
             <MapContainer center={[37.95, -78.98]} zoom={11.25} scrollWheelZoom={false}>
                 {/* Google Maps basemap as TileLayer */}
                 <TileLayer url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"/>
@@ -30,6 +32,13 @@ const AreasMap = (props) => {
                     )
                   )}
             </MapContainer>
+            :
+            // if there are no areas in the database, just show map with no markers
+            <MapContainer center={[37.95, -78.98]} zoom={11.25} scrollWheelZoom={false}>
+            {/* Google Maps basemap as TileLayer */}
+                <TileLayer url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"/>
+            </MapContainer>
+            }
         </>
     )
 };
