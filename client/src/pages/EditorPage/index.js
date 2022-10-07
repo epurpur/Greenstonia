@@ -21,8 +21,9 @@ import { CurrentlyEditingContext } from '../../utils/CurrentlyEditing';
 const EditorPage = () => {
 
     //invoke usemutation hook to allow adding new area, new boulder, new route
-    const [addArea, {error, data}] = useMutation(ADD_AREA);
-
+    const [addArea, {areaError, areaData}] = useMutation(ADD_AREA);
+    const [addBoulder, { boulderError, boulderData }] = useMutation(ADD_BOULDER);
+    const [addRoute, { routeError, routeData }] = useMutation(ADD_ROUTE);
 
     // global user context variable of editor info state
     const { editorInfo, setEditorInfo } = useContext(EditorContext);

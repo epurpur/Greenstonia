@@ -67,9 +67,9 @@ const AreasPage = () => {
             <div id="areaHolder">
                 <div id="areaInfo">
                     <p id="breadcrumb">Go Back: <Link to='/home'>Home Page</Link></p>
-                    <p>Area Name: {bouldersByArea && bouldersByArea.areaName} </p>
-                    <p>Area Description: {bouldersByArea && bouldersByArea.areaDescription} </p>
-                    <p>Parking Description: {bouldersByArea && bouldersByArea.parkingDescription} </p>
+                    <p><b>Area Name:</b> {bouldersByArea && bouldersByArea.areaName} </p>
+                    <p><b>Area Description:</b> {bouldersByArea && bouldersByArea.areaDescription} </p>
+                    <p><b>Parking Description:</b> {bouldersByArea && bouldersByArea.parkingDescription} </p>
                     <div>Search Boulders by Name</div>
                     {/* If there is at least one boulder in the area, then display a card for each boulder. */}
                     { bouldersSorted && bouldersSorted.length > 0 ?
