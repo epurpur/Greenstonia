@@ -191,7 +191,7 @@ const EditorPage = () => {
                                 />
                             </Form.Group>
                             <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleAreaFormSubmit}>
-                                <Link to="/home" id="editorSubmitBtn">Submit</Link>
+                                <Link id="editorSubmitBtn">Submit</Link>
                             </Button>
 
                         </Form>
@@ -253,7 +253,8 @@ const EditorPage = () => {
                                 />
                             </Form.Group>
                             <Button id="btnFormSubmit" variant="primary" type="submit" onClick={()=> console.log('placeholder')}>
-                                <Link to="/home" id="editorSubmitBtn">Submit</Link>
+                                {/* <Link to="/home" id="editorSubmitBtn">Submit</Link> */}
+                                <a href="/home" id="editorSubmitBtn">Submit</a>
                             </Button>
 
                         </Form>

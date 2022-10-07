@@ -38,6 +38,10 @@ const HomePage = () => {
     // need to wait for data to appear as useQuery is an asynchronous API call
     const areas = data?.areas || [];
 
+    console.log('HOME PAGE', areas)
+
+
+
     
     // Getting weather info in order to pass as props to Conditions Alert and Weather Component
     // useEffect(() => {
