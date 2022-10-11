@@ -27,14 +27,14 @@ mutation addBoulder($boulderName:String!, $boulderDescription:String!, $areaID:S
 
 export const ADD_ROUTE = gql`
 mutation addRoute($routeName:String!, $routeDescription:String!, $firstAscent:String!, $routeGrade:String!, $routeQuality:Int, $routeImgURL:[String!], $routeYoutubeEmbedURL:String, $boulderID:String!){
-    addRoute(routeName:$routeName, routeDescription:$routeDescription, firstAscent:$firstAscent, routeGrade:$routeGrade, routeQuality:$routeQuality, routeImgURL:$routeImgURL, routeYoutubeEmbedURL:$routeYoutubeEmbedURL, boulderID:$boulderID){
-      routeName
-      routeDescription
-      firstAscent
-      routeGrade
-      routeQuality
-      routeImgURL
-      routeYoutubeEmbedURL
-    }
+  addRoute(routeName:$routeName, routeDescription:$routeDescription, firstAscent:$firstAscent, routeGrade:$routeGrade, routeQuality:$routeQuality, routeImgURL:$routeImgURL, routeYoutubeEmbedURL:$routeYoutubeEmbedURL, boulderID:$boulderID){
+    routeName
+    routeDescription
+    firstAscent
+    routeGrade
+    routeQuality
+    routeImgURL
+    routeYoutubeEmbedURL
   }
+}
 `;

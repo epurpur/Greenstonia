@@ -15,7 +15,7 @@ import "./styles.css";
 import { ADD_AREA, ADD_BOULDER, ADD_ROUTE } from '../../utils/mutations';
 
 /* Queries */
-import { QUERY_AREAS, QUERY_BOULDERSBYAREA } from '../../utils/queries';
+import { QUERY_AREAS, QUERY_BOULDERSBYAREA ,QUERY_ROUTESBYBOULDER } from '../../utils/queries';
 
 /* Context */
 import { EditorContext } from '../../utils/EditorContext';
@@ -29,16 +29,14 @@ const EditorPage = () => {
     const [addArea, {areaError, areaData}] = useMutation(ADD_AREA, {
         // refetch areas data upon mutation. This is because useMutation modifies data on the server side.
         // need to refetch data in order to get modified version on client side
-        refetchQueries: [
-            {query: QUERY_AREAS}
-        ]
+        refetchQueries: [{query: QUERY_AREAS}]
     });
     const [addBoulder, { boulderError, boulderData }] = useMutation(ADD_BOULDER, {
-        refetchQueries: [
-            {query: QUERY_AREAS}
-        ]
+        refetchQueries: [{query: QUERY_AREAS}, {query: QUERY_BOULDERSBYAREA}]
     });
-    const [addRoute, { routeError, routeData }] = useMutation(ADD_ROUTE);
+    const [addRoute, { routeError, routeData }] = useMutation(ADD_ROUTE, {
+        refetchQueries: [{query: QUERY_AREAS}, {query: QUERY_BOULDERSBYAREA}, {query: QUERY_ROUTESBYBOULDER}]
+    });
 
     // global user context variable of editor info state
     const { editorInfo, setEditorInfo } = useContext(EditorContext);
@@ -148,9 +146,20 @@ const EditorPage = () => {
         //console.log('ROUTE FORM STATE', routeFormState)
     };
 
-    const handleRouteFormSubmit = (event) => {
+    const handleRouteFormSubmit = async (event) => {
         //submits routeFormState to make new record in database
+        // need to convert routeQuality to integer
+        routeFormState.routeQuality = parseInt(routeFormState.routeQuality)
         console.log('route info upon submission', routeFormState);
+
+        // create new record in db
+        try{
+            const { data } = await addRoute({
+                variables: {...routeFormState}
+            })
+        } catch (error) {
+            console.log('Error!', error)
+        }
     }
 
 
@@ -320,7 +329,6 @@ const EditorPage = () => {
                                     name="firstAscent"
                                     value={routeFormState.firstAscent}
                                     onChange={handleRouteFormChange}
-                                    required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
@@ -329,6 +337,7 @@ const EditorPage = () => {
                                     name="routeGrade"
                                     value={routeFormState.routeGrade}
                                     onChange={handleRouteFormChange}
+                                    placeholder="ex: v3"
                                     required
                                 />
                             </Form.Group>
@@ -338,6 +347,7 @@ const EditorPage = () => {
                                     name="routeQuality"
                                     value={routeFormState.routeQuality}
                                     onChange={handleRouteFormChange}
+                                    placeholder="ex: 3 (out of 4 stars)"
                                     required
                                 />
                             </Form.Group>
@@ -347,7 +357,6 @@ const EditorPage = () => {
                                     name="routeImgURL"
                                     value={routeFormState.routeImgURL}
                                     onChange={handleRouteFormChange}
-                                    required
                                 />
                             </Form.Group>
                             <Form.Group className="m-3 loginModalText">
@@ -356,11 +365,11 @@ const EditorPage = () => {
                                     name="routeYoutubeEmbedURL"
                                     value={routeFormState.routeYoutubeEmbedURL}
                                     onChange={handleRouteFormChange}
-                                    required
+                                    placeholder="ex: https://www.youtube.com/watch?v=dOEeVdANMXE"
                                 />
                             </Form.Group>
-                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={() => console.log('placeholder')}>
-                                <Link to="/home" id="editorSubmitBtn">Submit</Link>
+                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleRouteFormSubmit}>
+                                <Link to='/home' id="editorSubmitBtn">Submit</Link>
                             </Button>
 
                         </Form>
