@@ -59,7 +59,6 @@ const AreasPage = () => {
     const bouldersSorted = arrayForSort && arrayForSort.sort((a, b) => a.boulderName < b.boulderName ? -1 : (a.boulderName > b.boulderName ? 1 : 0))
     //console.log('boulders sorted: ', bouldersSorted)
 
-    const testVar = []
 
     return( 
         <> 

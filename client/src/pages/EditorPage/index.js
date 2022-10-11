@@ -15,7 +15,7 @@ import "./styles.css";
 import { ADD_AREA, ADD_BOULDER, ADD_ROUTE } from '../../utils/mutations';
 
 /* Queries */
-import { QUERY_AREAS } from '../../utils/queries';
+import { QUERY_AREAS, QUERY_BOULDERSBYAREA } from '../../utils/queries';
 
 /* Context */
 import { EditorContext } from '../../utils/EditorContext';
@@ -33,15 +33,19 @@ const EditorPage = () => {
             {query: QUERY_AREAS}
         ]
     });
-    const [addBoulder, { boulderError, boulderData }] = useMutation(ADD_BOULDER);
+    const [addBoulder, { boulderError, boulderData }] = useMutation(ADD_BOULDER, {
+        refetchQueries: [
+            {query: QUERY_AREAS}
+        ]
+    });
     const [addRoute, { routeError, routeData }] = useMutation(ADD_ROUTE);
 
     // global user context variable of editor info state
     const { editorInfo, setEditorInfo } = useContext(EditorContext);
     const { pageName, setPageName } = useContext(PageContext);
     const { currentlyEditing, setCurrentlyEditing } = useContext(CurrentlyEditingContext);
-    //console.log('EDITOR CONTEXT INFO', editorInfo);
-    //console.log('PAGE CONTEXT', pageName)
+    // console.log('EDITOR CONTEXT INFO', editorInfo);
+    // console.log('PAGE CONTEXT', pageName)
 
     // set state of currently editing to true. This hides the 'add' and 'delete' buttons in the header
     setCurrentlyEditing(true);
@@ -104,11 +108,20 @@ const EditorPage = () => {
         //console.log('BOULDER FORM STATE', boulderFormState)
     };
 
-    const handleBoulderFormSubmit = (event) => {
+    const handleBoulderFormSubmit = async (event) => {
         //submits boulderFormState to make new record in database
 
         // need areaID in order to create new boulder
         console.log('boulder info upon submission', boulderFormState);
+
+        // create new record in DB
+        try {
+            const { data } = await addBoulder({
+                variables: {...boulderFormState}
+            })
+        } catch (error) {
+            console.log('Error!', error)
+        }
     }
 
     // controls state of information entered into route form
@@ -264,13 +277,11 @@ const EditorPage = () => {
                                     name="boulderImgURL"
                                     value={boulderFormState.boulderImgURL || ''}
                                     onChange={handleBoulderFormChange}
-                                    required
                                 />
                             </Form.Group>
                             <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleBoulderFormSubmit}>
-                                <Link id="editorSubmitBtn">Submit</Link>
+                                <Link to='/home' id="editorSubmitBtn">Submit</Link>
                             </Button>
-
                         </Form>
                     </div>
                     <br></br>
