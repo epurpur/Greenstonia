@@ -1,6 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useLocation } from 'react';
+//import { useMutation } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 
 /* Components */
 import Header from '../../components/Header';
@@ -13,6 +14,9 @@ import "./styles.css";
 /* Mutations */
 import { ADD_AREA, ADD_BOULDER, ADD_ROUTE } from '../../utils/mutations';
 
+/* Queries */
+import { QUERY_AREAS } from '../../utils/queries';
+
 /* Context */
 import { EditorContext } from '../../utils/EditorContext';
 import { PageContext } from '../../utils/PageContext';
@@ -20,8 +24,15 @@ import { CurrentlyEditingContext } from '../../utils/CurrentlyEditing';
 
 const EditorPage = () => {
 
+
     //invoke usemutation hook to allow adding new area, new boulder, new route
-    const [addArea, {areaError, areaData}] = useMutation(ADD_AREA);
+    const [addArea, {areaError, areaData}] = useMutation(ADD_AREA, {
+        // refetch areas data upon mutation. This is because useMutation modifies data on the server side.
+        // need to refetch data in order to get modified version on client side
+        refetchQueries: [
+            {query: QUERY_AREAS}
+        ]
+    });
     const [addBoulder, { boulderError, boulderData }] = useMutation(ADD_BOULDER);
     const [addRoute, { routeError, routeData }] = useMutation(ADD_ROUTE);
 
@@ -60,6 +71,7 @@ const EditorPage = () => {
         // submits areaFormState to make new record in database
         console.log('use info upon submission: ', areaFormState);
 
+        // create new record in DB
         try {
             const { data } = await addArea({
                 variables: {...areaFormState}
@@ -67,6 +79,7 @@ const EditorPage = () => {
         } catch (error) {
             console.log('Error! ', error);
         }
+
     }
 
     // controls state of information entered into boulder form
@@ -93,6 +106,8 @@ const EditorPage = () => {
 
     const handleBoulderFormSubmit = (event) => {
         //submits boulderFormState to make new record in database
+
+        // need areaID in order to create new boulder
         console.log('boulder info upon submission', boulderFormState);
     }
 
@@ -191,7 +206,7 @@ const EditorPage = () => {
                                 />
                             </Form.Group>
                             <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleAreaFormSubmit}>
-                                <Link id="editorSubmitBtn">Submit</Link>
+                                <Link to="/home" id="editorSubmitBtn">Submit</Link>
                             </Button>
 
                         </Form>
@@ -252,9 +267,8 @@ const EditorPage = () => {
                                     required
                                 />
                             </Form.Group>
-                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={()=> console.log('placeholder')}>
-                                {/* <Link to="/home" id="editorSubmitBtn">Submit</Link> */}
-                                <a href="/home" id="editorSubmitBtn">Submit</a>
+                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleBoulderFormSubmit}>
+                                <Link id="editorSubmitBtn">Submit</Link>
                             </Button>
 
                         </Form>

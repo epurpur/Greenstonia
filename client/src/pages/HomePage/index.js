@@ -41,6 +41,13 @@ const HomePage = () => {
     console.log('HOME PAGE', areas)
 
 
+    useEffect(() => {
+        console.log('reloaded in useEffect')
+        const newAreas = data?.areas || []
+        console.log(newAreas)
+    }, [])
+
+
 
     
     // Getting weather info in order to pass as props to Conditions Alert and Weather Component
