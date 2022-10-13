@@ -25,6 +25,20 @@
     background-color: var(--text-main);
 }
 
+.btnFormSubmit {
+    margin: 10px;
+    background-color: var(--text-main);
+}
+
 #editorSubmitBtn {
     color: black
 }
+
+#submitBtns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+

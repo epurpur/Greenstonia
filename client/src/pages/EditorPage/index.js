@@ -162,6 +162,30 @@ const EditorPage = () => {
         }
     }
 
+    const handleSubmitAnotherRoute = (event) => {
+        //create new record in db
+        console.log('state before submit', routeFormState)
+        
+        //clear inputs
+        setRouteFormState({
+            routeName: '',
+            routeDescription: '',
+            firstAscent: '',
+            routeGrade: '',
+            routeQuality: '',
+            routeImgURL: '',
+            routeYoutubeEmbedURL: '',
+        })
+
+        console.log('state after submit: ', routeFormState)
+        
+        // scroll to top of page
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
+
 
 
     return (
@@ -227,10 +251,11 @@ const EditorPage = () => {
                                     required
                                 />
                             </Form.Group>
-                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleAreaFormSubmit}>
-                                <Link to="/home" id="editorSubmitBtn">Submit</Link>
-                            </Button>
-
+                            <div id='submitBtns'>
+                                <Button className="btnFormSubmit" variant="primary" type="submit" onClick={handleAreaFormSubmit}>
+                                    <Link to='/home' id="editorSubmitBtn">Submit</Link>
+                                </Button>
+                            </div>
                         </Form>
                     </div>
                     <br></br>
@@ -288,9 +313,11 @@ const EditorPage = () => {
                                     onChange={handleBoulderFormChange}
                                 />
                             </Form.Group>
-                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleBoulderFormSubmit}>
-                                <Link to='/home' id="editorSubmitBtn">Submit</Link>
-                            </Button>
+                            <div id='submitBtns'>
+                                <Button className="btnFormSubmit" variant="primary" type="submit" onClick={handleBoulderFormSubmit}>
+                                    <Link to='/home' id="editorSubmitBtn">Submit</Link>
+                                </Button>
+                            </div>
                         </Form>
                     </div>
                     <br></br>
@@ -368,10 +395,17 @@ const EditorPage = () => {
                                     placeholder="ex: https://www.youtube.com/watch?v=dOEeVdANMXE"
                                 />
                             </Form.Group>
-                            <Button id="btnFormSubmit" variant="primary" type="submit" onClick={handleRouteFormSubmit}>
-                                <Link to='/home' id="editorSubmitBtn">Submit</Link>
-                            </Button>
-
+                            <div id='submitBtns'>
+                                <Button className="btnFormSubmit" variant="primary" type="submit" onClick={handleRouteFormSubmit}>
+                                    {/* goes to homepage and reloads page. This is because I cannot figure out how to get this to reload data without refreshing page */}
+                                    {/* <a href='/home' id="editorSubmitBtn">Final Submit</a> */}
+                                    <Link id="editorSubmitButton">Final Submit</Link>
+                                </Button>
+                                <Button className="btnFormSubmit" variant="primary" type="submit" onClick={handleSubmitAnotherRoute}>
+                                    {/* Scrolls to top of page on click */}
+                                    <Link id="editorSubmitBtn">Submit Another</Link>
+                                </Button>
+                            </div>
                         </Form>
                     </div>
                     <br></br>
